@@ -11,7 +11,16 @@ import { Response } from "miragejs";
  * */
 
 export const getAllProductsHandler = function () {
-  return new Response(200, {}, { products: this.db.products });
+	return new Response(200, {}, { products: this.db.products });
+};
+
+/**
+ * This handler handles gets all filters in the db.
+ * send GET Request at /api/filters
+ * */
+
+export const getAllFiltersHandler = function () {
+	return new Response(200, {}, { filters: this.db.filters });
 };
 
 /**
@@ -20,17 +29,17 @@ export const getAllProductsHandler = function () {
  * */
 
 export const getProductHandler = function (schema, request) {
-  const productId = request.params.productId;
-  try {
-    const product = schema.products.findBy({ _id: productId });
-    return new Response(200, {}, { product });
-  } catch (error) {
-    return new Response(
-      500,
-      {},
-      {
-        error,
-      }
-    );
-  }
+	const productId = request.params.productId;
+	try {
+		const product = schema.products.findBy({ _id: productId });
+		return new Response(200, {}, { product });
+	} catch (error) {
+		return new Response(
+			500,
+			{},
+			{
+				error,
+			}
+		);
+	}
 };

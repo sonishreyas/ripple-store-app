@@ -1,5 +1,6 @@
-const Products = () => {
-    return (<><h1>This is Products Page</h1></>);
+import {Products} from "../components"
+const ProductsPage = () => {
+    return (<><Products/></>);
 }
 
-export {Products};
+export {ProductsPage};
