@@ -1,12 +1,28 @@
 // import { filtersData } from "../data/index";
 import { useProducts } from "../../context";
+import { useState, useEffect } from "react";
+// import { filters as filtersData } from "../../data/filters";
 
 const Filters = () => {
-  const { productsState, productsDispatch, filtersData } = useProducts();
-  // const {filtersData} = useFilters();
-
+  // const { productsState, productsDispatch } = useProducts();
+  // const {filtersData} = useProducts();
+  const [filtersData, setFiltersData] = useState([]);
+	useEffect(() => {
+		fetch("/api/filters", {
+			method: "GET",
+		})
+			.then((res) => res.json())
+			.then((json) => {
+				console.log("filters yaha hai: ", json);
+				setFiltersData(json.filters);
+			});
+	}, []);
+  console.log("hhuhuhu:  ", filtersData);
   return (
-    <article className="grid-col-30 h-auto">
+  <>
+    {
+      filtersData.length !== 0 &&
+      <article className="grid-col-30 h-auto">
       <div className="flex-column p-5 m-5 w-100 h-auto">
         <section className="form-header flex-row align-center justify-content-space-between p-5 pb-10 w-100 h-auto ">
           <h3 className="form-heading text-bold py-5 px-0">Filters</h3>
@@ -16,7 +32,7 @@ const Filters = () => {
         </section>
         <ul className="radio-btn-container pb-10 outline-container p-5 b-radius-2 my-10">
           <li className="no-list form-heading text-bold py-5 px-0">Sort by</li>
-          {filtersData.sortByList.map(
+          {filtersData[0].sortByList.map(
             ({ name, btnType, sortByType }, index) => {
               return (
                 <li className="no-list w-100 my-2" key={`sortby-${index}`}>
@@ -42,7 +58,7 @@ const Filters = () => {
             }
           )}
         </ul>
-        <ul className="outline-container price-slider p-5 my-5 b-radius-2 flex-column flex-gap-1 flex-wrap w-100  my-10">
+        {/* <ul className="outline-container price-slider p-5 my-5 b-radius-2 flex-column flex-gap-1 flex-wrap w-100  my-10">
           <li className="no-list form-heading text-bold py-5 px-0">Price</li>
           <article className="value-input flex-row flex-gap-2 align-center mb-10">
             <article className="field flex-row align-center">
@@ -93,7 +109,7 @@ const Filters = () => {
           <li className="no-list form-heading text-bold py-5 px-0">
             Categories
           </li>
-          {filtersData.categoryFilters.map(
+          {filtersData[0].categoryFilters.map(
             ({ name, btnType, filterType }, index) => {
               return (
                 <li className="no-list w-100 my-2" key={`category-${index}`}>
@@ -128,7 +144,7 @@ const Filters = () => {
 
         <ul className="checkbox-btn-container pb-10 outline-container p-5 b-radius-2 my-10">
           <li className="no-list form-heading text-bold py-5 px-0">Brand</li>
-          {filtersData.brandFilters.map(({ name, btnType }, index) => {
+          {filtersData[0].brandFilters.map(({ name, btnType }, index) => {
             return (
               <li className="no-list w-100 my-2" key={`brand-${index}`}>
                 <label className="basic-chip flex-row align-center flex-wrap flex-gap-1 h6 filter-chip cursor-pointer">
@@ -202,10 +218,11 @@ const Filters = () => {
               step="1"
             />
           </article>
-        </ul>
+        </ul>*/}
       </div>
-    </article>
-  );
+    </article> 
+  }
+  </>)
 };
 
 export { Filters };

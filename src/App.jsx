@@ -8,10 +8,10 @@ import {
 	Authentication,
 } from "./pages";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Mockman from "mockman-js"
 export default function App() {
 	return (
 		<div className="App">
-			<Router>
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/cart" element={<Cart />} />
@@ -19,8 +19,8 @@ export default function App() {
 					<Route path="/profile" element={<Profile />} />
 					<Route path="/wishlist" element={<Wishlist />} />
 					<Route path="/auth" element={<Authentication />} />
+					<Route path="/mock" element={<Mockman />} />
 				</Routes>
-			</Router>
 		</div>
 	);
 }
