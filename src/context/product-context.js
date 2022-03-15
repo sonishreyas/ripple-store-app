@@ -12,7 +12,6 @@ import {
 	BrandProducts,
 	CategoryProducts,
 } from "../reducers/products-reducer";
-// import { filters as filtersData } from "../data/filters";
 import { useProductsDataHook, useFiltersDataHook } from "../custom-hooks";
 
 const getDefaultProductsState = (filtersData) => {
@@ -37,7 +36,8 @@ const ProductsContext = createContext({});
 const ProductsProvider = ({ children }) => {
 	const productsData = useProductsDataHook();
 	const filtersData = useFiltersDataHook();
-	console.log(filtersData);
+	// const defaultProductsState =
+	// 	filtersData && getDefaultProductsState(filtersData);
 	// const [productsState, productsDispatch] = useReducer(
 	// 	productsReducer,
 	// 	defaultProductsState

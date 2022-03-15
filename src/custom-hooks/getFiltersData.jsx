@@ -7,7 +7,6 @@ const useFiltersDataHook = () => {
 		})
 			.then((res) => res.json())
 			.then((json) => {
-				console.log("filters yaha hai: ", json);
 				setFiltersData(json.filters[0]);
 			});
 	}, []);

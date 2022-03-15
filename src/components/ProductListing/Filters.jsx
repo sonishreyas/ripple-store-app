@@ -5,23 +5,12 @@ import { useState, useEffect } from "react";
 
 const Filters = () => {
   // const { productsState, productsDispatch } = useProducts();
-  // const {filtersData} = useProducts();
-  const [filtersData, setFiltersData] = useState([]);
-	useEffect(() => {
-		fetch("/api/filters", {
-			method: "GET",
-		})
-			.then((res) => res.json())
-			.then((json) => {
-				console.log("filters yaha hai: ", json);
-				setFiltersData(json.filters);
-			});
-	}, []);
-  console.log("hhuhuhu:  ", filtersData);
+  const {filtersData} = useProducts();
+  
   return (
   <>
     {
-      filtersData.length !== 0 &&
+      Object.keys(filtersData).length !== 0 &&
       <article className="grid-col-30 h-auto">
       <div className="flex-column p-5 m-5 w-100 h-auto">
         <section className="form-header flex-row align-center justify-content-space-between p-5 pb-10 w-100 h-auto ">
@@ -32,7 +21,7 @@ const Filters = () => {
         </section>
         <ul className="radio-btn-container pb-10 outline-container p-5 b-radius-2 my-10">
           <li className="no-list form-heading text-bold py-5 px-0">Sort by</li>
-          {filtersData[0].sortByList.map(
+          {filtersData.sortByList.map(
             ({ name, btnType, sortByType }, index) => {
               return (
                 <li className="no-list w-100 my-2" key={`sortby-${index}`}>
@@ -58,7 +47,8 @@ const Filters = () => {
             }
           )}
         </ul>
-        {/* <ul className="outline-container price-slider p-5 my-5 b-radius-2 flex-column flex-gap-1 flex-wrap w-100  my-10">
+
+        <ul className="outline-container price-slider p-5 my-5 b-radius-2 flex-column flex-gap-1 flex-wrap w-100  my-10">
           <li className="no-list form-heading text-bold py-5 px-0">Price</li>
           <article className="value-input flex-row flex-gap-2 align-center mb-10">
             <article className="field flex-row align-center">
@@ -105,12 +95,13 @@ const Filters = () => {
             />
           </article>
         </ul>
+        
         <ul className="checkbox-btn-container pb-10 outline-container p-5 b-radius-2 my-10">
           <li className="no-list form-heading text-bold py-5 px-0">
             Categories
           </li>
-          {filtersData[0].categoryFilters.map(
-            ({ name, btnType, filterType }, index) => {
+          {filtersData.categoryFilters.map(
+            ({ name, btnType }, index) => {
               return (
                 <li className="no-list w-100 my-2" key={`category-${index}`}>
                   <label className="basic-chip flex-row align-center flex-wrap flex-gap-1 h6 filter-chip cursor-pointer">
@@ -118,20 +109,20 @@ const Filters = () => {
                       className=""
                       type="checkbox"
                       value={btnType}
-                      checked={
-                        productsState.categoryFilters[name] ? true : false
-                      }
-                      onChange={(e) =>
-                        productsDispatch({
-                          filterName: name,
-                          filterType: btnType,
-                          categoryFilters: ((categoryFilters, e) => {
-                            const newCategoryFilters = { ...categoryFilters };
-                            newCategoryFilters[name] = e.target.checked;
-                            return newCategoryFilters;
-                          })(productsState.categoryFilters, e)
-                        })
-                      }
+                      // checked={
+                      //   productsState.categoryFilters[name] ? true : false
+                      // }
+                      // onChange={(e) =>
+                      //   productsDispatch({
+                      //     filterName: name,
+                      //     filterType: btnType,
+                      //     categoryFilters: ((categoryFilters, e) => {
+                      //       const newCategoryFilters = { ...categoryFilters };
+                      //       newCategoryFilters[name] = e.target.checked;
+                      //       return newCategoryFilters;
+                      //     })(productsState.categoryFilters, e)
+                      //   })
+                      // }
                     />
                     <i className="fa-solid fa-circle-check"></i>
                     <p className="basic-chip-content">{name}</p>
@@ -140,11 +131,11 @@ const Filters = () => {
               );
             }
           )}
-        </ul>
-
+        </ul>  
+        
         <ul className="checkbox-btn-container pb-10 outline-container p-5 b-radius-2 my-10">
           <li className="no-list form-heading text-bold py-5 px-0">Brand</li>
-          {filtersData[0].brandFilters.map(({ name, btnType }, index) => {
+          {filtersData.brandFilters.map(({ name, btnType }, index) => {
             return (
               <li className="no-list w-100 my-2" key={`brand-${index}`}>
                 <label className="basic-chip flex-row align-center flex-wrap flex-gap-1 h6 filter-chip cursor-pointer">
@@ -152,18 +143,18 @@ const Filters = () => {
                     className=""
                     type="checkbox"
                     value={btnType}
-                    checked={productsState.brandFilters[name] ? true : false}
-                    onChange={(e) =>
-                      productsDispatch({
-                        filterName: name,
-                        filterType: btnType,
-                        brandFilters: ((brandFilters, e) => {
-                          const newBrandFilters = { ...brandFilters };
-                          newBrandFilters[name] = e.target.checked;
-                          return newBrandFilters;
-                        })(productsState.brandFilters, e)
-                      })
-                    }
+                    // checked={productsState.brandFilters[name] ? true : false}
+                    // onChange={(e) =>
+                    //   productsDispatch({
+                    //     filterName: name,
+                    //     filterType: btnType,
+                    //     brandFilters: ((brandFilters, e) => {
+                    //       const newBrandFilters = { ...brandFilters };
+                    //       newBrandFilters[name] = e.target.checked;
+                    //       return newBrandFilters;
+                    //     })(productsState.brandFilters, e)
+                    //   })
+                    // }
                   />
                   <i className="fa-solid fa-circle-check"></i>
                   <p className="basic-chip-content">{name}</p>
@@ -218,7 +209,7 @@ const Filters = () => {
               step="1"
             />
           </article>
-        </ul>*/}
+        </ul>
       </div>
     </article> 
   }

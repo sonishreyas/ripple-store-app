@@ -57,7 +57,7 @@ const ProductListing = () => {
             </article>
           );
         })
-        : <></>
+        : <h4>No Products Found</h4>
       }
       </div>
     </article>
