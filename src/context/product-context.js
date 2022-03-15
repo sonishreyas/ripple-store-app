@@ -17,17 +17,10 @@ import { useProductsDataHook, useFiltersDataHook } from "../custom-hooks";
 const getDefaultProductsState = (filtersData) => {
 	return {
 		filterName: "Reset",
-		filterType: { status: false },
-		categoryFilters: filtersData.categoryFilters.reduce((prev, curr) => {
-			prev[curr.name] = curr.status;
-			return prev;
-		}, {}),
-		brandFilters: filtersData.brandFilters.reduce((prev, curr) => {
-			prev[curr.name] = curr.status;
-			return prev;
-		}, {}),
+		filterType: "default",
 		sortBy: "",
 		sortByType: "",
+		filterSelectClassName: "",
 	};
 };
 
@@ -36,26 +29,27 @@ const ProductsContext = createContext({});
 const ProductsProvider = ({ children }) => {
 	const productsData = useProductsDataHook();
 	const filtersData = useFiltersDataHook();
-	// const defaultProductsState =
-	// 	filtersData && getDefaultProductsState(filtersData);
-	// const [productsState, productsDispatch] = useReducer(
-	// 	productsReducer,
-	// 	defaultProductsState
-	// );
-	// const filteredProductsData = Compose(
-	// 	productsState,
-	// 	sortByReducer,
-	// 	CategoryProducts,
-	// 	BrandProducts
-	// )(productsData);
-
+	const defaultProductsState =
+		Object.keys(filtersData).length !== 0
+			? getDefaultProductsState(filtersData)
+			: {};
+	const [productsState, productsDispatch] = useReducer(
+		productsReducer,
+		defaultProductsState
+	);
+	const filteredProductsData = Compose(
+		productsState,
+		sortByReducer
+		// CategoryProducts,
+		// BrandProducts
+	)(productsData);
 	return (
 		<ProductsContext.Provider
 			value={{
-				// productsState,
-				productsData: productsData,
+				productsState,
+				productsData: filteredProductsData,
 				filtersData: filtersData,
-				// productsDispatch,
+				productsDispatch,
 			}}
 		>
 			{children}

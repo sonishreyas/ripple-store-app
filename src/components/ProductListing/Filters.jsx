@@ -1,14 +1,10 @@
-// import { filtersData } from "../data/index";
 import { useProducts } from "../../context";
-import { useState, useEffect } from "react";
 // import { filters as filtersData } from "../../data/filters";
 
 const Filters = () => {
-  // const { productsState, productsDispatch } = useProducts();
-  const {filtersData} = useProducts();
-  
+  const { productsState, productsDispatch, filtersData } = useProducts();
   return (
-  <>
+  <div>
     {
       Object.keys(filtersData).length !== 0 &&
       <article className="grid-col-30 h-auto">
@@ -22,20 +18,21 @@ const Filters = () => {
         <ul className="radio-btn-container pb-10 outline-container p-5 b-radius-2 my-10">
           <li className="no-list form-heading text-bold py-5 px-0">Sort by</li>
           {filtersData.sortByList.map(
-            ({ name, btnType, sortByType }, index) => {
+            ({ name, btnType }, index) => {
               return (
                 <li className="no-list w-100 my-2" key={`sortby-${index}`}>
-                  <label className="basic-chip flex-row align-center flex-wrap flex-gap-1 h6 filter-chip cursor-pointer">
+                  <label className={`basic-chip flex-row align-center flex-wrap flex-gap-1 h6 filter-chip cursor-pointer`}>
                     <input
                       className="filters"
                       type="radio"
                       name="sort-by"
                       value={btnType}
-                      checked={sortByType === btnType ? true : false}
-                      onChange={() =>
-                        productsDispatch({
+                      defaultChecked={productsState.sortByType === btnType ? true : false}
+                      onChange={() => 
+                        productsDispatch({ 
                           sortByType: btnType,
-                          filterType: "PRODUCTS_SORT_BY"
+                          filterType: "PRODUCTS_SORT_BY",
+                          filterSelectClassName: "fliter-chip-selected"
                         })
                       }
                     />
@@ -48,7 +45,7 @@ const Filters = () => {
           )}
         </ul>
 
-        <ul className="outline-container price-slider p-5 my-5 b-radius-2 flex-column flex-gap-1 flex-wrap w-100  my-10">
+        {/* <ul className="outline-container price-slider p-5 my-5 b-radius-2 flex-column flex-gap-1 flex-wrap w-100  my-10">
           <li className="no-list form-heading text-bold py-5 px-0">Price</li>
           <article className="value-input flex-row flex-gap-2 align-center mb-10">
             <article className="field flex-row align-center">
@@ -95,7 +92,7 @@ const Filters = () => {
             />
           </article>
         </ul>
-        
+
         <ul className="checkbox-btn-container pb-10 outline-container p-5 b-radius-2 my-10">
           <li className="no-list form-heading text-bold py-5 px-0">
             Categories
@@ -209,11 +206,11 @@ const Filters = () => {
               step="1"
             />
           </article>
-        </ul>
+        </ul> */}
       </div>
     </article> 
   }
-  </>)
+  </div>)
 };
 
 export { Filters };
