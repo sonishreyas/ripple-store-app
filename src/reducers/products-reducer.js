@@ -73,7 +73,7 @@ const CategoryProducts = (productsState, productsData) =>
 		  )
 		: productsData;
 
-const BrandProducts = (productsState, productsData) => {
+const BrandProducts = (productsState, productsData) =>
 	Object.keys(productsState.brandFilters).filter(
 		(item) => productsState.brandFilters[item]
 	).length !== 0
@@ -82,13 +82,12 @@ const BrandProducts = (productsState, productsData) => {
 					productsState.brandFilters[curr]
 						? [
 								...prev,
-								...productsData.filter((product) => product.category === curr),
+								...productsData.filter((product) => product.brand === curr),
 						  ]
 						: prev,
 				[]
 		  )
 		: productsData;
-};
 
 export {
 	productsReducer,

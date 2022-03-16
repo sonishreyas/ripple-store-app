@@ -62,13 +62,14 @@ const ProductsProvider = ({ children }) => {
 			setFilteredProductsData(
 				Compose(
 					productsState,
-					sortByReducer,
-					CategoryProducts
-					// BrandProducts
+					CategoryProducts,
+					BrandProducts,
+					sortByReducer
 				)(productsData)
 			);
 		}
 	}, [productsData, productsState]);
+
 	return (
 		<ProductsContext.Provider
 			value={{

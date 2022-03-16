@@ -29,10 +29,9 @@ const Filters = () => {
                       value={btnType}
                       checked={productsState.sortByType === btnType ? true : false}
                       onChange={() => 
-                        productsDispatch({ ...productsState,
+                        productsDispatch({ 
                           sortByType: btnType,
                           filterType: "PRODUCTS_SORT_BY",
-                          filterSelectClassName: "fliter-chip-selected",
                         })
                       }
                     />
@@ -79,6 +78,37 @@ const Filters = () => {
               );
             }
           )}
+        </ul>
+
+        <ul className="checkbox-btn-container pb-10 outline-container p-5 b-radius-2 my-10">
+          <li className="no-list form-heading text-bold py-5 px-0">Brand</li>
+          {filtersData.brandFilters.map(({ name, btnType }, index) => {
+            return (
+              <li className="no-list w-100 my-2" key={`brand-${index}`}>
+                <label className={`basic-chip flex-row align-center flex-wrap flex-gap-1 h6 filter-chip cursor-pointer ${productsState.brandFilters[name] ? " fliter-chip-selected":""}`}>
+                  <input
+                    className="filters"
+                    type="checkbox"
+                    value={btnType}
+                    checked={productsState.brandFilters[name] ? true : false}
+                    onChange={(e) =>
+                      productsDispatch({
+                        filterName: name,
+                        filterType: btnType,
+                        brandFilters: ((brandFilters, e) => {
+                          const newBrandFilters = { ...brandFilters };
+                          newBrandFilters[name] = e.target.checked;
+                          return newBrandFilters;
+                        })(productsState.brandFilters, e)
+                      })
+                    }
+                  />
+                  <i className="fa-solid fa-circle-check"></i>
+                  <p className="basic-chip-content">{name}</p>
+                </label>
+              </li>
+            );
+          })}
         </ul>
         {/* <ul className="outline-container price-slider p-5 my-5 b-radius-2 flex-column flex-gap-1 flex-wrap w-100  my-10">
           <li className="no-list form-heading text-bold py-5 px-0">Price</li>
@@ -127,74 +157,7 @@ const Filters = () => {
             />
           </article>
         </ul>
-
-        <ul className="checkbox-btn-container pb-10 outline-container p-5 b-radius-2 my-10">
-          <li className="no-list form-heading text-bold py-5 px-0">
-            Categories
-          </li>
-          {filtersData.categoryFilters.map(
-            ({ name, btnType }, index) => {
-              return (
-                <li className="no-list w-100 my-2" key={`category-${index}`}>
-                  <label className="basic-chip flex-row align-center flex-wrap flex-gap-1 h6 filter-chip cursor-pointer">
-                    <input
-                      className=""
-                      type="checkbox"
-                      value={btnType}
-                      // checked={
-                      //   productsState.categoryFilters[name] ? true : false
-                      // }
-                      // onChange={(e) =>
-                      //   productsDispatch({
-                      //     filterName: name,
-                      //     filterType: btnType,
-                      //     categoryFilters: ((categoryFilters, e) => {
-                      //       const newCategoryFilters = { ...categoryFilters };
-                      //       newCategoryFilters[name] = e.target.checked;
-                      //       return newCategoryFilters;
-                      //     })(productsState.categoryFilters, e)
-                      //   })
-                      // }
-                    />
-                    <i className="fa-solid fa-circle-check"></i>
-                    <p className="basic-chip-content">{name}</p>
-                  </label>
-                </li>
-              );
-            }
-          )}
-        </ul>  
         
-        <ul className="checkbox-btn-container pb-10 outline-container p-5 b-radius-2 my-10">
-          <li className="no-list form-heading text-bold py-5 px-0">Brand</li>
-          {filtersData.brandFilters.map(({ name, btnType }, index) => {
-            return (
-              <li className="no-list w-100 my-2" key={`brand-${index}`}>
-                <label className="basic-chip flex-row align-center flex-wrap flex-gap-1 h6 filter-chip cursor-pointer">
-                  <input
-                    className=""
-                    type="checkbox"
-                    value={btnType}
-                    // checked={productsState.brandFilters[name] ? true : false}
-                    // onChange={(e) =>
-                    //   productsDispatch({
-                    //     filterName: name,
-                    //     filterType: btnType,
-                    //     brandFilters: ((brandFilters, e) => {
-                    //       const newBrandFilters = { ...brandFilters };
-                    //       newBrandFilters[name] = e.target.checked;
-                    //       return newBrandFilters;
-                    //     })(productsState.brandFilters, e)
-                    //   })
-                    // }
-                  />
-                  <i className="fa-solid fa-circle-check"></i>
-                  <p className="basic-chip-content">{name}</p>
-                </label>
-              </li>
-            );
-          })}
-        </ul>
         <ul className="outline-container rating-slider p-5 my-5 b-radius-2 flex-column flex-gap-1 flex-wrap w-100  my-10">
           <li className="no-list form-heading text-bold py-5 px-0">Rating</li>
           <article className="value-input flex-row flex-gap-2 align-center mb-10">
