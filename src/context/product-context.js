@@ -18,7 +18,6 @@ const getDefaultProductsState = (filtersData) => {
 	return {
 		filterName: "Reset",
 		filterType: "default",
-		sortBy: "",
 		sortByType: "",
 		filterSelectClassName: "",
 		categoryFilters: filtersData.categoryFilters.reduce((prev, curr) => {
@@ -77,6 +76,7 @@ const ProductsProvider = ({ children }) => {
 				productsData: filteredProductsData,
 				filtersData: filtersData,
 				productsDispatch,
+				clearFilters: defaultProductsState,
 			}}
 		>
 			{children}

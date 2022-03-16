@@ -2,7 +2,7 @@ import { useProducts } from "../../context";
 // import { filters as filtersData } from "../../data/filters";
 
 const Filters = () => {
-  const { productsState, productsDispatch, filtersData } = useProducts();
+  const { productsState, productsDispatch, filtersData,clearFilters } = useProducts();
   return (
   <div>
     {
@@ -11,7 +11,14 @@ const Filters = () => {
       <form className="flex-column p-5 m-5 w-100 h-auto">
         <section className="form-header flex-row align-center justify-content-space-between p-5 pb-10 w-100 h-auto ">
           <h3 className="form-heading text-bold py-5 px-0">Filters</h3>
-          <button className="primary-btn no-link-decoration text-tertiary-color text-bold p-2 px-4 b-radius-4">
+          <button 
+            className="primary-btn no-link-decoration text-tertiary-color text-bold p-2 px-4 b-radius-4"
+            onClick={()=>{
+              productsDispatch({
+                ...clearFilters
+              })
+            }}
+            >
             Clear All
           </button>
         </section>
