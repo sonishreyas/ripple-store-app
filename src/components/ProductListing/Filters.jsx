@@ -6,9 +6,9 @@ const Filters = () => {
   return (
   <div>
     {
-      Object.keys(filtersData).length !== 0 &&
+      (Object.keys(filtersData).length !== 0 && Object.keys(productsState).length !== 0) &&
       <article className="grid-col-30 h-auto">
-      <div className="flex-column p-5 m-5 w-100 h-auto">
+      <form className="flex-column p-5 m-5 w-100 h-auto">
         <section className="form-header flex-row align-center justify-content-space-between p-5 pb-10 w-100 h-auto ">
           <h3 className="form-heading text-bold py-5 px-0">Filters</h3>
           <button className="primary-btn no-link-decoration text-tertiary-color text-bold p-2 px-4 b-radius-4">
@@ -21,18 +21,18 @@ const Filters = () => {
             ({ name, btnType }, index) => {
               return (
                 <li className="no-list w-100 my-2" key={`sortby-${index}`}>
-                  <label className={`basic-chip flex-row align-center flex-wrap flex-gap-1 h6 filter-chip cursor-pointer`}>
+                  <label className={`basic-chip flex-row align-center flex-wrap flex-gap-1 h6 filter-chip cursor-pointer ${productsState.sortByType===btnType ? " fliter-chip-selected":""}`}>
                     <input
                       className="filters"
                       type="radio"
                       name="sort-by"
                       value={btnType}
-                      defaultChecked={productsState.sortByType === btnType ? true : false}
+                      checked={productsState.sortByType === btnType ? true : false}
                       onChange={() => 
-                        productsDispatch({ 
+                        productsDispatch({ ...productsState,
                           sortByType: btnType,
                           filterType: "PRODUCTS_SORT_BY",
-                          filterSelectClassName: "fliter-chip-selected"
+                          filterSelectClassName: "fliter-chip-selected",
                         })
                       }
                     />
@@ -44,7 +44,42 @@ const Filters = () => {
             }
           )}
         </ul>
-
+        <ul className="checkbox-btn-container pb-10 outline-container p-5 b-radius-2 my-10">
+          <li className="no-list form-heading text-bold py-5 px-0">
+            Categories
+          </li>
+          {filtersData.categoryFilters.map(
+            ({ name, btnType }, index) => {
+              return (
+                <li className="no-list w-100 my-2" key={`category-${index}`}>
+                  <label className={`basic-chip flex-row align-center flex-wrap flex-gap-1 h6 filter-chip cursor-pointer ${productsState.categoryFilters[name] ? " fliter-chip-selected":""}`}>
+                    <input
+                      className="filters"
+                      type="checkbox"
+                      value={btnType}
+                      checked={
+                        productsState.categoryFilters[name] ? true : false
+                      }
+                      onChange={(e) =>
+                        productsDispatch({
+                          filterName: name,
+                          filterType: btnType,
+                          categoryFilters: ((categoryFilters, e) => {
+                            const newCategoryFilters = { ...categoryFilters };
+                            newCategoryFilters[name] = e.target.checked;
+                            return newCategoryFilters;
+                          })(productsState.categoryFilters, e)
+                        })
+                      }
+                    />
+                    <i className="fa-solid fa-circle-check"></i>
+                    <p className="basic-chip-content">{name}</p>
+                  </label>
+                </li>
+              );
+            }
+          )}
+        </ul>
         {/* <ul className="outline-container price-slider p-5 my-5 b-radius-2 flex-column flex-gap-1 flex-wrap w-100  my-10">
           <li className="no-list form-heading text-bold py-5 px-0">Price</li>
           <article className="value-input flex-row flex-gap-2 align-center mb-10">
@@ -207,7 +242,7 @@ const Filters = () => {
             />
           </article>
         </ul> */}
-      </div>
+      </form>
     </article> 
   }
   </div>)

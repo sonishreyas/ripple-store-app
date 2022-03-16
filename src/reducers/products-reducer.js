@@ -12,7 +12,7 @@ const productsReducer = (productsState, productsAction) => {
 		case "PRODUCTS_SORT_BY":
 			return {
 				...productsState,
-				sortBy: productsAction.sortByType,
+				sortByType: productsAction.sortByType,
 			};
 		case "FILTER_CATEGORY":
 			return {
@@ -29,12 +29,12 @@ const productsReducer = (productsState, productsAction) => {
 				brandFilters: { ...productsAction.brandFilters },
 			};
 		default:
-			return productsState;
+			return { ...productsState, ...productsAction };
 	}
 };
 
 const sortByReducer = (productsState, productsData) => {
-	switch (productsState.sortBy) {
+	switch (productsState.sortByType) {
 		case "SORT_BY_PRICE_LOW_TO_HIGH":
 			return [...productsData].sort(
 				(currProduct, nextProduct) => currProduct.price - nextProduct.price
@@ -58,17 +58,34 @@ const sortByReducer = (productsState, productsData) => {
 };
 
 const CategoryProducts = (productsState, productsData) =>
-	productsState.categoryFilters[productsState.filterName]
-		? productsData.filter(
-				(item) => item.productCategory === productsState.filterName
+	Object.keys(productsState.categoryFilters).filter(
+		(item) => productsState.categoryFilters[item]
+	).length !== 0
+		? Object.keys(productsState.categoryFilters).reduce(
+				(prev, curr) =>
+					productsState.categoryFilters[curr]
+						? [
+								...prev,
+								...productsData.filter((product) => product.category === curr),
+						  ]
+						: prev,
+				[]
 		  )
 		: productsData;
 
 const BrandProducts = (productsState, productsData) => {
-	console.log(productsState);
-	return productsState.brandFilters[productsState.filterName]
-		? productsData.filter(
-				(item) => item.productBrand === productsState.filterName
+	Object.keys(productsState.brandFilters).filter(
+		(item) => productsState.brandFilters[item]
+	).length !== 0
+		? Object.keys(productsState.brandFilters).reduce(
+				(prev, curr) =>
+					productsState.brandFilters[curr]
+						? [
+								...prev,
+								...productsData.filter((product) => product.category === curr),
+						  ]
+						: prev,
+				[]
 		  )
 		: productsData;
 };
@@ -80,64 +97,3 @@ export {
 	BrandProducts,
 	CategoryProducts,
 };
-
-// Backup
-
-// const productsReducer = (productsState, productsAction) => {
-//   switch (productsAction.filterType) {
-//     case "SORT_BY_PRICE_LOW_TO_HIGH":
-//       return {
-//         ...productsState,
-//         productsData: [...productsState.productsData].sort(
-//           (currProduct, nextProduct) =>
-//             currProduct.price - nextProduct.price
-//         )
-//       };
-//     case "SORT_BY_PRICE_HIGH_TO_LOW":
-//       return {
-//         ...productsState,
-//         productsData: [...productsState.productsData].sort(
-//           (currProduct, nextProduct) =>
-//             nextProduct.price - currProduct.price
-//         )
-//       };
-//     case "SORT_BY_CUSTOMER_RATING":
-//       return {
-//         ...productsState,
-//         productsData: [...productsState.productsData].sort(
-//           (currProduct, nextProduct) =>
-//             nextProduct.rating - currProduct.rating
-//         )
-//       };
-//     case "SORT_BY_BETTER_DISCOUNT":
-//       return {
-//         ...productsState,
-//         productsData: [...productsState.productsData].sort(
-//           (currProduct, nextProduct) =>
-//             nextProduct.discountPercent -
-//             currProduct.discountPercent
-//         )
-//       };
-//     case "FILTER_CATEGORY":
-//       console.log(productsAction);
-//       return productsAction.filterStatus
-//         ? {
-//             ...productsState,
-//             productsData: [...productsState.productsData].filter(
-//               (currProduct) =>
-//                 currProduct.productCategory === productsAction.filterName
-//             )
-//           }
-//         : productsState;
-//     case "FILTER_BRAND":
-//       return {
-//         ...productsState,
-//         productsData: [...productsState.productsData].filter(
-//           (currProduct) =>
-//             currProduct.productBrand === productsAction.filterName
-//         )
-//       };
-//     default:
-//       return productsState;
-//   }
-// };

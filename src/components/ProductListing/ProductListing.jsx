@@ -33,7 +33,7 @@ const ProductListing = () => {
                   <p className="p-0 m-0">Rs. {price}</p>
                   <strike className="p-0 m-0">{mrp}</strike>
                   <p className="discount p-0 m-0">
-                    ({discountPercent})
+                    ({discountPercent} %)
                   </p>
                 </span>
               </section>
