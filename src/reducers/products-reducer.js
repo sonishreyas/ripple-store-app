@@ -25,6 +25,34 @@ const productsReducer = (productsState, productsAction) => {
 				filterType: productsAction.filterType,
 				brandFilters: { ...productsAction.brandFilters },
 			};
+		case "MIN_PRICE":
+			return {
+				...productsState,
+				filterType: productsAction.filterType,
+				minPrice: productsAction.minPrice,
+				progressStatusMinPrice: productsAction.progressStatusMinPrice,
+			};
+		case "MAX_PRICE":
+			return {
+				...productsState,
+				filterType: productsAction.filterType,
+				maxPrice: productsAction.maxPrice,
+				progressStatusMaxPrice: productsAction.progressStatusMaxPrice,
+			};
+		case "MIN_RATING":
+			return {
+				...productsState,
+				filterType: productsAction.filterType,
+				minRating: productsAction.minRating,
+				progressStatusMinRating: productsAction.progressStatusMinRating,
+			};
+		case "MAX_RATING":
+			return {
+				...productsState,
+				filterType: productsAction.filterType,
+				maxRating: productsAction.maxRating,
+				progressStatusMaxRating: productsAction.progressStatusMaxRating,
+			};
 		default:
 			return { ...productsState, ...productsAction };
 	}

@@ -83,11 +83,11 @@ export const filters = [
 			},
 		],
 		priceFilter: {
-			minPrice: 10,
+			minPrice: 100,
 			maxPrice: 15000,
 		},
 		ratingFilter: {
-			minRating: 1,
+			minRating: 0,
 			maxRating: 5,
 		},
 	},

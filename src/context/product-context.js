@@ -6,7 +6,13 @@ import {
 	useEffect,
 } from "react";
 import { productsReducer, sortByReducer } from "../reducers";
-import { BrandProducts, ProductsCompose, CategoryProducts } from "../utils";
+import {
+	BrandProducts,
+	ProductsCompose,
+	CategoryProducts,
+	PriceProducts,
+	RatingProducts,
+} from "../utils";
 import { useProductsDataHook, useFiltersDataHook } from "../custom-hooks";
 
 const getDefaultProductsState = (filtersData) => {
@@ -23,6 +29,14 @@ const getDefaultProductsState = (filtersData) => {
 			prev[curr.name] = curr.status;
 			return prev;
 		}, {}),
+		minPrice: filtersData.priceFilter.minPrice,
+		progressStatusMinPrice: "0%",
+		maxPrice: filtersData.priceFilter.maxPrice,
+		progressStatusMaxPrice: "0%",
+		minRating: filtersData.ratingFilter.minRating,
+		progressStatusMinRating: "0%",
+		maxRating: filtersData.ratingFilter.maxRating,
+		progressStatusMaxRating: "0%",
 	};
 };
 
@@ -58,7 +72,9 @@ const ProductsProvider = ({ children }) => {
 					productsState,
 					CategoryProducts,
 					BrandProducts,
-					sortByReducer
+					sortByReducer,
+					PriceProducts,
+					RatingProducts
 				)(productsData)
 			);
 		}
