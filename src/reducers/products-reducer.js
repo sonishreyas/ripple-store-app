@@ -1,12 +1,9 @@
-const Compose =
-	(productsState, ...functions) =>
-	(productsData) => {
-		return functions.reduce(
-			(prev, curr) => curr(productsState, prev),
-			productsData
-		);
-	};
-
+/**
+ *
+ * @param {Object} productsState State values for products
+ * @param {Array} productsAction The changed state
+ * @returns Updates productsState value
+ */
 const productsReducer = (productsState, productsAction) => {
 	switch (productsAction.filterType) {
 		case "PRODUCTS_SORT_BY":
@@ -33,6 +30,12 @@ const productsReducer = (productsState, productsAction) => {
 	}
 };
 
+/**
+ *
+ * @param {Object} productsState State values for products
+ * @param {Array} productsData Array of products
+ * @returns Sorted Array of products
+ */
 const sortByReducer = (productsState, productsData) => {
 	switch (productsState.sortByType) {
 		case "SORT_BY_PRICE_LOW_TO_HIGH":
@@ -57,42 +60,4 @@ const sortByReducer = (productsState, productsData) => {
 	}
 };
 
-const CategoryProducts = (productsState, productsData) =>
-	Object.keys(productsState.categoryFilters).filter(
-		(item) => productsState.categoryFilters[item]
-	).length !== 0
-		? Object.keys(productsState.categoryFilters).reduce(
-				(prev, curr) =>
-					productsState.categoryFilters[curr]
-						? [
-								...prev,
-								...productsData.filter((product) => product.category === curr),
-						  ]
-						: prev,
-				[]
-		  )
-		: productsData;
-
-const BrandProducts = (productsState, productsData) =>
-	Object.keys(productsState.brandFilters).filter(
-		(item) => productsState.brandFilters[item]
-	).length !== 0
-		? Object.keys(productsState.brandFilters).reduce(
-				(prev, curr) =>
-					productsState.brandFilters[curr]
-						? [
-								...prev,
-								...productsData.filter((product) => product.brand === curr),
-						  ]
-						: prev,
-				[]
-		  )
-		: productsData;
-
-export {
-	productsReducer,
-	Compose,
-	sortByReducer,
-	BrandProducts,
-	CategoryProducts,
-};
+export { productsReducer, sortByReducer };

@@ -7,8 +7,7 @@ const ProductListing = () => {
     <article className="grid-col-70 ">
       <div className="products-container flex-row align-center flex-gap-2 flex-wrap">
         {productsData.length !== 0 ?  
-        productsData.map(({_id, name, brand, category, discount, discountPercent, imgURL, mrp, price, rating, reviews, type }) => {
-          return (
+        productsData.map(({_id, name, brand, category, discount, discountPercent, imgURL, mrp, price, rating, reviews, type }) => 
             <article
               key={_id}
               className="card vertical card-shadow p-5 b-radius-2"
@@ -55,8 +54,7 @@ const ProductListing = () => {
                 <p className="cart-text">Add to Cart</p>
               </button>
             </article>
-          );
-        })
+        )
         : <h4>No Products Found</h4>
       }
       </div>

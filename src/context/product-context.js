@@ -5,13 +5,8 @@ import {
 	useState,
 	useEffect,
 } from "react";
-import { productsReducer } from "../reducers/index";
-import {
-	Compose,
-	sortByReducer,
-	BrandProducts,
-	CategoryProducts,
-} from "../reducers/products-reducer";
+import { productsReducer, sortByReducer } from "../reducers";
+import { BrandProducts, ProductsCompose, CategoryProducts } from "../utils";
 import { useProductsDataHook, useFiltersDataHook } from "../custom-hooks";
 
 const getDefaultProductsState = (filtersData) => {
@@ -59,7 +54,7 @@ const ProductsProvider = ({ children }) => {
 	useEffect(() => {
 		if (productsData.length !== 0 && Object.keys(productsState).length !== 0) {
 			setFilteredProductsData(
-				Compose(
+				ProductsCompose(
 					productsState,
 					CategoryProducts,
 					BrandProducts,

@@ -1,7 +1,1 @@
-export {
-	productsReducer,
-	Compose,
-	sortByReducer,
-	BrandProducts,
-	CategoryProducts,
-} from "./products-reducer";
+export { productsReducer, sortByReducer } from "./products-reducer";
