@@ -1,18 +1,20 @@
 import axios from "axios";
-const signupHandler = async () => {
-    console.log("hereee...");
-    try {
-        const response = await fetch.post(`/api/auth/signup`, JSON.stringify({
-          firstName: "Adarsh",
-          lastName: "Balika",
-          email: "adarshbalika@neog.camp",
-          password: "adarshBalika",
-        }));
-        // saving the encodedToken in the localStorage
-        localStorage.setItem("token", response.data.encodedToken);
-      } catch (error) {
-        console.log(error);
-      }
+const signupHandler = () => {
+    console.log("hereee...")
+    (async () => {
+        try {
+            const response = await axios.post(`/api/auth/signup`, JSON.stringify({
+              firstName: "Adarsh",
+              lastName: "Balika",
+              email: "adarshbalika@neog.camp",
+              password: "adarshBalika",
+            }));
+            // saving the encodedToken in the localStorage
+            localStorage.setItem("token", response.data.encodedToken);
+        } catch (error) {
+            console.log(error);
+            }
+    })();
 };
 const Register = () => {
     signupHandler();

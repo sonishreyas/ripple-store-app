@@ -1,15 +1,62 @@
+import { useState } from "react";
+import { Route } from "react-router-dom";
+import axios from "axios";
+const loginHandler = (e,email,password) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = {};
+    for(let x of formData) {
+        data[x[0]] = x[1];
+    }
+    const loginInfo = { email: email, password: password };
+    console.log("data = ", data);
+    (async () => {
+        try {
+            const response = await axios.post(`/api/auth/login`, loginInfo);
+            // saving the encodedToken in the localStorage
+            console.log(response);
+            localStorage.setItem("token", response.data.encodedToken);
+            return <Route to="/" />
+        } catch (error) {
+            console.log(error);
+        }
+    })();
+};
 const Login = () => {
+    // loginHandler();
+    const [showPassword, setShowPassword] = useState(false);
+    const showPasswordHandler = () => showPassword ? setShowPassword(false):setShowPassword(true);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [focus,setFocus] = useState(false);
+    // const [emailFocus, setEmailFocus]
+    const setEmailHandler = (e) => setEmail(e.target.value);
+    const setPasswordHandler = (e) => setPassword(e.target.value);
+    const setTestHandler = () => {
+        setEmail("test@gmail.com");
+        setPassword("test123");
+    }
+
+    // const defaultLoginState = {
+    //     email: "",
+    //     password: "",
+
+    // }
+    // const [loginState, loginDispatch] = useReducer(loginReducer,defaultLoginState);
+
     return (
-        <form className="input-form login flex-column flex-gap-1 flex-wrap h-auto w-100">
-            <section className="input-container flex-column m-5">
-                <input id="email" className="textbox-content focused p-5" type="email" name="email" />
+        <form onSubmit={(e) => loginHandler(e,email,password)} className="input-form login flex-column flex-gap-1 flex-wrap h-auto w-100">
+            <section className={`input-container flex-column m-5 ${email.length > 0 || focus ? "focused":"" }`}>
+                <input id="email" className="textbox-content p-5" type="email" name="email" onChange={setEmailHandler} value={email} onFocus={() => setFocus(true)} onBlur={()=>setFocus(false)}/>
                 <label htmlFor="email" className="textbox-label m-0">Email<span
                         className="required-field">*</span></label>
                 <sub className="email-check p-2 my-2"></sub>
             </section>
-            <section className="input-container flex-column m-5">
-                <input id="password" className="textbox-content p-5" type="password" name="password" />
-                <i className="fas fa-eye show-password" id="show-password"></i>
+            <section className={`input-container flex-column m-5 ${password.length > 0 || focus ? "focused":"" }`}>
+                <input id="password" className="textbox-content p-5" type={`${ showPassword ? "text" : "password" }`} name="password" onChange={setPasswordHandler} value={password} onFocus={() => setFocus(true)} onBlur={()=>setFocus(false)}/>
+                <i className={`fas ${ showPassword ? "fa-eye-slash" : "fa-eye" } show-password`} id="show-password"
+                    onClick={ showPasswordHandler }
+                ></i>
                 <label htmlFor="password" className="textbox-label m-0">Password<span
                         className="required-field">*</span></label>
                 <sub className="password-check p-2 my-2"></sub>
@@ -23,7 +70,7 @@ const Login = () => {
                     <a href="#" className="link-btn my-2">Forget Password</a>
                 </section> 
             </section>
-            <button className="outline-btn p-5 b-radius-2 my-5 mx-0 text-bold">Test Credentials</button>
+            <button className="outline-btn p-5 b-radius-2 my-5 mx-0 text-bold" onClick={setTestHandler}>Test Credentials</button>
             <button className="primary-btn p-5 b-radius-2 my-5 mx-0 text-bold">Login</button>
         </form>
     );
