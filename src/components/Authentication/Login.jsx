@@ -2,7 +2,7 @@ const Login = () => {
     return (
         <form className="input-form login flex-column flex-gap-1 flex-wrap h-auto w-100">
             <section className="input-container flex-column m-5">
-                <input id="email" className="textbox-content p-5" type="email" name="email" />
+                <input id="email" className="textbox-content focused p-5" type="email" name="email" />
                 <label htmlFor="email" className="textbox-label m-0">Email<span
                         className="required-field">*</span></label>
                 <sub className="email-check p-2 my-2"></sub>
@@ -12,7 +12,6 @@ const Login = () => {
                 <i className="fas fa-eye show-password" id="show-password"></i>
                 <label htmlFor="password" className="textbox-label m-0">Password<span
                         className="required-field">*</span></label>
-
                 <sub className="password-check p-2 my-2"></sub>
             </section>
             <section

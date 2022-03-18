@@ -1,4 +1,21 @@
+import axios from "axios";
+const signupHandler = async () => {
+    console.log("hereee...");
+    try {
+        const response = await fetch.post(`/api/auth/signup`, JSON.stringify({
+          firstName: "Adarsh",
+          lastName: "Balika",
+          email: "adarshbalika@neog.camp",
+          password: "adarshBalika",
+        }));
+        // saving the encodedToken in the localStorage
+        localStorage.setItem("token", response.data.encodedToken);
+      } catch (error) {
+        console.log(error);
+      }
+};
 const Register = () => {
+    signupHandler();
     return (
         <form className="input-form register flex-column flex-gap-1 flex-wrap h-auto w-100">
             <section className="input-container flex-column m-5">
