@@ -1,1 +1,7 @@
-export { BrandProducts, ProductsCompose, CategoryProducts } from "./filters";
+export {
+	BrandProducts,
+	ProductsCompose,
+	CategoryProducts,
+	PriceProducts,
+	RatingProducts,
+} from "./filters";

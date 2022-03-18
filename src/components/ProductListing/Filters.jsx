@@ -1,8 +1,8 @@
 import { useProducts } from "../../context";
-import { FilterHeader, SortByFilter, CategoryFilter, BrandFilter } from "./filter-components";
+import { FilterHeader, SortByFilter, CategoryFilter, BrandFilter, PriceFilter, RatingFilter } from "./filter-components";
 
 const Filters = () => {
-  const { productsState, productsDispatch, filtersData,clearFilters } = useProducts();
+  const { productsState, filtersData } = useProducts();
   return (
     <div>
       {
@@ -11,8 +11,10 @@ const Filters = () => {
             <form className="flex-column p-5 m-5 w-100 h-auto">
               <FilterHeader/>
               <SortByFilter/>
+              <PriceFilter/>
               <CategoryFilter/>
               <BrandFilter/>
+              <RatingFilter/>
             </form>
           </article> 
       }

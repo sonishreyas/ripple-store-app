@@ -14,7 +14,7 @@ const BrandFilter = () => {
     })
     
     return (
-        <ul className="checkbox-btn-container pb-10 outline-container p-5 b-radius-2 my-10">
+        <ul className="checkbox-btn-container pb-10 outline-container p-5 b-radius-2 my-5">
           <li className="no-list form-heading text-bold py-5 px-0">Brand</li>
           {filtersData.brandFilters.map(({ name, btnType }, index) => {
             return (

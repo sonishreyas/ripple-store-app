@@ -53,4 +53,36 @@ const BrandProducts = (productsState, productsData) =>
 		  )
 		: productsData;
 
-export { BrandProducts, CategoryProducts, ProductsCompose };
+/**
+ *
+ * @param {Object} productsState State values for products
+ * @param {array} productsData Products Data
+ * @returns {array} Array of products filtered based on price
+ */
+const PriceProducts = (productsState, productsData) =>
+	productsData.filter(
+		(item) =>
+			item.price >= productsState.minPrice &&
+			item.price <= productsState.maxPrice
+	);
+
+/**
+ *
+ * @param {Object} productsState State values for products
+ * @param {array} productsData Products Data
+ * @returns {array} Array of products filtered based on rating
+ */
+const RatingProducts = (productsState, productsData) =>
+	productsData.filter(
+		(item) =>
+			item.rating >= productsState.minRating &&
+			item.rating <= productsState.maxRating
+	);
+
+export {
+	BrandProducts,
+	CategoryProducts,
+	ProductsCompose,
+	PriceProducts,
+	RatingProducts,
+};
