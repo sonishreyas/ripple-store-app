@@ -1,4 +1,4 @@
-const Header = () => {
+const Header = (props) => {
     return (
       <header className="header header-shadow flex-column">
         <div className="flex-row justify-content-space-between align-center w-100">
@@ -19,14 +19,14 @@ const Header = () => {
             </a>
             <ul className="no-list spaced-list header-nav flex-row align-center flex-gap-1">
               <li>
-                <a href="https://ripple-store.netlify.app/" className="no-link">
+                <a href="https://ripple-store.netlify.app/" className={`no-link ${props.products}`}>
                   Home
                 </a>
               </li>
               <li>
                 <a
                   href="https://ripple-store.netlify.app/pages/products/products.html"
-                  className="no-link header-link-active"
+                  className={`no-link ${props.products}`}
                 >
                   Products
                 </a>
