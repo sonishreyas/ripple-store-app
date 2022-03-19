@@ -9762,7 +9762,7 @@
     "history" "^5.2.0"
     "react-router" "6.2.2"
 
-"react-router@6.2.2":
+"react-router@^6.2.2", "react-router@6.2.2":
   "integrity" "sha512-/MbxyLzd7Q7amp4gDOGaYvXwhEojkJD5BtExkuKmj39VEE0m3l/zipf6h2WIB2jyAO0lI6NGETh4RDcktRm4AQ=="
   "resolved" "https://registry.npmjs.org/react-router/-/react-router-6.2.2.tgz"
   "version" "6.2.2"

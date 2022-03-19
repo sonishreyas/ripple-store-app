@@ -1,22 +1,22 @@
 import { useState } from "react";
-import { Route } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router";
 import axios from "axios";
-const loginHandler = (e,email,password) => {
+const loginHandler = (e, location, navigate) => {
     e.preventDefault();
+    
     const formData = new FormData(e.target);
     const data = {};
     for(let x of formData) {
         data[x[0]] = x[1];
     }
-    const loginInfo = { email: email, password: password };
+    const loginInfo = { email: data.email, password: data.password };
     console.log("data = ", data);
     (async () => {
         try {
             const response = await axios.post(`/api/auth/login`, loginInfo);
             // saving the encodedToken in the localStorage
-            console.log(response);
             localStorage.setItem("token", response.data.encodedToken);
-            return <Route to="/" />
+            navigate(location.state.state)
         } catch (error) {
             console.log(error);
         }
@@ -43,9 +43,13 @@ const Login = () => {
 
     // }
     // const [loginState, loginDispatch] = useReducer(loginReducer,defaultLoginState);
-
+    const location = useLocation();
+    const navigate = useNavigate();
+    // const goBackHandle = () => {
+    //     navigate(location.state.state);
+    // }
     return (
-        <form onSubmit={(e) => loginHandler(e,email,password)} className="input-form login flex-column flex-gap-1 flex-wrap h-auto w-100">
+        <form onSubmit={(e) => loginHandler(e,location,navigate)} className="input-form login flex-column flex-gap-1 flex-wrap h-auto w-100">
             <section className={`input-container flex-column m-5 ${email.length > 0 || focus ? "focused":"" }`}>
                 <input id="email" className="textbox-content p-5" type="email" name="email" onChange={setEmailHandler} value={email} onFocus={() => setFocus(true)} onBlur={()=>setFocus(false)}/>
                 <label htmlFor="email" className="textbox-label m-0">Email<span
