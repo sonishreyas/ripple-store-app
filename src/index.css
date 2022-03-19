@@ -12,3 +12,6 @@
 .filter-max-width {
 	max-width: 30rem;
 }
+.focused > .textbox-label {
+	background: var(--secondary-background-color);
+}

@@ -17,7 +17,7 @@ const signupHandler = () => {
     })();
 };
 const Register = () => {
-    signupHandler();
+    // signupHandler();
     return (
         <form className="input-form register flex-column flex-gap-1 flex-wrap h-auto w-100">
             <section className="input-container flex-column m-5">
