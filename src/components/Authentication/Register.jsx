@@ -28,7 +28,7 @@ const Register = () => {
     const showConfirmPasswordHandler = () => showConfirmPassword ? setShowConfirmPassword(false) : setShowConfirmPassword(true);
 
     return (
-        <form onSubmit={(e) => registerHandler(e, location, navigate)} className="input-form register flex-column flex-gap-1 flex-wrap h-auto w-100">
+        <form onSubmit={(e) => registerHandler(e, location, navigate, registerState)} className="input-form register flex-column flex-gap-1 flex-wrap h-auto w-100">
             <section className={`input-container flex-column m-5 ${registerState.firstName.length > 0 || registerState.focus.firstName ? "focused":"" }`}>
                 <input id="first-name" className="textbox-content p-5" type="text" name="first-name" onChange={(e) => setValueHandler(e, "firstName", "UPDATE_FIRST_NAME")} value={registerState.firstName} onFocus={() => setFocusHandler("firstName", true, "UPDATE_FOCUS")} onBlur={()=> setFocusHandler("firstName", false, "UPDATE_FOCUS")}/>
                 <label htmlFor="first-name" className="textbox-label m-0 px-1"> First Name<span className="required-field">*</span>
@@ -51,9 +51,9 @@ const Register = () => {
             </section>
 
             <section className={`input-container flex-column m-5 ${registerState.password.length > 0 || registerState.focus.password ? "focused":"" }`}>
-                <input id="password" className="textbox-content p-5" type={`${ registerState.showPassword.password ? "text" : "password" }`} name="password" onChange={(e) => setValueHandler(e, "password", "UPDATE_PASSWORD")} value={registerState.password} onFocus={() => setFocusHandler("password", true, "UPDATE_FOCUS")} onBlur={()=> setFocusHandler("password", false, "UPDATE_FOCUS")}/>
-                <i className={`fas ${ registerState.showPassword.password ? "fa-eye-slash" : "fa-eye" } show-password`} id="show-password"
-                    onClick={ () => showPasswordHandler("password") }
+                <input id="password" className="textbox-content p-5" type={`${ showPassword ? "text" : "password" }`} name="password" onChange={(e) => setValueHandler(e, "password", "UPDATE_PASSWORD")} value={registerState.password} onFocus={() => setFocusHandler("password", true, "UPDATE_FOCUS")} onBlur={()=> setFocusHandler("password", false, "UPDATE_FOCUS")}/>
+                <i className={`fas ${ showPassword ? "fa-eye-slash" : "fa-eye" } show-password`} id="show-password"
+                    onClick={ showPasswordHandler }
                 ></i>
                 <label htmlFor="password" className="textbox-label m-0 px-1"> Password<span className="required-field">*</span>
                 </label>
@@ -61,9 +61,9 @@ const Register = () => {
             </section>
 
             <section className={`input-container flex-column m-5 ${registerState.confirmPassword.length > 0 || registerState.focus.confirmPassword ? "focused":"" }`}>
-                <input id="confirm-password" className="textbox-content p-5" type={`${ registerState.showPassword.confirmPassword ? "text" : "password" }`} name="confirmPassword" onChange={(e) => setValueHandler(e, "confirmPassword", "UPDATE_CONFIRM_PASSWORD")} value={registerState.confirmPassword} onFocus={() => setFocusHandler("confirmPassword", true, "UPDATE_FOCUS")} onBlur={()=> setFocusHandler("confirmPassword", false, "UPDATE_FOCUS")}/>
-                <i className={`fas ${ registerState.showPassword.confirmPassword ? "fa-eye-slash" : "fa-eye" } show-password`} id="show-password"
-                    onClick={ () => showPasswordHandler("confirmPassword") }
+                <input id="confirm-password" className="textbox-content p-5" type={`${ showConfirmPassword ? "text" : "password" }`} name="confirmPassword" onChange={(e) => setValueHandler(e, "confirmPassword", "UPDATE_CONFIRM_PASSWORD")} value={registerState.confirmPassword} onFocus={() => setFocusHandler("confirmPassword", true, "UPDATE_FOCUS")} onBlur={()=> setFocusHandler("confirmPassword", false, "UPDATE_FOCUS")}/>
+                <i className={`fas ${ showConfirmPassword ? "fa-eye-slash" : "fa-eye" } show-password`} id="show-password"
+                    onClick={ showConfirmPasswordHandler }
                 ></i>
                 <label htmlFor="confirm-password" className="textbox-label m-0 px-1"> Confirm Password<span className="required-field">*</span>
                 </label>

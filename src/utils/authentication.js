@@ -6,15 +6,9 @@ import axios from "axios";
  * @param location useLocation()
  * @param navigate useNavigation()
  */
-const loginHandler = (e, location, navigate) => {
+const loginHandler = (e, location, navigate, loginState) => {
 	e.preventDefault();
-
-	const formData = new FormData(e.target);
-	const data = {};
-	for (let x of formData) {
-		data[x[0]] = x[1];
-	}
-	const loginInfo = { email: data.email, password: data.password };
+	const loginInfo = { email: loginState.email, password: loginState.password };
 	(async () => {
 		try {
 			const response = await axios.post(`/api/auth/login`, loginInfo);
@@ -33,19 +27,13 @@ const loginHandler = (e, location, navigate) => {
  * @param location useLocation()
  * @param navigate useNavigation()
  */
-const registerHandler = (e, location, navigate) => {
+const registerHandler = (e, location, navigate, registerState) => {
 	e.preventDefault();
-
-	const formData = new FormData(e.target);
-	const data = {};
-	for (let x of formData) {
-		data[x[0]] = x[1];
-	}
 	const registerInfo = {
-		firstName: data.firstName,
-		lastName: data.lastName,
-		email: data.email,
-		password: data.password,
+		firstName: registerState.firstName,
+		lastName: registerState.lastName,
+		email: registerState.email,
+		password: registerState.password,
 	};
 	(async () => {
 		try {
