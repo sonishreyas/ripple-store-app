@@ -8,6 +8,7 @@ import {
 	LoginProvider,
 	RegisterProvider,
 	CartProvider,
+	WishlistProvider,
 } from "./context";
 import { BrowserRouter as Router } from "react-router-dom";
 // Call make Server
@@ -19,9 +20,11 @@ ReactDOM.render(
 			<RegisterProvider>
 				<LoginProvider>
 					<CartProvider>
-						<ProductsProvider>
-							<App />
-						</ProductsProvider>
+						<WishlistProvider>
+							<ProductsProvider>
+								<App />
+							</ProductsProvider>
+						</WishlistProvider>
 					</CartProvider>
 				</LoginProvider>
 			</RegisterProvider>

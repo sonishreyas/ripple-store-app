@@ -22,7 +22,7 @@ const ProductListing = () => {
                   className="card-image b-radius-2 mt-2"
                 />
               </section>
-              { token ?  <AddToWishlistBtn/> : <AddToWishlistBtnRedirect/>}
+              { token ?  <AddToWishlistBtn productData={{product: {_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type }}} token={token}/> : <AddToWishlistBtnRedirect/>}
               <section className="card-content p-5 pb-0">
                 <h3 className="card-title">{name}</h3>
                 <p className="card-category">{type}</p>
