@@ -5,3 +5,4 @@ export {
 	PriceProducts,
 	RatingProducts,
 } from "./filters";
+export { loginHandler, registerHandler } from "./authentication";

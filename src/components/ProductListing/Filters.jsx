@@ -4,11 +4,11 @@ import { FilterHeader, SortByFilter, CategoryFilter, BrandFilter, PriceFilter, R
 const Filters = () => {
   const { productsState, filtersData } = useProducts();
   return (
-    <div>
+    <article className="grid-col-30 h-auto">
       {
         (Object.keys(filtersData).length !== 0 && Object.keys(productsState).length !== 0) &&
-          <article className="grid-col-30 h-auto">
-            <form className="flex-column p-5 m-5 w-100 h-auto">
+          
+            <form className="flex-column p-5 m-5 w-100 h-auto filter-max-width">
               <FilterHeader/>
               <SortByFilter/>
               <PriceFilter/>
@@ -16,9 +16,8 @@ const Filters = () => {
               <BrandFilter/>
               <RatingFilter/>
             </form>
-          </article> 
       }
-    </div>
+    </article>
   )
 };
 

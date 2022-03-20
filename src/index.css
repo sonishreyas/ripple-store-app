@@ -3,3 +3,19 @@
 	opacity: 0;
 	pointer-events: none;
 }
+.focused > .textbox-content {
+	border: var(--b-2) solid var(--secondary-color);
+	border-radius: var(--br-1);
+	outline: none;
+}
+
+.filter-max-width {
+	max-width: 30rem;
+}
+.focused > .textbox-label {
+	background: var(--secondary-background-color);
+}
+
+.horizontal-tabs-content {
+	display: block;
+}
