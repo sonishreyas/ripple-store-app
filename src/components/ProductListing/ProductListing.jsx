@@ -1,11 +1,14 @@
 import { useNavigate } from "react-router";
-import { useProducts } from "../../context";
+import { useCart, useProducts } from "../../context";
 import {Link} from "react-router-dom";
-import {AddToCartBtn, AddToCartBtnRedirect, AddToWishlistBtn, AddToWishlistBtnRedirect } from "./product-card"
+import {AddToCartBtn, AddToCartBtnRedirect, AddToWishlistBtn, AddToWishlistBtnRedirect, GoToCartBtn } from "./product-card"
+import { presentInArray } from "../../utils";
+
 const ProductListing = () => {
   const {productsData} = useProducts();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  const {cartState} = useCart();
   return (
     <article className="grid-col-70 ">
       <div className="products-container flex-row align-center flex-gap-2 flex-wrap">
@@ -42,7 +45,7 @@ const ProductListing = () => {
                   </span>
                 </span>
               </section>
-              { token ?  <AddToCartBtn productData={{product: {_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type }}} token={token}/> : <AddToCartBtnRedirect/>}
+              { token ?  presentInArray(cartState.itemsInCart, _id) ? <GoToCartBtn/>:<AddToCartBtn productData={{product: {_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type }}} token={token}/> : <AddToCartBtnRedirect/>}
             </article> 
         )
         : <h4>No Products Found</h4>
