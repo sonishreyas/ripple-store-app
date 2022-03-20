@@ -1,2 +1,6 @@
 export { AddToCartBtn, AddToCartBtnRedirect } from "./AddToCartBtn";
-export { AddToWishlistBtn, AddToWishlistBtnRedirect } from "./AddToWishlistBtn";
+export {
+	AddToWishlistBtn,
+	AddToWishlistBtnRedirect,
+	RemoveFromWishlistBtn,
+} from "./AddToWishlistBtn";

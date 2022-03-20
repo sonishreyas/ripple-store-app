@@ -7,4 +7,7 @@ export {
 } from "./filters";
 export { loginHandler, registerHandler } from "./authentication";
 export { addToCartHandler } from "./cart-management";
-export { addToWishlistHandler } from "./wishlist-management";
+export {
+	addToWishlistHandler,
+	removeFromWishlistHandler,
+} from "./wishlist-management";

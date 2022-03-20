@@ -1,11 +1,19 @@
 import { useNavigate } from "react-router";
-import { useProducts } from "../../context";
+import { useProducts, useWishlist } from "../../context";
 import {Link} from "react-router-dom";
-import {AddToCartBtn, AddToCartBtnRedirect, AddToWishlistBtn, AddToWishlistBtnRedirect } from "./product-card"
+import {AddToCartBtn, AddToCartBtnRedirect, AddToWishlistBtn, AddToWishlistBtnRedirect, RemoveFromWishlistBtn } from "./product-card"
+
+const presentInArray = (arr, element) => 
+  arr.filter((item) => item === element).length > 0? true: false
+
+
 const ProductListing = () => {
   const {productsData} = useProducts();
+  const { wishlistState} = useWishlist();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+
+  console.log(wishlistState);
   return (
     <article className="grid-col-70 ">
       <div className="products-container flex-row align-center flex-gap-2 flex-wrap">
@@ -22,7 +30,7 @@ const ProductListing = () => {
                   className="card-image b-radius-2 mt-2"
                 />
               </section>
-              { token ?  <AddToWishlistBtn productData={{product: {_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type }}} token={token}/> : <AddToWishlistBtnRedirect/>}
+              { token ?  presentInArray(wishlistState.itemsInWishlist, _id) ? <RemoveFromWishlistBtn productId={_id} token={token}/> : <AddToWishlistBtn productData={{product: {_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type }}} token={token}/>  : <AddToWishlistBtnRedirect/>}
               <section className="card-content p-5 pb-0">
                 <h3 className="card-title">{name}</h3>
                 <p className="card-category">{type}</p>
@@ -42,7 +50,7 @@ const ProductListing = () => {
                   </span>
                 </span>
               </section>
-              { token ?  <AddToCartBtn productData={{product: {_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type }}} token={token}/> : <AddToCartBtnRedirect/>}
+              { token ?   <AddToCartBtn productData={{product: {_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type }}} token={token}/>  : <AddToCartBtnRedirect/>}
             </article> 
         )
         : <h4>No Products Found</h4>
