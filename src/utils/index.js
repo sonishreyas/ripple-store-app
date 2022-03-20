@@ -10,5 +10,6 @@ export { addToCartHandler } from "./cart-management";
 export {
 	addToWishlistHandler,
 	removeFromWishlistHandler,
+	getWishlistDataHandler,
 } from "./wishlist-management";
 export { removeFromArray, presentInArray } from "./helpers";

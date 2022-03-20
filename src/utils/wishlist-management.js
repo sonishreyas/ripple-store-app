@@ -66,4 +66,33 @@ const removeFromWishlistHandler = (
 	})();
 };
 
-export { addToWishlistHandler, removeFromWishlistHandler };
+/**
+ * Retrieve wishlist data
+ * @param element
+ * @param {string} token encodedToken of user
+ * @param {function} wishlistDispatch Reducer function
+ */
+const getWishlistDataHandler = (element, token, wishlistDispatch) => {
+	element.preventDefault();
+	(async () => {
+		try {
+			const response = await axios.get(`/api/user/wishlist`, {
+				headers: {
+					Accept: "*/*",
+					authorization: token,
+				},
+			});
+			wishlistDispatch({
+				type: "GET_ITEM",
+				wishlistData: response.data.wishlist,
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	})();
+};
+export {
+	addToWishlistHandler,
+	removeFromWishlistHandler,
+	getWishlistDataHandler,
+};

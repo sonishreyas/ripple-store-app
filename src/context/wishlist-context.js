@@ -6,11 +6,12 @@ const defaultWishlistContext = {
 	type: "",
 	wishlistItemsCount: 0,
 	itemsInWishlist: [],
+	wishlistData: [],
 };
+
 const WishlistContext = createContext(defaultWishlistContext);
 
 const WishlistProvider = ({ children }) => {
-	const [wishlistItemsCount, setWishlistItemsCount] = useState(0);
 	const [wishlistState, wishlistDispatch] = useReducer(
 		wishlistReducer,
 		defaultWishlistContext
@@ -18,8 +19,6 @@ const WishlistProvider = ({ children }) => {
 	return (
 		<WishlistContext.Provider
 			value={{
-				wishlistItemsCount,
-				setWishlistItemsCount,
 				wishlistState,
 				wishlistDispatch,
 			}}
