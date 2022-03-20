@@ -1,16 +1,19 @@
+import { useNavigate } from "react-router";
 import { useProducts } from "../../context";
-
+import {Link} from "react-router-dom";
+import {AddToCartBtn, AddToCartBtnRedirect, AddToWishlistBtn, AddToWishlistBtnRedirect } from "./product-card"
 const ProductListing = () => {
   const {productsData} = useProducts();
-
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
   return (
     <article className="grid-col-70 ">
       <div className="products-container flex-row align-center flex-gap-2 flex-wrap">
         {productsData.length !== 0 ?  
-        productsData.map(({_id, name, brand, category, discount, discountPercent, imgURL, mrp, price, rating, reviews, type }) => 
+        productsData.map(({_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type }) => 
             <article
               key={_id}
-              className="card vertical card-shadow p-5 b-radius-2"
+              className="no-link-decoration card vertical card-shadow p-5 b-radius-2"
             >
               <section className="card-image-container flex-row justify-content-center align-center flex-wrap b-radius-2">
                 <img
@@ -19,12 +22,7 @@ const ProductListing = () => {
                   className="card-image b-radius-2 mt-2"
                 />
               </section>
-              <button className="outline-btn p-0 b-radius-2 text-bold card-wishlist m-5 flex-row justify-content-center align-center flex-gap-1">
-                <span className="wishlist-icon">
-                  <i className="far fa-heart"></i>
-                </span>
-                <p className="wishlist-text">Add to wishlist</p>
-              </button>
+              { token ?  <AddToWishlistBtn/> : <AddToWishlistBtnRedirect/>}
               <section className="card-content p-5 pb-0">
                 <h3 className="card-title">{name}</h3>
                 <p className="card-category">{type}</p>
@@ -44,16 +42,8 @@ const ProductListing = () => {
                   </span>
                 </span>
               </section>
-              <button
-                // onClick={() => addToCart(item)}
-                className="cursor-pointer primary-btn p-0 b-radius-2 text-bold flex-row justify-content-center align-center flex-gap-1"
-              >
-                <span className="cart-icon">
-                  <i className="fas fa-shopping-cart"></i>
-                </span>
-                <p className="cart-text">Add to Cart</p>
-              </button>
-            </article>
+              { token ?  <AddToCartBtn productData={{product: {_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type }}} token={token}/> : <AddToCartBtnRedirect/>}
+            </article> 
         )
         : <h4>No Products Found</h4>
       }
