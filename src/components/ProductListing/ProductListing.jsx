@@ -2,10 +2,7 @@ import { useNavigate } from "react-router";
 import { useProducts, useWishlist } from "../../context";
 import {Link} from "react-router-dom";
 import {AddToCartBtn, AddToCartBtnRedirect, AddToWishlistBtn, AddToWishlistBtnRedirect, RemoveFromWishlistBtn } from "./product-card"
-
-const presentInArray = (arr, element) => 
-  arr.filter((item) => item === element).length > 0? true: false
-
+import { presentInArray } from "../../utils";
 
 const ProductListing = () => {
   const {productsData} = useProducts();
@@ -13,7 +10,6 @@ const ProductListing = () => {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
-  console.log(wishlistState);
   return (
     <article className="grid-col-70 ">
       <div className="products-container flex-row align-center flex-gap-2 flex-wrap">

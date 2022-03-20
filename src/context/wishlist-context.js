@@ -1,33 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useReducer } from "react";
-const removeFromArray = (arr, element) =>
-	arr.filter((item) => item !== element);
+import { wishlistReducer } from "../reducers";
 
-const wishlistReducer = (wishlistState, wishlistAction) => {
-	switch (wishlistAction.type) {
-		case "ADD_ITEM":
-			return {
-				...wishlistState,
-				wishlistItemsCount: wishlistAction.wishlistItemsCount,
-				itemsInWishlist: [
-					...wishlistState.itemsInWishlist,
-					...wishlistAction.itemsInWishlist,
-				],
-			};
-
-		case "REMOVE_ITEM":
-			return {
-				...wishlistState,
-				wishlistItemsCount: wishlistAction.wishlistItemsCount,
-				itemsInWishlist: removeFromArray(
-					wishlistState.itemsInWishlist,
-					wishlistAction.itemsInWishlist[0]
-				),
-			};
-		default:
-			return wishlistState;
-	}
-};
 const defaultWishlistContext = {
 	type: "",
 	wishlistItemsCount: 0,

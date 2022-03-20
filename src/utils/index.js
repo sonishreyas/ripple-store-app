@@ -11,3 +11,4 @@ export {
 	addToWishlistHandler,
 	removeFromWishlistHandler,
 } from "./wishlist-management";
+export { removeFromArray, presentInArray } from "./helpers";

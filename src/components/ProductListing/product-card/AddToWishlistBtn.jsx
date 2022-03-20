@@ -3,8 +3,7 @@ import { addToWishlistHandler, removeFromWishlistHandler } from "../../../utils"
 import { useWishlist } from "../../../context";
 
 const AddToWishlistBtn = (props) => {
-    const { wishlistState, wishlistDispatch} = useWishlist();
-    console.log(wishlistState);
+    const { wishlistDispatch } = useWishlist();
     return (
         <button onClick={(e) => addToWishlistHandler(e, props.productData, props.token,wishlistDispatch)} className="outline-btn p-0 b-radius-2 text-bold card-wishlist m-5 flex-row justify-content-center align-center flex-gap-1">
             <span className="wishlist-icon">
