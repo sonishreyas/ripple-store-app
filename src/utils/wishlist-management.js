@@ -26,6 +26,7 @@ const addToWishlistHandler = (
 				type: "ADD_ITEM",
 				wishlistItemsCount: response.data.wishlist.length,
 				itemsInWishlist: [productData.product._id],
+				wishlistData: productData.product,
 			});
 		} catch (error) {
 			console.log(error);
@@ -59,6 +60,7 @@ const removeFromWishlistHandler = (
 				type: "REMOVE_ITEM",
 				wishlistItemsCount: response.data.wishlist.length,
 				itemsInWishlist: [productId],
+				wishlistData: productId,
 			});
 		} catch (error) {
 			console.log(error);
@@ -72,8 +74,7 @@ const removeFromWishlistHandler = (
  * @param {string} token encodedToken of user
  * @param {function} wishlistDispatch Reducer function
  */
-const getWishlistDataHandler = (element, token, wishlistDispatch) => {
-	element.preventDefault();
+const getWishlistDataHandler = (token, wishlistDispatch) => {
 	(async () => {
 		try {
 			const response = await axios.get(`/api/user/wishlist`, {

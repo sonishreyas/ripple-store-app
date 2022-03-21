@@ -1,11 +1,10 @@
-import {getWishlistDataHandler} from "../../utils";
-import { useWishlist } from "../../context";
-
+import { WishlistProducts } from "./"
 const Main = () => {
-    const token = localStorage.getItem("token");
-    const {wishlistDispatch} = useWishlist();
+    
     return (
-        <button onClick={(e) => getWishlistDataHandler(e,token,wishlistDispatch)}>WishlistPage</button>
+        <main className="main my-10">
+            <WishlistProducts />
+        </main>
     )
 };
 

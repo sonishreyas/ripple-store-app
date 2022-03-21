@@ -12,4 +12,4 @@ export {
 	removeFromWishlistHandler,
 	getWishlistDataHandler,
 } from "./wishlist-management";
-export { removeFromArray, presentInArray } from "./helpers";
+export { removeFromArray, presentInArray, removeObjFromArray } from "./helpers";
