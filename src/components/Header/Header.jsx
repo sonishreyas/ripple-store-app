@@ -1,4 +1,7 @@
+import { useCart } from "../../context";
+
 const Header = (props) => {
+  const {cartItemsCount} = useCart();
     return (
       <header className="header header-shadow flex-column">
         <div className="flex-row justify-content-space-between align-center w-100">
@@ -19,7 +22,7 @@ const Header = (props) => {
             </a>
             <ul className="no-list spaced-list header-nav flex-row align-center flex-gap-1">
               <li>
-                <a href="https://ripple-store.netlify.app/" className={`no-link ${props.products}`}>
+                <a href="https://ripple-store.netlify.app/" className={`no-link ${props.home}`}>
                   Home
                 </a>
               </li>
@@ -82,7 +85,7 @@ const Header = (props) => {
                     <i className="fas fa-shopping-cart social"></i>
                   </span>
                   <p className="badge-text flex-row justify-content-center align-center top right b-radius-circle">
-                    {/* {cartItemsCount} */}2
+                    {cartItemsCount}
                   </p>
                 </a>
               </li>

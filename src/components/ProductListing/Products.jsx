@@ -1,9 +1,8 @@
-import { Header, Main } from "./index";
-import { Footer } from "../Footer";
+import { Header, Main, Footer } from "./index";
 const Products = () => {
   return (
     <div className="grid-3-rows w-100">
-      <Header />
+      <Header products="header-link-active"/>
       <Main />
       <Footer />
     </div>
