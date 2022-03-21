@@ -6,10 +6,20 @@ export {
 	RatingProducts,
 } from "./filters";
 export { loginHandler, registerHandler } from "./authentication";
-export { addToCartHandler } from "./cart-management";
+export {
+	addToCartHandler,
+	removeFromCartHandler,
+	getCartDataHandler,
+} from "./cart-management";
 export {
 	addToWishlistHandler,
 	removeFromWishlistHandler,
 	getWishlistDataHandler,
+	MoveToWishlistBtn,
 } from "./wishlist-management";
-export { removeFromArray, presentInArray, removeObjFromArray } from "./helpers";
+export {
+	removeFromArray,
+	presentInArray,
+	presentObjInArray,
+	removeObjFromArray,
+} from "./helpers";

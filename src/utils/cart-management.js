@@ -21,6 +21,7 @@ const addToCartHandler = (e, productData, token, cartDispatch) => {
 				type: "ADD_ITEM",
 				cartItemsCount: response.data.cart.length,
 				itemsInCart: [productData.product._id],
+				cartData: productData.product,
 			});
 		} catch (error) {
 			console.log(error);
@@ -47,8 +48,9 @@ const removeFromCartHandler = (element, productId, token, cartDispatch) => {
 			});
 			cartDispatch({
 				type: "REMOVE_ITEM",
-				cartwishlistItemsCount: response.data.cart.length,
+				cartcartItemsCount: response.data.cart.length,
 				itemsInCart: [productId],
+				cartData: productId,
 			});
 		} catch (error) {
 			console.log(error);
@@ -56,4 +58,55 @@ const removeFromCartHandler = (element, productId, token, cartDispatch) => {
 	})();
 };
 
-export { addToCartHandler, removeFromCartHandler };
+/**
+ * Retrieve cart data
+ * @param element
+ * @param {string} token encodedToken of user
+ * @param {function} cartDispatch Reducer function
+ */
+const getCartDataHandler = (token, cartDispatch) => {
+	(async () => {
+		try {
+			const response = await axios.get(`/api/user/cart`, {
+				headers: {
+					Accept: "*/*",
+					authorization: token,
+				},
+			});
+			cartDispatch({
+				type: "GET_ITEM",
+				cartData: response.data.cart,
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	})();
+};
+
+/**
+ * Update data of cart
+ * @param element
+ * @param {string} productId productId to remove from cart
+ * @param {string} token encodedToken of user
+ * @param {function} cartDispatch Reducer function
+ */
+const updateCartHandler = (element, productId, token, cartDispatch, actionType) => {
+	element.preventDefault();
+	(async () => {
+		try {
+			const response = await axios.post(`/api/user/cart/${productId}`, actionType, {
+				headers: {
+					Accept: "*/*",
+					authorization: token,
+				},
+			});
+			cartDispatch({
+				type: "UPDATE_ITEM",
+				cartData: {"_id":productId,"qty":1}
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	})();
+};
+export { addToCartHandler, removeFromCartHandler, getCartDataHandler };

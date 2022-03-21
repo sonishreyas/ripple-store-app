@@ -25,4 +25,18 @@ const removeObjFromArray = (arr, element) =>
 const presentInArray = (arr, element) =>
 	arr.find((item) => item === element) !== undefined ? true : false;
 
-export { removeFromArray, presentInArray, removeObjFromArray };
+/**
+ * Check if id is present in the array of objects
+ * @param {Array} arr Array of objects
+ * @param {any} element Element id that needs to be searched from arr
+ * @returns true if element is found else false
+ */
+const presentObjInArray = (arr, element) =>
+	arr.find((item) => item._id === element) !== undefined ? true : false;
+
+export {
+	removeFromArray,
+	presentInArray,
+	presentObjInArray,
+	removeObjFromArray,
+};

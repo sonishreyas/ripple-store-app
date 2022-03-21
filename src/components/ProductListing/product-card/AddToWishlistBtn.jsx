@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import { addToWishlistHandler, removeFromWishlistHandler } from "../../../utils" 
+import { addToWishlistHandler, removeFromWishlistHandler, moveToWishlistHandler } from "../../../utils" 
 import { useWishlist } from "../../../context";
 
 const AddToWishlistBtn = (props) => {
@@ -33,4 +33,16 @@ const RemoveFromWishlistBtn = (props) => {
         </button>
     );
 }
-export {AddToWishlistBtn,AddToWishlistBtnRedirect, RemoveFromWishlistBtn};
+
+const MoveToWishlistBtn = (props) => {
+    const { wishlistDispatch } = useWishlist();
+    return (
+        <button onClick={(e) => MoveToWishlistHandler(e, props.productData, props.token,wishlistDispatch)} className="outline-btn p-0 b-radius-2 text-bold card-wishlist m-5 flex-row justify-content-center align-center flex-gap-1">
+            <span className="wishlist-icon">
+                <i className="far fa-heart"></i>
+            </span>
+            <p className="wishlist-text">Move to wishlist</p>
+        </button>
+    );
+}
+export {AddToWishlistBtn,AddToWishlistBtnRedirect, RemoveFromWishlistBtn, MoveToWishlistBtn};

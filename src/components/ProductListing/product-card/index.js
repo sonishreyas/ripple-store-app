@@ -7,4 +7,5 @@ export {
 	AddToWishlistBtn,
 	AddToWishlistBtnRedirect,
 	RemoveFromWishlistBtn,
+	MoveToWishlistBtn,
 } from "./AddToWishlistBtn";

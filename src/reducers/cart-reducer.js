@@ -1,4 +1,4 @@
-import { removeFromArray } from "../utils";
+import { removeFromArray, removeObjFromArray } from "../utils";
 /**
  * Reducer function to handle cart state
  * @param {Object} cartState State values of cart
@@ -12,6 +12,10 @@ const cartReducer = (cartState, cartAction) => {
 				...cartState,
 				cartItemsCount: cartAction.cartItemsCount,
 				itemsInCart: [...cartState.itemsInCart, ...cartAction.itemsInCart],
+				cartData: [
+					...cartState.cartData,
+					cartAction.cartData,
+				],
 			};
 
 		case "REMOVE_ITEM":
@@ -21,6 +25,10 @@ const cartReducer = (cartState, cartAction) => {
 				itemsInCart: removeFromArray(
 					cartState.itemsInCart,
 					cartAction.itemsInCart[0]
+				),
+				cartData: removeObjFromArray(
+					cartState.cartData,
+					cartAction.cartData
 				),
 			};
 		default:
