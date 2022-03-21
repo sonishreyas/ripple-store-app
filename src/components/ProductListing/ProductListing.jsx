@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
-import { useProducts, useWishlist } from "../../context";
+import { useProducts, useWishlist, useCart } from "../../context";
 import {Link} from "react-router-dom";
-import {AddToCartBtn, AddToCartBtnRedirect, AddToWishlistBtn, AddToWishlistBtnRedirect, RemoveFromWishlistBtn } from "./product-card"
+import {AddToCartBtn, AddToCartBtnRedirect, GoToCartBtn, AddToWishlistBtn, AddToWishlistBtnRedirect, RemoveFromWishlistBtn } from "./product-card"
 import { presentInArray } from "../../utils";
 
 const ProductListing = () => {
@@ -9,6 +9,7 @@ const ProductListing = () => {
   const { wishlistState} = useWishlist();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  const {cartState} = useCart();
 
   return (
     <article className="grid-col-70 ">
@@ -46,7 +47,7 @@ const ProductListing = () => {
                   </span>
                 </span>
               </section>
-              { token ?   <AddToCartBtn productData={{product: {_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type }}} token={token}/>  : <AddToCartBtnRedirect/>}
+              { token ?  presentInArray(cartState.itemsInCart, _id) ? <GoToCartBtn/>:<AddToCartBtn productData={{product: {_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type }}} token={token}/> : <AddToCartBtnRedirect/>}
             </article> 
         )
         : <h4>No Products Found</h4>
