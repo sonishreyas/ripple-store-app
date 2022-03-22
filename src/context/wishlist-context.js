@@ -21,7 +21,6 @@ const WishlistProvider = ({ children }) => {
 		() => getWishlistDataHandler(token, wishlistDispatch),
 		[wishlistState]
 	);
-	console.log(wishlistState);
 	return (
 		<WishlistContext.Provider
 			value={{

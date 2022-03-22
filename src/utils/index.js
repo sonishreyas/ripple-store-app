@@ -15,7 +15,7 @@ export {
 	addToWishlistHandler,
 	removeFromWishlistHandler,
 	getWishlistDataHandler,
-	MoveToWishlistBtn,
+	MoveToWishlistHandler,
 } from "./wishlist-management";
 export {
 	removeFromArray,

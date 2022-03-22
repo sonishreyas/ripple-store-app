@@ -1,7 +1,7 @@
 import { useCart, useWishlist } from "../../context";
 import { Link } from "react-router-dom";
 const Header = (props) => {
-    const {cartItemsCount} = useCart();
+    const {cartState} = useCart();
     const {wishlistState} = useWishlist();
     const token = localStorage.getItem("token");
     return (
@@ -95,7 +95,7 @@ const Header = (props) => {
                     <i className="fas fa-shopping-cart social"></i>
                   </span>
                   <p className="badge-text flex-row justify-content-center align-center top right b-radius-circle">
-                    {cartItemsCount}
+                    {cartState.cartItemsCount}
                   </p>
                 </a>
               </li>

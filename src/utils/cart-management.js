@@ -21,7 +21,7 @@ const addToCartHandler = (e, productData, token, cartDispatch) => {
 				type: "ADD_ITEM",
 				cartItemsCount: response.data.cart.length,
 				itemsInCart: [productData.product._id],
-				cartData: productData.product,
+				cartData: { ...productData.product, qty: 1 },
 			});
 		} catch (error) {
 			console.log(error);
@@ -90,19 +90,29 @@ const getCartDataHandler = (token, cartDispatch) => {
  * @param {string} token encodedToken of user
  * @param {function} cartDispatch Reducer function
  */
-const updateCartHandler = (element, productId, token, cartDispatch, actionType) => {
+const updateCartHandler = (
+	element,
+	productId,
+	token,
+	cartDispatch,
+	actionType
+) => {
 	element.preventDefault();
 	(async () => {
 		try {
-			const response = await axios.post(`/api/user/cart/${productId}`, actionType, {
-				headers: {
-					Accept: "*/*",
-					authorization: token,
-				},
-			});
+			const response = await axios.post(
+				`/api/user/cart/${productId}`,
+				actionType,
+				{
+					headers: {
+						Accept: "*/*",
+						authorization: token,
+					},
+				}
+			);
 			cartDispatch({
 				type: "UPDATE_ITEM",
-				cartData: {"_id":productId,"qty":1}
+				cartData: { _id: productId, qty: 1 },
 			});
 		} catch (error) {
 			console.log(error);

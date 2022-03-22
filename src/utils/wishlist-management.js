@@ -101,7 +101,7 @@ const getWishlistDataHandler = (token, wishlistDispatch) => {
  * @param {string} token encodedToken of user
  * @param {function} wishlistDispatch Reducer function
  */
-const MoveToWishlistBtn = (
+const MoveToWishlistHandler = (
 	element,
 	productData,
 	token,
@@ -111,13 +111,17 @@ const MoveToWishlistBtn = (
 	element.preventDefault();
 	(async () => {
 		try {
+			console.log("reached", productData, token);
 			const wishlistData = await axios.get(`/api/user/wishlist`, {
 				headers: {
 					Accept: "*/*",
 					authorization: token,
 				},
 			});
-			if (!presentObjInArray(wishlistData.wishlist, productData.product._id)) {
+			console.log("here = ", wishlistData);
+			if (
+				!presentObjInArray(wishlistData.data.wishlist, productData.product._id)
+			) {
 				const response = await axios.post(`/api/user/wishlist`, productData, {
 					headers: {
 						Accept: "*/*",
@@ -147,5 +151,5 @@ export {
 	addToWishlistHandler,
 	removeFromWishlistHandler,
 	getWishlistDataHandler,
-	MoveToWishlistBtn,
+	MoveToWishlistHandler,
 };

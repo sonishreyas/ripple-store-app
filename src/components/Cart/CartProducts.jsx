@@ -1,4 +1,4 @@
-import {getCartDataHandler, presentInArray, removeFromCartHandler} from "../../utils";
+import {getCartDataHandler, presentInArray, removeFromCartHandler, MoveToWishlistHandler} from "../../utils";
 import { useWishlist, useCart } from "../../context";
 import { MoveToWishlistBtn } from "../ProductListing/product-card"
 
@@ -8,7 +8,7 @@ const CartProducts = () => {
   const { wishlistState, wishlistDispatch } = useWishlist();
   return (<>
     {cartState.cartData.length !== 0 ?
-      cartState.cartData.map(({_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type, qty, reviews }) => {
+      cartState.cartData.map(({_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type, qty, reviews,discount }) => {
         return (
           <li key={_id} className="no-list">
             <article className="card horizontal card-shadow p-5 b-radius-2 m-10">
@@ -52,12 +52,7 @@ const CartProducts = () => {
                   </span>
                 </div>
                 <div className="horizontal-card-btn-container flex-row align-center flex-gap-half text-bold py-5 px-0">
-                  <button className="p-5 my-5 mb-10 outline-btn b-radius-2 text-bold horizontal-card-btn-secondary flex-row justify-content-center align-center flex-gap-1 flex-grow-1 text-bold">
-                    <span className="wishlist-icon">
-                      <i className="far fa-heart"></i>
-                    </span>
-                    <p className="wishlist-text">Move to wishlist</p>
-                  </button>
+                  <MoveToWishlistBtn productData={{product: {_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type, reviews }}} token={token}/>
                 </div>
               </div>
             </article>
