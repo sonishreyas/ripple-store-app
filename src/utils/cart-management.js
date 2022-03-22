@@ -110,13 +110,23 @@ const updateCartHandler = (
 					},
 				}
 			);
-			cartDispatch({
-				type: "UPDATE_ITEM",
-				cartData: { _id: productId, qty: 1 },
-			});
+			actionType.action.type === "increment"
+				? cartDispatch({
+						type: "UPDATE_ITEM",
+						cartData: { _id: productId, qtyUpdate: 1 },
+				  })
+				: cartDispatch({
+						type: "UPDATE_ITEM",
+						cartData: { _id: productId, qtyUpdate: -1 },
+				  });
 		} catch (error) {
 			console.log(error);
 		}
 	})();
 };
-export { addToCartHandler, removeFromCartHandler, getCartDataHandler };
+export {
+	addToCartHandler,
+	removeFromCartHandler,
+	getCartDataHandler,
+	updateCartHandler,
+};

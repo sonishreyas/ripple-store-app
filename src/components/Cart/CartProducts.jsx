@@ -1,14 +1,14 @@
-import {getCartDataHandler, presentInArray, removeFromCartHandler, MoveToWishlistHandler} from "../../utils";
+import {getCartDataHandler, presentInArray,  MoveToWishlistHandler} from "../../utils";
 import { useWishlist, useCart } from "../../context";
 import { MoveToWishlistBtn } from "../ProductListing/product-card"
-
+import { UpdateCartItem } from "./";
 const CartProducts = () => {
   const token = localStorage.getItem("token");
   const {cartState, cartDispatch} = useCart();
   const { wishlistState, wishlistDispatch } = useWishlist();
   return (<>
     {cartState.cartData.length !== 0 ?
-      cartState.cartData.map(({_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type, qty, reviews,discount }) => {
+      cartState.cartData.map(({_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type, qty, reviews, discount }) => {
         return (
           <li key={_id} className="no-list">
             <article className="card horizontal card-shadow p-5 b-radius-2 m-10">
@@ -43,16 +43,20 @@ const CartProducts = () => {
                   </p>
                 </div>
                 <div className="items-counter-container flex-row align-center flex-gap-half text-bold py-5 px-0">
-                  <span className="icon-btn">
-                    <i className="far fa-minus-square"></i>
+                  <span className="icon-btn cursor-pointer">
+                    { qty > 1 ?
+                      <UpdateCartItem token={token} productId={_id} btnType="decrement" /> 
+                      : 
+                      <UpdateCartItem token={token} productId={_id} btnType="delete" /> 
+                    }
                   </span>
                   <p className="icon-btn">{qty}</p>
-                  <span className="icon-btn">
-                    <i className="far fa-plus-square"></i>
+                  <span className="icon-btn cursor-pointer">
+                    <UpdateCartItem token={token} productId={_id} btnType="increment" /> 
                   </span>
                 </div>
                 <div className="horizontal-card-btn-container flex-row align-center flex-gap-half text-bold py-5 px-0">
-                  <MoveToWishlistBtn productData={{product: {_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type, reviews }}} token={token}/>
+                  <MoveToWishlistBtn productData={{product: {_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type, reviews, discount }}} token={token}/>
                 </div>
               </div>
             </article>
