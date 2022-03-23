@@ -25,5 +25,18 @@ export const users = [
 		password: bcyrpt.hashSync("test123", 5),
 		createdAt: formatDate(),
 		updatedAt: formatDate(),
+		address: [
+			{
+				addressId: uuid(),
+				name: "Test",
+				houseNo: "D-203",
+				society: "Nisarg Nirman",
+				area: "Pimple Saudagar",
+				city: "Pune",
+				state: "Maharashtra",
+				country: "India",
+				pincode: "411027",
+			},
+		],
 	},
 ];

@@ -50,7 +50,6 @@ export const addItemToAddressHandler = function (schema, request) {
 			...address,
 			createdAt: formatDate(),
 			updatedAt: formatDate(),
-			qty: 1,
 		});
 		this.db.users.update({ _id: userId }, { address: userAddress });
 		return new Response(201, {}, { address: userAddress });
