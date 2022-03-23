@@ -1,4 +1,4 @@
-import { CartProducts, Billing, Address } from "./"
+import { CartProducts, Billing, Address,Coupon   } from "./"
 import { useCart } from "../../context";
 const Main = () => {
     const {cartState} = useCart();
@@ -17,6 +17,7 @@ const Main = () => {
                     <Billing/>
                 </article>
             </section>: <h4 class="h4 text-center m-5 p-5">No items in Cart</h4>}
+                <Coupon/>
         </main>
     )
 };

@@ -25,3 +25,4 @@ export {
 	removeObjFromArray,
 	updateObjInArray,
 } from "./helpers";
+export { getBillingDataHandler } from "./billing";

@@ -1,42 +1,47 @@
+import {useBilling, useCart} from "../../context";
+
 const Billing = () => {
+    const {billingState} = useBilling();
     return (
-        <div class="cart-billing flex-column align-start">
+        <div className="cart-billing flex-column align-start">
             <div
-                class="card basic-card card-shadow flex-row justify-content-center align-center flex-wrap card-shadow p-5 b-radius-2">
-                <ul class="cart-list">
-                    <li class="no-list">
-                        <h3 class="billing-heading">Coupons</h3>
-                        <button class="outline-btn coupon-btn p-5 b-radius-2 my-5 mx-0 text-bold">
-                            <span class="coupon-icon"><i class="fas fa-tags"></i></span>
-                            <p class="wishlist-text">Apply Coupons</p>
+                className="card basic-card card-shadow flex-row justify-content-center align-center flex-wrap card-shadow p-5 b-radius-2">
+                <ul className="cart-list">
+                    <li className="no-list">
+                        <h3 className="billing-heading">Coupons</h3>
+                        <button className="outline-btn coupon-btn p-5 b-radius-2 my-5 mx-0 text-bold">
+                            <span className="coupon-icon"><i className="fas fa-tags"></i></span>
+                            <p className="wishlist-text">Apply Coupons</p>
                         </button>
                     </li>
-                    <li class="no-list">
-                        <h3 class="billing-heading">Price Details</h3>
-                        <table class="table">
-                            <tr class="table-row">
-                                <td class="table-head">Total MRP</td>
-                                <td class="table-data">₹2999</td>
-                            </tr>
-                            <tr class="table-row">
-                                <td class="table-head">Discount on MRP</td>
-                                <td class="table-data discount-text">₹0.00</td>
-                            </tr>
-                            <tr class="table-row">
-                                <td class="table-head">Convenience Fee</td>
-                                <td class="table-data">₹100.00</td>
-                            </tr>
-                            <tr class="table-row">
-                                <th class="table-head">Total Amount</th>
-                                <th class="table-data">₹3099.00</th>
-                            </tr>
+                    <li className="no-list">
+                        <h3 className="billing-heading">Price Details</h3>
+                        <table className="table">
+                            <tbody>
+                                <tr className="table-row">
+                                    <td className="table-head">Total MRP</td>
+                                    <td className="table-data">{billingState.totalMRP}</td>
+                                </tr>
+                                <tr className="table-row">
+                                    <td className="table-head">Discount on MRP</td>
+                                    <td className="table-data discount-text">-{billingState.discount}</td>
+                                </tr>
+                                <tr className="table-row">
+                                    <td className="table-head">Convenience Fee</td>
+                                    <td className="table-data"><strike>₹100</strike> 0.00</td>
+                                </tr>
+                                <tr className="table-row">
+                                    <th className="table-head">Total Amount</th>
+                                    <th className="table-data">{billingState.totalAmount}</th>
+                                </tr>
+                            </tbody>
                         </table>
                     </li>
-                    <li class="no-list">
+                    <li className="no-list">
                         <a href="https://ripple-store.netlify.app/pages/checkout/checkout.html"
-                            class="no-link-decoration">
+                            className="no-link-decoration">
                             <button
-                                class="primary-btn place-order-btn p-5 b-radius-2 mb-5 mx-0 text-bold">Proceed
+                                className="primary-btn place-order-btn p-5 b-radius-2 mb-5 mx-0 text-bold">Proceed
                                 to
                                 checkout</button>
                         </a>
