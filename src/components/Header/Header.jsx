@@ -1,7 +1,8 @@
-import { useCart } from "../../context";
+import { useCart, useWishlist } from "../../context";
 
 const Header = (props) => {
   const {cartItemsCount} = useCart();
+  const {wishlistState} = useWishlist();
     return (
       <header className="header header-shadow flex-column">
         <div className="flex-row justify-content-space-between align-center w-100">
@@ -72,7 +73,7 @@ const Header = (props) => {
                     <i className="fas fa-heart social"></i>
                   </span>
                   <p className="badge-text flex-row justify-content-center align-center top right b-radius-circle">
-                    {/* {cartItemsCount} */}2
+                    {wishlistState.wishlistItemsCount}
                   </p>
                 </a>
               </li>
