@@ -20,13 +20,13 @@ const AuthenticationTabs = () => {
 
                 {
                     activeTab === "Login" && 
-                    <div className="horizontal-tabs-content" style={{display:"block"}}>
+                    <div className="horizontal-tabs-content">
                         <Login />
                     </div>
                 }
                 {
                     activeTab === "Register" && 
-                    <div className="horizontal-tabs-content" style={{display:"block"}}>
+                    <div className="horizontal-tabs-content">
                         <Register/>
                     </div>
                 }

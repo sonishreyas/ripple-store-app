@@ -15,3 +15,7 @@
 .focused > .textbox-label {
 	background: var(--secondary-background-color);
 }
+
+.horizontal-tabs-content {
+	display: block;
+}

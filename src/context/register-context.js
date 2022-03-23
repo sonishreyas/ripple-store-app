@@ -7,7 +7,6 @@ const defaultRegisterState = {
 	firstName: "",
 	lastName: "",
 	confirmPassword: "",
-	showPassword: { password: false, confirmPassword: false },
 	focus: {
 		firstName: false,
 		lastName: false,
