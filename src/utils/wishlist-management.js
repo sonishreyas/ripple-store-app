@@ -26,6 +26,7 @@ const addToWishlistHandler = (
 				type: "ADD_ITEM",
 				wishlistItemsCount: response.data.wishlist.length,
 				itemsInWishlist: [productData.product._id],
+				wishlistData: productData.product,
 			});
 		} catch (error) {
 			console.log(error);
@@ -59,6 +60,7 @@ const removeFromWishlistHandler = (
 				type: "REMOVE_ITEM",
 				wishlistItemsCount: response.data.wishlist.length,
 				itemsInWishlist: [productId],
+				wishlistData: productId,
 			});
 		} catch (error) {
 			console.log(error);
@@ -66,4 +68,32 @@ const removeFromWishlistHandler = (
 	})();
 };
 
-export { addToWishlistHandler, removeFromWishlistHandler };
+/**
+ * Retrieve wishlist data
+ * @param element
+ * @param {string} token encodedToken of user
+ * @param {function} wishlistDispatch Reducer function
+ */
+const getWishlistDataHandler = (token, wishlistDispatch) => {
+	(async () => {
+		try {
+			const response = await axios.get(`/api/user/wishlist`, {
+				headers: {
+					Accept: "*/*",
+					authorization: token,
+				},
+			});
+			wishlistDispatch({
+				type: "GET_ITEM",
+				wishlistData: response.data.wishlist,
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	})();
+};
+export {
+	addToWishlistHandler,
+	removeFromWishlistHandler,
+	getWishlistDataHandler,
+};

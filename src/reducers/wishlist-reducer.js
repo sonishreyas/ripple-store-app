@@ -1,4 +1,4 @@
-import { removeFromArray } from "../utils";
+import { removeFromArray, removeObjFromArray } from "../utils";
 /**
  * Reducer function to handle wishlist state
  * @param {Object} wishlistState State values of wishlist
@@ -15,6 +15,10 @@ const wishlistReducer = (wishlistState, wishlistAction) => {
 					...wishlistState.itemsInWishlist,
 					...wishlistAction.itemsInWishlist,
 				],
+				wishlistData: [
+					...wishlistState.wishlistData,
+					wishlistAction.wishlistData,
+				],
 			};
 
 		case "REMOVE_ITEM":
@@ -24,6 +28,10 @@ const wishlistReducer = (wishlistState, wishlistAction) => {
 				itemsInWishlist: removeFromArray(
 					wishlistState.itemsInWishlist,
 					wishlistAction.itemsInWishlist[0]
+				),
+				wishlistData: removeObjFromArray(
+					wishlistState.wishlistData,
+					wishlistAction.wishlistData
 				),
 			};
 		default:

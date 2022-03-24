@@ -1,8 +1,9 @@
 import { useCart, useWishlist } from "../../context";
-
+import { Link } from "react-router-dom";
 const Header = (props) => {
-  const {cartItemsCount} = useCart();
-  const {wishlistState} = useWishlist();
+    const {cartItemsCount} = useCart();
+    const {wishlistState} = useWishlist();
+    const token = localStorage.getItem("token");
     return (
       <header className="header header-shadow flex-column">
         <div className="flex-row justify-content-space-between align-center w-100">
@@ -65,17 +66,25 @@ const Header = (props) => {
                 </a>
               </li>
               <li className="header-nav-icons h-auto pt-10">
-                <a
+                { token ? <Link to={'/wishlist'}
                   className="no-link badge p-5 m-5 flex-column justify-content-center align-center"
-                  href="https://ripple-store.netlify.app/pages/wishlist/wishlist.html"
                 >
                   <span className="badge-icon">
                     <i className="fas fa-heart social"></i>
                   </span>
-                  <p className="badge-text flex-row justify-content-center align-center top right b-radius-circle">
+                  <p className={`badge-text flex-row justify-content-center align-center top right b-radius-circle ${wishlistState.wishlistItemsCount > 0 ? "" : "inactive" }`}>
                     {wishlistState.wishlistItemsCount}
                   </p>
-                </a>
+                </Link>: <Link to={'/auth'} state={{ state: '/wishlist' }} 
+                  className="no-link badge p-5 m-5 flex-column justify-content-center align-center"
+                >
+                  <span className="badge-icon">
+                    <i className="fas fa-heart social"></i>
+                  </span>
+                  <p className={`badge-text flex-row justify-content-center align-center top right b-radius-circle ${wishlistState.wishlistItemsCount > 0 ? "" : "inactive" }`}>
+                    {wishlistState.wishlistItemsCount}
+                  </p>
+                </Link>}
               </li>
               <li className="header-nav-icons pt-10">
                 <a
