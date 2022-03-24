@@ -17,10 +17,7 @@ const WishlistProvider = ({ children }) => {
 		defaultWishlistContext
 	);
 	const token = localStorage.getItem("token");
-	useEffect(
-		() => getWishlistDataHandler(token, wishlistDispatch),
-		[wishlistState]
-	);
+	useEffect(() => getWishlistDataHandler(token, wishlistDispatch), []);
 	return (
 		<WishlistContext.Provider
 			value={{

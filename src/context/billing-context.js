@@ -24,7 +24,6 @@ const BillingProvider = ({ children }) => {
 		[cartState]
 	);
 
-	console.log("bill = ", billingState);
 	return (
 		<BillingContext.Provider value={{ billingState, billingDispatch }}>
 			{children}

@@ -1,4 +1,15 @@
 import { removeObjFromArray, updateAddressObjInArray } from "../utils";
+
+const resetAddressStatus = (addressData) =>
+	Object.keys(addressData).reduce((prev, curr) => {
+		prev[curr] = false;
+		return prev;
+	}, {});
+const setAddressStatus = (addressDataId) => {
+	{
+		addressDataId: true;
+	}
+};
 /**
  * Reducer function to handle address state
  * @param {Object} addressState State values of address

@@ -15,6 +15,7 @@ const CartProvider = ({ children }) => {
 	const [cartState, cartDispatch] = useReducer(cartReducer, defaultCartContext);
 	const token = localStorage.getItem("token");
 	useEffect(() => getCartDataHandler(token, cartDispatch), [cartState]);
+
 	return (
 		<CartContext.Provider value={{ cartState, cartDispatch }}>
 			{children}

@@ -74,6 +74,8 @@ const getAddressDataHandler = (token, addressDispatch) => {
 					authorization: token,
 				},
 			});
+
+			// console.log("res = ", response);
 			addressDispatch({
 				type: "GET_ITEM",
 				addressData: response.data.address,

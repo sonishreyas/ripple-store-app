@@ -10,8 +10,10 @@ import {
 	CartProvider,
 	WishlistProvider,
 	BillingProvider,
+	AddressProvider,
 } from "./context";
 import { BrowserRouter as Router } from "react-router-dom";
+
 // Call make Server
 makeServer();
 
@@ -21,13 +23,15 @@ ReactDOM.render(
 			<RegisterProvider>
 				<LoginProvider>
 					<CartProvider>
-						<BillingProvider>
-							<WishlistProvider>
-								<ProductsProvider>
-									<App />
-								</ProductsProvider>
-							</WishlistProvider>
-						</BillingProvider>
+						<AddressProvider>
+							<BillingProvider>
+								<WishlistProvider>
+									<ProductsProvider>
+										<App />
+									</ProductsProvider>
+								</WishlistProvider>
+							</BillingProvider>
+						</AddressProvider>
 					</CartProvider>
 				</LoginProvider>
 			</RegisterProvider>

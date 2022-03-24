@@ -1,11 +1,9 @@
-import {getCartDataHandler, presentInArray,  MoveToWishlistHandler} from "../../utils";
-import { useWishlist, useCart } from "../../context";
+import { useCart } from "../../context";
 import { MoveToWishlistBtn } from "../ProductListing/product-card"
 import { UpdateCartItem } from "./";
 const CartProducts = () => {
   const token = localStorage.getItem("token");
-  const {cartState, cartDispatch} = useCart();
-  const { wishlistState, wishlistDispatch } = useWishlist();
+  const {cartState} = useCart();
   return (<>
     {cartState.cartData.length !== 0 ?
       cartState.cartData.map(({_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type, qty, reviews, discount }) => {

@@ -45,7 +45,7 @@ const updateObjInArray = (arr, element) =>
 		(prev, curr) =>
 			curr._id === element._id
 				? [...prev, { ...curr, qty: curr.qty + element.qtyUpdate }]
-				: [...prev, ...curr],
+				: [...prev, { ...curr }],
 		[]
 	);
 

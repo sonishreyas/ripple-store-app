@@ -103,7 +103,7 @@ export const removeItemFromAddressHandler = function (schema, request) {
  * body contains {action} (whose 'type' can be increment or decrement)
  * */
 
-export const updateCartItemHandler = function (schema, request) {
+export const updateAddressItemHandler = function (schema, request) {
 	const addressId = request.params.addressId;
 	const userId = requiresAuth.call(this, request);
 	try {
