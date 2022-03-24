@@ -10,7 +10,6 @@ const ProductListing = () => {
   const { cartState } = useCart();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
-  const {cartState} = useCart();
 
   return (
     <article className="grid-col-70 ">
