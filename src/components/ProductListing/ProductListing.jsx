@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router";
 import { useCart, useProducts, useWishlist } from "../../context";
+import { useProducts, useWishlist, useCart } from "../../context";
+import {Link} from "react-router-dom";
 import {AddToCartBtn, AddToCartBtnRedirect, GoToCartBtn, AddToWishlistBtn, AddToWishlistBtnRedirect, RemoveFromWishlistBtn } from "./product-card"
 import { presentInArray } from "../../utils";
 
@@ -9,6 +11,7 @@ const ProductListing = () => {
   const { cartState } = useCart();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  const {cartState} = useCart();
 
   return (
     <article className="grid-col-70 ">
