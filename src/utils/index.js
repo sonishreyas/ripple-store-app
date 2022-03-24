@@ -24,5 +24,12 @@ export {
 	presentObjInArray,
 	removeObjFromArray,
 	updateObjInArray,
+	updateAddressObjInArray,
 } from "./helpers";
 export { getBillingDataHandler } from "./billing";
+export {
+	addToAddressHandler,
+	removeFromAddressHandler,
+	getAddressDataHandler,
+	updateAddressHandler,
+} from "./address-management";

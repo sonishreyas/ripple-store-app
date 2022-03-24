@@ -49,10 +49,24 @@ const updateObjInArray = (arr, element) =>
 		[]
 	);
 
+/**
+ * Check if id is present in the array of objects and update the Address
+ * @param {Array} arr Array of objects
+ * @param {any} element Element id that needs to be searched from arr
+ * @returns true if element is found else false
+ */
+const updateAddressObjInArray = (arr, element) =>
+	arr.reduce(
+		(prev, curr) =>
+			curr._id === element._id ? [...prev, ...element] : [...prev, ...curr],
+		[]
+	);
+
 export {
 	removeFromArray,
 	presentInArray,
 	presentObjInArray,
 	removeObjFromArray,
 	updateObjInArray,
+	updateAddressObjInArray,
 };

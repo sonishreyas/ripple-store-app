@@ -40,6 +40,11 @@ const cartReducer = (cartState, cartAction) => {
 				cartData: updateObjInArray(cartState.cartData, cartAction.cartData),
 			};
 
+		case "GET_ITEM":
+			return {
+				...cartState,
+				cartData: [...cartAction.cartData],
+			};
 		default:
 			return cartState;
 	}
