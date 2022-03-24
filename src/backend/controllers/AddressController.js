@@ -121,7 +121,7 @@ export const updateAddressItemHandler = function (schema, request) {
 		userAddress.reduce((prev, curr) =>
 			curr._id === addressId
 				? [...prev, { ...curr, ...updatedAddress }]
-				: [...prev, ...curr]
+				: [...prev, { ...curr }]
 		);
 		this.db.users.update({ _id: userId }, { address: userAddress });
 		return new Response(200, {}, { address: userAddress });

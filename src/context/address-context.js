@@ -16,12 +16,28 @@ const AddressProvider = ({ children }) => {
 		addressReducer,
 		defaultAddressContext
 	);
+	const [showAddressModal, setShowAddressModal] = useState(false);
+	const [showAddressFormModal, setShowAddressFormModal] = useState(false);
+
 	const token = localStorage.getItem("token");
-	useEffect(() => getAddressDataHandler(token, addressDispatch), []);
+
+	useEffect(
+		() => getAddressDataHandler(token, addressState, addressDispatch),
+		[]
+	);
 
 	// console.log("Address = ", addressState);
 	return (
-		<AddressContext.Provider value={{ addressState, addressDispatch }}>
+		<AddressContext.Provider
+			value={{
+				addressState,
+				addressDispatch,
+				showAddressModal,
+				setShowAddressModal,
+				showAddressFormModal,
+				setShowAddressFormModal,
+			}}
+		>
 			{children}
 		</AddressContext.Provider>
 	);

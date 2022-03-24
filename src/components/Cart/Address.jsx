@@ -1,20 +1,30 @@
+import { useAddress } from "../../context";
+
 const Address = () => {
+    const {showAddressModal, setShowAddressModal, addressState} = useAddress();
     return (
-        <li class="no-list">
+        <>
+        {Object.keys(addressState.selectedAddress).length > 0 ?
+            <li className="no-list">
             <article
-                class="card basic-card card-shadow cart-deliver-container flex-row justify-content-space-between m-auto card-shadow p-5 b-radius-2">
-                <div class="delivery-address-container">
-                    <p class="m-5">Deliver to: <b>Shreyas Soni, 411027</b></p>
-                    <p class="m-5">
-                        A-601, Nisarg Nirman, Pimple Saudagar, Pune, Maharashtra,
-                        India.
+                className="card basic-card card-shadow cart-deliver-container flex-row justify-content-space-between m-auto card-shadow p-5 b-radius-2">
+                <div className="delivery-address-container">
+                    <p className="m-5">Deliver to: <b>{addressState.selectedAddress.name}, {addressState.selectedAddress.pincode}</b></p>
+                    <p className="m-5">
+                        {addressState.selectedAddress.houseNo}, {addressState.selectedAddress.society}, {addressState.selectedAddress.area}, {addressState.selectedAddress.city}, {addressState.selectedAddress.state},
+                        {addressState.selectedAddress.country}.
                     </p>
                 </div>
-                <button class="outline-btn change-address-btn p-5 b-radius-2 mx-5 my-0 text-bold">
+                <button 
+                    className="outline-btn change-address-btn p-5 b-radius-2 mx-5 my-0 text-bold"
+                    onClick={() => setShowAddressModal(true)}
+                    >
                     Change
                 </button>
             </article>
         </li>
+        : <></>}
+        </>
     )
 }
 

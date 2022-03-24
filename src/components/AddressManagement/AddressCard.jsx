@@ -1,9 +1,9 @@
 
 const AddressCard = ({props}) => {
-    const {_id ,name, houseNo, society, area, city, state, country, pincode} = props;
+    const {addressId ,name, houseNo, society, area, city, state, country, pincode} = props;
     return (
         <article
-            class="flex-column justify-content-center flex-wrap p-10 b-radius-2 w-100 h-auto">
+            className="flex-column justify-content-center flex-wrap p-10 b-radius-2 w-100 h-auto">
             <h3 className="name p-2">{name}</h3>
             <p className="address p-2">
                 {houseNo} , {society}, {area}

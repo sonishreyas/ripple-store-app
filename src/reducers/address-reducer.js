@@ -48,6 +48,17 @@ const addressReducer = (addressState, addressAction) => {
 				addressData: [...addressAction.addressData],
 			};
 
+		case "SET_ACTIVE_ADDRESS":
+			return {
+				...addressState,
+				selectedAddress: { ...addressAction.selectedAddress },
+			};
+		// case "SET_SHOW_ADDRESS_MODAL":
+		// 	return {
+		// 		...addressState,
+		// 		selectedAddress: { ...addressAction.selectedAddress },
+		// 	};
+
 		default:
 			return addressState;
 	}

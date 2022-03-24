@@ -65,7 +65,7 @@ const removeFromAddressHandler = (
  * @param {string} token encodedToken of user
  * @param {function} addressDispatch Reducer function
  */
-const getAddressDataHandler = (token, addressDispatch) => {
+const getAddressDataHandler = (token, addressState, addressDispatch) => {
 	(async () => {
 		try {
 			const response = await axios.get(`/api/user/address`, {
@@ -75,11 +75,19 @@ const getAddressDataHandler = (token, addressDispatch) => {
 				},
 			});
 
-			// console.log("res = ", response);
 			addressDispatch({
 				type: "GET_ITEM",
 				addressData: response.data.address,
 			});
+
+			if (Object.keys(addressState.selectedAddress).length === 0) {
+				addressDispatch({
+					type: "SET_ACTIVE_ADDRESS",
+					selectedAddress: response.data.address.filter(
+						(item) => item.default
+					)[0],
+				});
+			}
 		} catch (error) {
 			console.log(error);
 		}
