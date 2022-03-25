@@ -110,7 +110,6 @@ const updateCartHandler = (
 					},
 				}
 			);
-			console.log("res = ", response);
 
 			actionType.action.type === "increment"
 				? cartDispatch({

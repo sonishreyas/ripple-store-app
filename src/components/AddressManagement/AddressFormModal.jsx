@@ -34,8 +34,7 @@ const AddressFormModal = () => {
             addressData["address"] = {name: addressFormState.name.value, houseNo: addressFormState.houseNo.value, society: addressFormState.society.value, area: addressFormState.area.value, city: addressFormState.city.value, state: addressFormState.state.value, country: addressFormState.country.value, pincode: addressFormState.pincode.value}
             addToAddressHandler(e, addressData, token, addressDispatch)
         } else {
-            const addressData = {}
-            addressData["address"] = {name: addressFormState.name.value, houseNo: addressFormState.houseNo.value, society: addressFormState.society.value, area: addressFormState.area.value, city: addressFormState.city.value, state: addressFormState.state.value, country: addressFormState.country.value, pincode: addressFormState.pincode.value}
+            const addressData = {name: addressFormState.name.value, houseNo: addressFormState.houseNo.value, society: addressFormState.society.value, area: addressFormState.area.value, city: addressFormState.city.value, state: addressFormState.state.value, country: addressFormState.country.value, pincode: addressFormState.pincode.value}
             updateAddressHandler(e, addressFormState.addressId, token, addressDispatch, addressData);
         }
         setShowAddressFormModal(false);
