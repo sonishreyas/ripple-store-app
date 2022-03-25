@@ -1,4 +1,0 @@
-
-const AddressForm = () => {};
-
-export {AddressForm}

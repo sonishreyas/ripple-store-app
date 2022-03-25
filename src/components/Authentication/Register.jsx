@@ -25,11 +25,17 @@ const Register = () => {
         showPassword[field] = true;
         registerDispatch({showPassword: showPassword});
     }
-
+    
     return (
         <form onSubmit={(e) => registerHandler(e, location, navigate)} className="input-form register flex-column flex-gap-1 flex-wrap h-auto w-100">
             <section className={`input-container flex-column m-5 ${registerState.firstName.length > 0 || registerState.focus.firstName ? "focused":"" }`}>
-                <input id="first-name" className="textbox-content p-5" type="text" name="first-name" onChange={(e) => setValueHandler(e,"firstName")} value={registerState.firstName} onFocus={() => setFocusHandler("firstName",true)} onBlur={()=> setFocusHandler("firstName",false)}/>
+                <input id="first-name" 
+                className="textbox-content p-5" 
+                type="text" name="first-name" 
+                onChange={(e) => setValueHandler(e,"firstName")} 
+                value={registerState.firstName} 
+                onFocus={() => setFocusHandler("firstName",true)} 
+                onBlur={()=> setFocusHandler("firstName",false)}/>
                 <label htmlFor="first-name" className="textbox-label m-0 px-1"> First Name<span className="required-field">*</span>
                 </label>
                 <sub className="p-2 my-2 inactive-check"></sub>

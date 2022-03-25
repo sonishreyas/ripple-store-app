@@ -121,6 +121,7 @@ const updateAddressHandler = (
 					},
 				}
 			);
+			console.log("Update = ", response);
 			addressDispatch({
 				type: "UPDATE_ITEM",
 				addressData: { _id: addressId, ...newAddress },
