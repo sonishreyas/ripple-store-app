@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
-import { addToWishlistHandler, removeFromWishlistHandler } from "../../../utils" 
-import { useWishlist } from "../../../context";
+import { addToWishlistHandler, removeFromWishlistHandler, MoveToWishlistHandler } from "../../../utils" 
+import { useWishlist, useCart } from "../../../context";
 
 const AddToWishlistBtn = (props) => {
     const { wishlistDispatch } = useWishlist();
@@ -33,4 +33,17 @@ const RemoveFromWishlistBtn = (props) => {
         </button>
     );
 }
-export {AddToWishlistBtn,AddToWishlistBtnRedirect, RemoveFromWishlistBtn};
+
+const MoveToWishlistBtn = (props) => {
+    const { wishlistDispatch } = useWishlist();
+    const { cartDispatch } = useCart();
+    return (
+        <button onClick={(e) => MoveToWishlistHandler(e, props.productData, props.token,wishlistDispatch, cartDispatch)} className="p-5 my-5 mb-10 outline-btn b-radius-2 text-bold horizontal-card-btn-secondary flex-row justify-content-center align-center flex-gap-1 flex-grow-1 text-bold">
+            <span className="wishlist-icon">
+                <i className="far fa-heart"></i>
+            </span>
+            <p className="wishlist-text">Move to wishlist</p>
+        </button>
+    );
+}
+export {AddToWishlistBtn,AddToWishlistBtnRedirect, RemoveFromWishlistBtn, MoveToWishlistBtn};

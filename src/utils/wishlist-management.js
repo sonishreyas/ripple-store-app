@@ -1,5 +1,6 @@
 import axios from "axios";
-
+import { presentObjInArray } from "./";
+import { removeFromCartHandler } from "./";
 /**
  * Add product data to wishlist
  * @param {*} element
@@ -92,8 +93,63 @@ const getWishlistDataHandler = (token, wishlistDispatch) => {
 		}
 	})();
 };
+
+/**
+ * Add product data to wishlist and remove it from cart
+ * @param {*} element
+ * @param {Object} productData Product to be added in wishlist
+ * @param {string} token encodedToken of user
+ * @param {function} wishlistDispatch Reducer function
+ */
+const MoveToWishlistHandler = (
+	element,
+	productData,
+	token,
+	wishlistDispatch,
+	cartDispatch
+) => {
+	element.preventDefault();
+	(async () => {
+		try {
+			console.log("reached", productData, token);
+			const wishlistData = await axios.get(`/api/user/wishlist`, {
+				headers: {
+					Accept: "*/*",
+					authorization: token,
+				},
+			});
+			console.log("here = ", wishlistData);
+			if (
+				!presentObjInArray(wishlistData.data.wishlist, productData.product._id)
+			) {
+				const response = await axios.post(`/api/user/wishlist`, productData, {
+					headers: {
+						Accept: "*/*",
+						authorization: token,
+					},
+				});
+				wishlistDispatch({
+					type: "ADD_ITEM",
+					wishlistItemsCount: response.data.wishlist.length,
+					itemsInWishlist: [productData.product._id],
+					wishlistData: productData.product,
+				});
+			}
+			removeFromCartHandler(
+				element,
+				productData.product._id,
+				token,
+				cartDispatch
+			);
+		} catch (error) {
+			console.log(error);
+		}
+	})();
+};
+
 export {
 	addToWishlistHandler,
 	removeFromWishlistHandler,
 	getWishlistDataHandler,
+	MoveToWishlistHandler,
 };

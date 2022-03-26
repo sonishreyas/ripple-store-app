@@ -7,10 +7,9 @@ const WishlistProducts = () => {
     const { cartState } = useCart();
     return (
         <>
-            <h1 className="h1 text-center m-5 p-5">Wishlist</h1>
-            
-            {wishlistState.wishlistData.length !== 0 ?  
+            <h1 className="homepage-heading text-center m-5 p-5">Wishlist</h1>
             <section className="rui-main--heading-container no-border dismiss-cards flex-container my-10 text-center">
+            {wishlistState.wishlistData.length !== 0 ?  
                 wishlistState.wishlistData.map(({_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type }) => 
                     <article className="card vertical card-shadow p-5 b-radius-2" key={_id}>
                         <section
@@ -33,9 +32,9 @@ const WishlistProducts = () => {
                         <i className="far fa-times-circle rui-cross b-radius-circle card-dismiss-btn m-3 p-1" onClick={(e) => removeFromWishlistHandler(e, _id, token, wishlistDispatch)}></i>
                     </article>
                 )
-            </section>
-            : <h4 className="text-center m-5 p-5">No product added to wishlist</h4>
+            : <h4 className="h4 text-center m-5 p-5">No product added to wishlist</h4>
             }
+            </section>
             
         </>
     );
