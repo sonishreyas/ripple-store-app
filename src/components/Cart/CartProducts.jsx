@@ -8,7 +8,7 @@ const CartProducts = () => {
   const {cartState} = useCart();
   const {checkoutState, checkoutDispatch} = useCheckout();
   console.log("Checkout", checkoutState);
-  const handleCheckout = (e) => e.target.checked ? removeFromCheckoutHandler(checkoutDispatch, _id) : addToCheckoutHandler(checkoutDispatch,{_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type, qty, reviews, discount})
+  const handleCheckout = (e, productsData) => e.target.checked ? removeFromCheckoutHandler(checkoutDispatch, productsData._id) : addToCheckoutHandler(checkoutDispatch,productsData)
   return (<>
     <li className="no-list p-5 pl-7 cart-items-count-container border-radius-5">
       <section className="flex-row flex-gap-1 align-center justify-content-start">
