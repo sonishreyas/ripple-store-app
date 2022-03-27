@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router";
 import { useCart, useProducts, useWishlist } from "../../context";
+import {Link} from "react-router-dom";
 import {AddToCartBtn, AddToCartBtnRedirect, GoToCartBtn, AddToWishlistBtn, AddToWishlistBtnRedirect, RemoveFromWishlistBtn } from "./product-card"
 import { presentInArray } from "../../utils";
 
