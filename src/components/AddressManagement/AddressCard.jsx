@@ -7,6 +7,11 @@ const AddressCard = ({props}) => {
     const {addressFormDispatch} = useAddressForm();
     const token = localStorage.getItem("token");
     
+    const setValueHandler = (value,type) => {
+        const fieldValue = {"value": value, "type": type};
+        addressFormDispatch(fieldValue);
+    }
+    
     const handleEditAddress = () => {
         setShowAddressFormModal(true)
         addressFormDispatch({addressId: addressId});

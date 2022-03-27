@@ -6,14 +6,14 @@ const AddressModal = () => {
     const handleAddressModal = () => setShowAddressModal(false);
     return (
         <ul className="address-modal-container address-modal-center radio-btn-container outline-container b-radius-2  p-5 m-10">
-            <li className="profile-header flex-row justify-content-space-between align-center flex-wrap p-5 my-0 mx-5">
+            <li className="profile-header flex-row justify-content-space-between align-center flex-wrap p-5 my-0 mx-5" key="address-header">
                 <h1 className="form-heading text-bold p-2 h1">Address</h1>
                 <i className="far fa-times-circle rui-cross b-radius-circle card-dismiss-btn m-3 p-1" onClick={handleAddressModal}></i>
             </li>
             {
                 addressState.addressData.length !== 0 ? 
                 addressState.addressData.map(({addressId, name, houseNo, society, area, city, state, country, pincode }) => 
-                    <li key={addressId} className="no-list form-heading text-bold py-5 px-0 h3">
+                    <li key={`address-${addressId}`} className="no-list form-heading text-bold py-5 px-0 h3">
                         <label className={`basic-chip flex-row align-center flex-wrap flex-gap-1 h6 filter-chip cursor-pointer ${ addressId === addressState.selectedAddress.addressId ? "fliter-chip-selected":""}`}>
                             <input
                                 className="filters"

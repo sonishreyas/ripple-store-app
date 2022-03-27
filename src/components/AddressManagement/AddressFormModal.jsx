@@ -2,7 +2,7 @@ import { useAddressForm, useAddress } from "../../context";
 import { addToAddressHandler, updateAddressHandler } from "../../utils";
 const AddressFormModal = () => {
     const {addressFormState, addressFormDispatch} = useAddressForm();
-    const {setShowAddressFormModal, addressDispatch} = useAddress(); 
+    const {setShowAddressFormModal, addressDispatch, addressState} = useAddress(); 
     const token = localStorage.getItem("token");
     const setFocusHandler = (field, value) => {
         const focusReset = {
@@ -35,7 +35,7 @@ const AddressFormModal = () => {
             addToAddressHandler(e, addressData, token, addressDispatch)
         } else {
             const addressData = {name: addressFormState.name.value, houseNo: addressFormState.houseNo.value, society: addressFormState.society.value, area: addressFormState.area.value, city: addressFormState.city.value, state: addressFormState.state.value, country: addressFormState.country.value, pincode: addressFormState.pincode.value}
-            updateAddressHandler(e, addressFormState.addressId, token, addressDispatch, addressData);
+            updateAddressHandler(e, addressFormState.addressId, token, addressDispatch, addressData, addressState);
         }
         setShowAddressFormModal(false);
     }
@@ -55,7 +55,7 @@ const AddressFormModal = () => {
             <h3 className="p-2 my-2 mx-0">Add a new Address</h3>
             <form className="input-form flex-column flex-gap-1 flex-grow-1 flex-wrap">
                 {addressFormFields.map((item) => 
-                    <section className={`input-container flex-column m-5 ${addressFormState[item]["value"].length > 0 || addressFormState['focus'][item] ? "focused":"" }`}>
+                    <section className={`input-container flex-column m-5 ${addressFormState[item]["value"].length > 0 || addressFormState['focus'][item] ? "focused":"" }`} key={`addressForm-${item}`}>
                         <input id={item} className="textbox-content p-5" 
                         type="text" name={item} 
                         onChange={(e) => setValueHandler(e.target.value,addressFormState[item].type)}

@@ -59,6 +59,13 @@ const addressReducer = (addressState, addressAction) => {
 				...addressState,
 				selectedAddress: addressAction.selectedAddress,
 			};
+
+		case "UPDATE_SELECTED_ADDRESS":
+			return {
+				...addressState,
+				selectedAddress: addressAction.selectedAddress,
+			};
+
 		default:
 			return addressState;
 	}

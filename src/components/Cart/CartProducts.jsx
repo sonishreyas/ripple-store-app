@@ -8,7 +8,7 @@ const CartProducts = () => {
     {cartState.cartData.length !== 0 ?
       cartState.cartData.map(({_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type, qty, reviews, discount }) => {
         return (
-          <li key={_id} className="no-list">
+          <li key={`cart-${_id}`} className="no-list">
             <article className="card horizontal card-shadow p-5 b-radius-2 m-10">
               <div className="horizontal-card-img--container flex-row justify-content-center align-center flex-wrap b-radius-2">
                 <img
@@ -21,11 +21,11 @@ const CartProducts = () => {
                 <h2>{name}</h2>
                 <p>{brand}</p>
                 <span className="rating flex-row align-center flex-gap-half pb-5">
-                  {[...Array(rating)].map(() => {
-                    return <i className="fas fa-star set"></i>;
+                  {[...Array(rating)].map((item, index) => {
+                    return <i className="fas fa-star set" key={`set-star-${index}`}></i>;
                   })}
-                  {[...Array(5 - rating)].map(() => {
-                    return <i className="fas fa-star unset"></i>;
+                  {[...Array(5 - rating)].map((item, index) => {
+                    return <i className="fas fa-star unset" key={`unset-star-${index}`}></i>;
                   })}{" "}
                   <p className="secondary-font">
                     | ({reviews} reviews)

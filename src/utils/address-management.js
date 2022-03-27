@@ -116,7 +116,8 @@ const updateAddressHandler = (
 	addressId,
 	token,
 	addressDispatch,
-	newAddress
+	newAddress,
+	addressState
 ) => {
 	element.preventDefault();
 	(async () => {
@@ -135,6 +136,11 @@ const updateAddressHandler = (
 				type: "UPDATE_ITEM",
 				addressData: { addressId: addressId, ...newAddress },
 			});
+			addressId === addressState.selectedAddress.addressId &&
+				addressDispatch({
+					type: "UPDATE_SELECTED_ADDRESS",
+					selectedAddress: { ...newAddress },
+				});
 		} catch (error) {
 			console.log(error);
 		}
