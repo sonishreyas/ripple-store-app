@@ -42,7 +42,8 @@ const removeFromAddressHandler = (
 	element,
 	addressId,
 	token,
-	addressDispatch
+	addressDispatch,
+	addressState
 ) => {
 	element.preventDefault();
 	(async () => {
@@ -57,6 +58,11 @@ const removeFromAddressHandler = (
 				type: "REMOVE_ITEM",
 				addressData: addressId,
 			});
+			addressId === addressState.selectedAddress.addressId &&
+				addressDispatch({
+					type: "REMOVE_SELECTED_ADDRESS",
+					selectedAddress: {},
+				});
 		} catch (error) {
 			console.log(error);
 		}
@@ -125,7 +131,6 @@ const updateAddressHandler = (
 					},
 				}
 			);
-			console.log("Update = ", response);
 			addressDispatch({
 				type: "UPDATE_ITEM",
 				addressData: { addressId: addressId, ...newAddress },

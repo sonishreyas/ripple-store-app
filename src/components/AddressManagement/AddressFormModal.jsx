@@ -19,8 +19,8 @@ const AddressFormModal = () => {
         addressFormDispatch({focus: focusReset});
     }
 
-    const setValueHandler = (e,type) => {
-        const fieldValue = {"value": e.target.value, "type": type};
+    const setValueHandler = (value,type) => {
+        const fieldValue = {"value": value, "type": type};
         addressFormDispatch(fieldValue);
     }
 
@@ -39,6 +39,17 @@ const AddressFormModal = () => {
         }
         setShowAddressFormModal(false);
     }
+    
+    const handleFillTestAddressValues = () => {
+        setValueHandler("Shreyas Soni","UPDATE_NAME");
+        setValueHandler("A-604","UPDATE_HOUSE_NO");
+        setValueHandler("Nisarg Nirman","UPDATE_SOCIETY");
+        setValueHandler("Pimple Saudagar","UPDATE_AREA");
+        setValueHandler("Pune","UPDATE_CITY");
+        setValueHandler("Maharashtra","UPDATE_STATE");
+        setValueHandler("India","UPDATE_COUNTRY");
+        setValueHandler("411027","UPDATE_PINCODE");
+    }
     return (
         <div className="address-form-modal-container address-modal-center text-center p-5 m-5 b-radius-2">
             <h3 className="p-2 my-2 mx-0">Add a new Address</h3>
@@ -47,7 +58,7 @@ const AddressFormModal = () => {
                     <section className={`input-container flex-column m-5 ${addressFormState[item]["value"].length > 0 || addressFormState['focus'][item] ? "focused":"" }`}>
                         <input id={item} className="textbox-content p-5" 
                         type="text" name={item} 
-                        onChange={(e) => setValueHandler(e,addressFormState[item].type)}
+                        onChange={(e) => setValueHandler(e.target.value,addressFormState[item].type)}
                             value={addressFormState[item]["value"]}
                             onFocus={() => setFocusHandler(item,true)} 
                             onBlur={()=> setFocusHandler(item,false)}
@@ -56,8 +67,13 @@ const AddressFormModal = () => {
                     </section>
                 
                 )}
+                <button className="cursor-pointer outline-btn cancel-btn p-5 b-radius-2 mx-5 my-0 text-bold flex-grow-1"
+                        type="button" onClick={handleFillTestAddressValues}>
+                        Fill Test Address
+                    </button>
                 <section
                     className="card-footer  flex-row flex-grow-1 justify-content-center flex-gap-1 py-5 px-0">
+                    
                     <button className="cursor-pointer primary-btn save-btn p-5 b-radius-2 mx-5 my-0 text-bold flex-grow-1"
                         type="button" onClick={(e) => addressFormSubmitHandler(e, token)}>
                         Save</button>

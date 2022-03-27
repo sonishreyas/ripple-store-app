@@ -2,7 +2,6 @@ import { useAddress } from "../../context";
 
 const Address = () => {
     const {showAddressModal, setShowAddressModal, addressState} = useAddress();
-    // console.log(addressState)
     return (
         <>
         
@@ -19,7 +18,7 @@ const Address = () => {
                         </p>
                     </div>: <div className="delivery-address-container">
                     
-                    <p className="m-5">Deliver to: No Address Found Please add a new Address</p>
+                    <p className="m-5">Deliver to: No Address Selected. Please select an address or add one.</p>
                     
                 </div>}
                 <button 

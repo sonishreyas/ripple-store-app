@@ -81,11 +81,13 @@ export const removeItemFromAddressHandler = function (schema, request) {
 				}
 			);
 		}
-		let userAddress = schema.users.findBy({ _id: userId }).address;
+		const userAddress = schema.users.findBy({ _id: userId }).address;
 		const addressId = request.params.addressId;
-		userAddress = userAddress.filter((item) => item._id !== addressId);
-		this.db.users.update({ _id: userId }, { address: userAddress });
-		return new Response(200, {}, { address: userAddress });
+		const newUserAddress = userAddress.filter(
+			(item) => item.addressId !== addressId
+		);
+		this.db.users.update({ _id: userId }, { address: newUserAddress });
+		return new Response(200, {}, { address: newUserAddress });
 	} catch (error) {
 		return new Response(
 			500,

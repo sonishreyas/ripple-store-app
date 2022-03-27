@@ -1,14 +1,12 @@
 import { useAddress, useAddressForm } from "../../context";
+import {removeFromAddressHandler} from "../../utils";
 
 const AddressCard = ({props}) => {
     const {addressId ,name, houseNo, society, area, city, state, country, pincode} = props;
-    const { setShowAddressFormModal } = useAddress();
+    const { setShowAddressFormModal, addressDispatch, addressState } = useAddress();
     const {addressFormDispatch} = useAddressForm();
-
-    const setValueHandler = (value,type) => {
-        const fieldValue = {"value": value, "type": type};
-        addressFormDispatch(fieldValue);
-    }
+    const token = localStorage.getItem("token");
+    
     const handleEditAddress = () => {
         setShowAddressFormModal(true)
         addressFormDispatch({addressId: addressId});
@@ -20,6 +18,9 @@ const AddressCard = ({props}) => {
         setValueHandler(state,"UPDATE_STATE");
         setValueHandler(country,"UPDATE_COUNTRY");
         setValueHandler(pincode,"UPDATE_PINCODE");
+    }
+    const handleDeleteAddress = (e) => {
+        removeFromAddressHandler(e,addressId,token,addressDispatch,addressState);
     }
     return (
         <article
@@ -39,7 +40,8 @@ const AddressCard = ({props}) => {
                     onClick={handleEditAddress}
                     >Edit</button>
                 <button
-                    className="outline-btn delete-btn p-5 b-radius-2 mx-5 my-0 text-bold flex-grow-1 w-100 h5">Delete</button>
+                    className="outline-btn delete-btn p-5 b-radius-2 mx-5 my-0 text-bold flex-grow-1 w-100 h5"
+                    onClick={handleDeleteAddress}>Delete</button>
             </section>
         </article>
     );

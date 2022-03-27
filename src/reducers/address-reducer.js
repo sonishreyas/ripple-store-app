@@ -53,12 +53,12 @@ const addressReducer = (addressState, addressAction) => {
 				...addressState,
 				selectedAddress: { ...addressAction.selectedAddress },
 			};
-		// case "SET_SHOW_ADDRESS_MODAL":
-		// 	return {
-		// 		...addressState,
-		// 		selectedAddress: { ...addressAction.selectedAddress },
-		// 	};
 
+		case "REMOVE_SELECTED_ADDRESS":
+			return {
+				...addressState,
+				selectedAddress: addressAction.selectedAddress,
+			};
 		default:
 			return addressState;
 	}
