@@ -58,4 +58,34 @@ const registerReducer = (registerState, registerAction) => {
 	}
 };
 
-export { loginReducer, registerReducer };
+/**
+ * Handle user update
+ * @param {Object} authState Defines the current state of auth used to store user data
+ * @param {Object} authAction Defines the state to be updated
+ * @returns
+ */
+const authReducer = (authState, authAction) => {
+	switch (authAction.type) {
+		case "UPDATE_TOKEN":
+			return { ...authState, token: authAction.token };
+		case "UPDATE_EMAIL":
+			return { ...authState, email: authAction.email };
+		case "UPDATE_FIRSTNAME":
+			return { ...authState, firstName: authAction.firstName };
+		case "UPDATE_LASTNAME":
+			return { ...authState, lastName: authAction.lastName };
+		case "UPDATE_USER":
+			return { ...authState, ...authAction };
+		case "LOGOUT":
+			return {
+				...authState,
+				token: "",
+				email: "",
+				firstName: "",
+				lastName: "",
+			};
+		default:
+			return authState;
+	}
+};
+export { loginReducer, registerReducer, authReducer };

@@ -1,9 +1,9 @@
-import { useAddressForm, useAddress } from "../../context";
+import { useAddressForm, useAddress, useAuth } from "../../context";
 import { addToAddressHandler, updateAddressHandler } from "../../utils";
 const AddressFormModal = () => {
     const {addressFormState, addressFormDispatch} = useAddressForm();
     const {setShowAddressFormModal, addressDispatch, addressState} = useAddress(); 
-    const token = localStorage.getItem("token");
+    const {authState} = useAuth();
     const setFocusHandler = (field, value) => {
         const focusReset = {
             name: false,
@@ -75,7 +75,7 @@ const AddressFormModal = () => {
                     className="card-footer  flex-row flex-grow-1 justify-content-center flex-gap-1 py-5 px-0">
                     
                     <button className="cursor-pointer primary-btn save-btn p-5 b-radius-2 mx-5 my-0 text-bold flex-grow-1"
-                        type="button" onClick={(e) => addressFormSubmitHandler(e, token)}>
+                        type="button" onClick={(e) => addressFormSubmitHandler(e, authState.token)}>
                         Save</button>
                     <button className="cursor-pointer outline-btn cancel-btn p-5 b-radius-2 mx-5 my-0 text-bold flex-grow-1"
                         type="button" onClick={handleAddressFormDismiss}>

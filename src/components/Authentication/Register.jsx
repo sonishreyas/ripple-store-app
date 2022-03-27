@@ -1,10 +1,11 @@
 import { useLocation, useNavigate } from "react-router";
 import { useState } from "react";
-import { useRegister } from "../../context";
+import { useRegister, useAuth } from "../../context";
 import { registerHandler } from "../../utils";
 
 const Register = () => {
     const { registerState, registerDispatch } = useRegister();
+    const { authDispatch } = useAuth()
     const location = useLocation();
     const navigate = useNavigate();
     const [showPassword,setShowPassword] = useState();
@@ -25,7 +26,7 @@ const Register = () => {
     const showPasswordHandler = () => showPassword ? setShowPassword(false) : setShowPassword(true);
     const showConfirmPasswordHandler = () => showConfirmPassword ? setShowConfirmPassword(false) : setShowConfirmPassword(true);
     return (
-        <form onSubmit={(e) => registerHandler(e, location, navigate, registerState)} className="input-form register flex-column flex-gap-1 flex-wrap h-auto w-100">
+        <form onSubmit={(e) => registerHandler(e, location, navigate, registerState, authDispatch)} className="input-form register flex-column flex-gap-1 flex-wrap h-auto w-100">
             <section className={`input-container flex-column m-5 ${registerState.firstName.length > 0 || registerState.focus.firstName ? "focused":"" }`}>
                 <input id="first-name" className="textbox-content p-5" type="text" name="first-name" onChange={(e) => setValueHandler(e, "firstName", "UPDATE_FIRST_NAME")} value={registerState.firstName} onFocus={() => setFocusHandler("firstName", true, "UPDATE_FOCUS")} onBlur={()=> setFocusHandler("firstName", false, "UPDATE_FOCUS")}/>
                 <label htmlFor="first-name" className="textbox-label m-0 px-1"> First Name<span className="required-field">*</span>

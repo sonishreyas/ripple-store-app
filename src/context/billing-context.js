@@ -2,7 +2,6 @@ import { createContext, useContext, useReducer, useEffect } from "react";
 import { billingReducer } from "../reducers";
 import { useCart } from "./";
 import { getBillingDataHandler } from "../utils";
-
 const defaultBillingContext = {
 	type: "",
 	totalMRP: 0,
@@ -17,7 +16,6 @@ const BillingProvider = ({ children }) => {
 		billingReducer,
 		defaultBillingContext
 	);
-	const token = localStorage.getItem("token");
 	const { cartState } = useCart();
 	useEffect(
 		() => getBillingDataHandler(cartState, billingDispatch),

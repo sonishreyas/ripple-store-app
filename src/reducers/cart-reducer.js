@@ -31,10 +31,6 @@ const cartReducer = (cartState, cartAction) => {
 			};
 
 		case "UPDATE_ITEM":
-			console.log(
-				"check = ",
-				updateObjInArray(cartState.cartData, cartAction.cartData)
-			);
 			return {
 				...cartState,
 				cartData: updateObjInArray(cartState.cartData, cartAction.cartData),

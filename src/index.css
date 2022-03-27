@@ -38,3 +38,23 @@
 .horizontal-tabs-content {
 	display: block;
 }
+
+.badge-text {
+	position: absolute;
+	background: var(--cta-color);
+	color: var(--tertiary-color);
+	font-weight: bold;
+	font-size: 0.9rem;
+	width: 2rem;
+	height: 2rem;
+}
+
+.cart-badge-text {
+	top: 1rem;
+	right: 12rem;
+}
+
+.wishlist-badge-text {
+	top: 1rem;
+	right: 20rem;
+}

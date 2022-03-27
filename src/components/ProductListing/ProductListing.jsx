@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { useCart, useProducts, useWishlist } from "../../context";
+import { useCart, useProducts, useWishlist, useAuth } from "../../context";
 import {Link} from "react-router-dom";
 import {AddToCartBtn, AddToCartBtnRedirect, GoToCartBtn, AddToWishlistBtn, AddToWishlistBtnRedirect, RemoveFromWishlistBtn } from "./product-card"
 import { presentInArray } from "../../utils";
@@ -8,7 +8,7 @@ const ProductListing = () => {
   const {productsData} = useProducts();
   const { wishlistState} = useWishlist();
   const { cartState } = useCart();
-  const token = localStorage.getItem("token");
+  const {authState} = useAuth();
   const navigate = useNavigate();
 
   return (
@@ -27,7 +27,7 @@ const ProductListing = () => {
                   className="card-image b-radius-2 mt-2"
                 />
               </section>
-              { token ?  presentInArray(wishlistState.itemsInWishlist, _id) ? <RemoveFromWishlistBtn productId={_id} token={token}/> : <AddToWishlistBtn productData={{product: {_id, name, brand, category, discount, discountPercent, imgURL, mrp, price, rating, type }}} token={token}/>  : <AddToWishlistBtnRedirect/>}
+              { authState.token ?  presentInArray(wishlistState.itemsInWishlist, _id) ? <RemoveFromWishlistBtn productId={_id} token={authState.token}/> : <AddToWishlistBtn productData={{product: {_id, name, brand, category, discount, discountPercent, imgURL, mrp, price, rating, type }}} token={authState.token}/>  : <AddToWishlistBtnRedirect/>}
               <section className="card-content p-5 pb-0">
                 <h3 className="card-title">{name}</h3>
                 <p className="card-category">{type}</p>
@@ -47,7 +47,7 @@ const ProductListing = () => {
                   </span>
                 </span>
               </section>
-              { token ?  presentInArray(cartState.itemsInCart, _id) ? <GoToCartBtn/>:<AddToCartBtn productData={{product: {_id, name, brand, category, discount, discountPercent, imgURL, mrp, price, rating, type, reviews }}} token={token}/> : <AddToCartBtnRedirect/>}
+              { authState.token ?  presentInArray(cartState.itemsInCart, _id) ? <GoToCartBtn/>:<AddToCartBtn productData={{product: {_id, name, brand, category, discount, discountPercent, imgURL, mrp, price, rating, type, reviews }}} token={authState.token}/> : <AddToCartBtnRedirect/>}
             </article> 
         )
         : <h4>No Products Found</h4>

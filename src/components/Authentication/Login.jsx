@@ -1,11 +1,12 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import {useState} from "react";
 import { loginHandler } from "../../utils";
-import {useLogin} from "../../context"
+import {useLogin, useAuth} from "../../context"
 const Login = () => {
 
     const {loginState,loginDispatch} = useLogin();
     const [showPassword,setShowPassword] = useState();
+    const { authDispatch } = useAuth()
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -23,7 +24,7 @@ const Login = () => {
         loginDispatch({focus: focusReset, type: type});
     }    
     return (
-        <form onSubmit={(e) => loginHandler(e, location, navigate, loginState)} className="input-form login flex-column flex-gap-1 flex-wrap h-auto w-100">
+        <form onSubmit={(e) => loginHandler(e, location, navigate, loginState, authDispatch)} className="input-form login flex-column flex-gap-1 flex-wrap h-auto w-100">
             <section className={`input-container flex-column m-5 ${loginState.email.length > 0 || loginState.focus.email ? "focused":"" }`}>
                 <input id="email" className="textbox-content p-5" type="email" name="email" onChange={(e) => setValueHandler(e, "email", "UPDATE_EMAIL")} value={loginState.email} onFocus={() => setFocusHandler("email", true, "UPDATE_FOCUS")} onBlur={()=> setFocusHandler("email", false, "UPDATE_FOCUS")}/>
                 <label htmlFor="email" className="textbox-label m-0 px-1">Email<span

@@ -1,8 +1,8 @@
 import {getWishlistDataHandler, presentInArray, removeFromWishlistHandler} from "../../utils";
-import { useWishlist, useCart } from "../../context";
+import { useWishlist, useCart, useAuth } from "../../context";
 import {GoToCartBtn, AddToCartBtn} from "../ProductListing/product-card"
 const WishlistProducts = () => {
-    const token = localStorage.getItem("token");
+    const {authState} = useAuth();
     const {wishlistState, wishlistDispatch} = useWishlist();
     const { cartState } = useCart();
     return (
@@ -28,8 +28,8 @@ const WishlistProducts = () => {
                                 </p>
                             </span>
                         </section>
-                        { presentInArray(cartState.itemsInCart, _id) ? <GoToCartBtn/> : <AddToCartBtn productData={{product: {_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type }}} token={token} />}
-                        <i className="far fa-times-circle rui-cross b-radius-circle card-dismiss-btn m-3 p-1" onClick={(e) => removeFromWishlistHandler(e, _id, token, wishlistDispatch)}></i>
+                        { presentInArray(cartState.itemsInCart, _id) ? <GoToCartBtn/> : <AddToCartBtn productData={{product: {_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type }}} token={authState.token} />}
+                        <i className="far fa-times-circle rui-cross b-radius-circle card-dismiss-btn m-3 p-1" onClick={(e) => removeFromWishlistHandler(e, _id, authState.token, wishlistDispatch)}></i>
                     </article>
                 )
             : <h4 className="h4 text-center m-5 p-5">No product added to wishlist</h4>

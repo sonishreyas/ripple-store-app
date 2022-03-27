@@ -111,14 +111,12 @@ const MoveToWishlistHandler = (
 	element.preventDefault();
 	(async () => {
 		try {
-			console.log("reached", productData, token);
 			const wishlistData = await axios.get(`/api/user/wishlist`, {
 				headers: {
 					Accept: "*/*",
 					authorization: token,
 				},
 			});
-			console.log("here = ", wishlistData);
 			if (
 				!presentObjInArray(wishlistData.data.wishlist, productData.product._id)
 			) {

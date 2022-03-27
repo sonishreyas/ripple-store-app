@@ -1,11 +1,11 @@
-import { useAddress, useAddressForm } from "../../context";
+import { useAddress, useAddressForm, useAuth } from "../../context";
 import {removeFromAddressHandler} from "../../utils";
 
 const AddressCard = ({props}) => {
     const {addressId ,name, houseNo, society, area, city, state, country, pincode} = props;
     const { setShowAddressFormModal, addressDispatch, addressState } = useAddress();
     const {addressFormDispatch} = useAddressForm();
-    const token = localStorage.getItem("token");
+    const {authState} = useAuth();
     
     const setValueHandler = (value,type) => {
         const fieldValue = {"value": value, "type": type};
@@ -25,7 +25,7 @@ const AddressCard = ({props}) => {
         setValueHandler(pincode,"UPDATE_PINCODE");
     }
     const handleDeleteAddress = (e) => {
-        removeFromAddressHandler(e,addressId,token,addressDispatch,addressState);
+        removeFromAddressHandler(e,addressId,authState.token,addressDispatch,addressState);
     }
     return (
         <article

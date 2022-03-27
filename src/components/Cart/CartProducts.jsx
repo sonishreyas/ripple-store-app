@@ -1,8 +1,8 @@
-import { useCart } from "../../context";
+import { useCart, useAuth } from "../../context";
 import { MoveToWishlistBtn } from "../ProductListing/product-card"
 import { UpdateCartItem } from "./";
 const CartProducts = () => {
-  const token = localStorage.getItem("token");
+  const {authState} = useAuth();
   const {cartState} = useCart();
   return (<>
     {cartState.cartData.length !== 0 ?
@@ -43,18 +43,18 @@ const CartProducts = () => {
                 <div className="items-counter-container flex-row align-center flex-gap-half text-bold py-5 px-0">
                   <span className="icon-btn cursor-pointer">
                     { qty > 1 ?
-                      <UpdateCartItem token={token} productId={_id} btnType="decrement" /> 
+                      <UpdateCartItem token={authState.token} productId={_id} btnType="decrement" /> 
                       : 
-                      <UpdateCartItem token={token} productId={_id} btnType="delete" /> 
+                      <UpdateCartItem token={authState.token} productId={_id} btnType="delete" /> 
                     }
                   </span>
                   <p className="icon-btn">{qty}</p>
                   <span className="icon-btn cursor-pointer">
-                    <UpdateCartItem token={token} productId={_id} btnType="increment" /> 
+                    <UpdateCartItem token={authState.token} productId={_id} btnType="increment" /> 
                   </span>
                 </div>
                 <div className="horizontal-card-btn-container flex-row align-center flex-gap-half text-bold py-5 px-0">
-                  <MoveToWishlistBtn productData={{product: {_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type, reviews, discount }}} token={token}/>
+                  <MoveToWishlistBtn productData={{product: {_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type, reviews, discount }}} token={authState.token}/>
                 </div>
               </div>
             </article>
