@@ -118,16 +118,15 @@ export const updateAddressItemHandler = function (schema, request) {
 		}
 		const userAddress = schema.users.findBy({ _id: userId }).address;
 		const updatedAddress = JSON.parse(request.requestBody);
-
-		userAddress.reduce(
+		const newUserAddress = userAddress.reduce(
 			(prev, curr) =>
-				curr._id === addressId
+				curr.addressId === addressId
 					? [...prev, { ...curr, ...updatedAddress }]
 					: [...prev, { ...curr }],
 			[]
 		);
-		this.db.users.update({ _id: userId }, { address: userAddress });
-		return new Response(200, {}, { address: userAddress });
+		this.db.users.update({ _id: userId }, { address: newUserAddress });
+		return new Response(200, {}, { address: newUserAddress });
 	} catch (error) {
 		return new Response(
 			500,

@@ -20,7 +20,6 @@ const AddressCard = ({props}) => {
         setValueHandler(state,"UPDATE_STATE");
         setValueHandler(country,"UPDATE_COUNTRY");
         setValueHandler(pincode,"UPDATE_PINCODE");
-
     }
     return (
         <article

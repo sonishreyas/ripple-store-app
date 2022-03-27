@@ -21,6 +21,10 @@ const addToAddressHandler = (e, addressData, token, addressDispatch) => {
 				type: "ADD_ITEM",
 				addressData: { ...addressData.address },
 			});
+			addressDispatch({
+				type: "SET_ACTIVE_ADDRESS",
+				selectedAddress: { ...addressData.address },
+			});
 		} catch (error) {
 			console.log(error);
 		}
@@ -124,7 +128,7 @@ const updateAddressHandler = (
 			console.log("Update = ", response);
 			addressDispatch({
 				type: "UPDATE_ITEM",
-				addressData: { _id: addressId, ...newAddress },
+				addressData: { addressId: addressId, ...newAddress },
 			});
 		} catch (error) {
 			console.log(error);

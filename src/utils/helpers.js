@@ -58,7 +58,9 @@ const updateObjInArray = (arr, element) =>
 const updateAddressObjInArray = (arr, element) =>
 	arr.reduce(
 		(prev, curr) =>
-			curr._id === element._id ? [...prev, ...element] : [...prev, { ...curr }],
+			curr.addressId === element.addressId
+				? [...prev, { ...element }]
+				: [...prev, { ...curr }],
 		[]
 	);
 
