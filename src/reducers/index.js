@@ -4,3 +4,4 @@ export { wishlistReducer } from "./wishlist-reducer";
 export { cartReducer } from "./cart-reducer";
 export { billingReducer } from "./billing-reducer";
 export { addressReducer, addressFormReducer } from "./address-reducer";
+export { checkoutReducer } from "./checkout-reducer";

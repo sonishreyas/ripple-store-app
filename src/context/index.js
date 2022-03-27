@@ -7,3 +7,4 @@ export { BillingProvider, useBilling } from "./billing-context";
 export { AddressProvider, useAddress } from "./address-context";
 export { AddressFormProvider, useAddressForm } from "./address-form-context";
 export { AuthProvider, useAuth } from "./auth-context";
+export { CheckoutProvider, useCheckout } from "./checkout-context";

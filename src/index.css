@@ -58,3 +58,15 @@
 	top: 1rem;
 	right: 20rem;
 }
+
+.cart-check {
+	font-size: 2rem;
+}
+
+.cart-cards {
+	background: var(--secondary-background-color);
+}
+
+.cart-items-count-container {
+	border-bottom: 0.2rem solid var(--cta-color);
+}
