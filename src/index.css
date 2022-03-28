@@ -70,3 +70,8 @@
 .cart-items-count-container {
 	border-bottom: 0.2rem solid var(--cta-color);
 }
+
+.filter-chip-selected {
+	color: var(--cta-color);
+	background-color: var(--tertiary-color);
+}

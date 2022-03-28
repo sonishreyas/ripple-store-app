@@ -7,14 +7,23 @@ const CartProducts = () => {
   const {authState} = useAuth();
   const {cartState} = useCart();
   const {checkoutState, checkoutDispatch} = useCheckout();
-  // console.log("Checkout", checkoutState);
-  const handleCheckout = (e, productsData) => e.target.checked ? addToCheckoutHandler(checkoutDispatch,productsData) : removeFromCheckoutHandler(checkoutDispatch, productsData._id) 
+  const handleCheckout = (e, productId) => e.target.checked ? addToCheckoutHandler(checkoutDispatch,productId) : removeFromCheckoutHandler(checkoutDispatch, productId) 
+  const handleSelectAllToCheckout = () => checkoutState.checkoutItemsCount === cartState.cartItemsCount ?  cartState.itemsInCart.map((item) => removeFromCheckoutHandler(checkoutDispatch, item)):
+    cartState.itemsInCart.map((item) => presentInArray(checkoutState.itemsInCheckout, item) ? null : addToCheckoutHandler(checkoutDispatch,item));
+  
   return (<>
     <li className="no-list p-5 pl-7 cart-items-count-container border-radius-5">
-      <section className="flex-row flex-gap-1 align-center justify-content-start">
-        <i className={`fa-solid fa-circle-check cart-check ${cartState.cartData.length > 0 ? "text-cta-color": ""}`}></i>
-        <h5 className="text-bold">{checkoutState.checkoutItemsCount} / {cartState.cartData.length} </h5>
-        <h5 className="text-bold">ITEMS SELECTED</h5>
+      <section className="flex-row flex-gap-1 align-center justify-content-space-between">
+        <section className="flex-row flex-gap-1 align-center justify-content-start">
+          <i className={`cursor-pointer fa-solid fa-circle-check cart-check ${(checkoutState.checkoutItemsCount === cartState.cartItemsCount && checkoutState.checkoutItemsCount > 0) ? "text-cta-color": ""}`}
+            onClick={handleSelectAllToCheckout}
+          ></i>
+          <h5 className="text-bold">Select All</h5>
+        </section>
+        <section className="flex-row flex-gap-1 align-center justify-content-start">
+          <h5 className="text-bold">{checkoutState.checkoutItemsCount} / {cartState.cartItemsCount} </h5>
+          <h5 className="text-bold">Items Selected for Checkout</h5>
+        </section>
       </section>
       
     </li>
@@ -22,12 +31,12 @@ const CartProducts = () => {
       cartState.cartData.map(({_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type, qty, reviews, discount }) => {
         return (
           <li key={`cart-${_id}`} className="no-list">
-            <label className={`basic-chip flex-row align-center flex-wrap flex-gap-1 h6 filter-chip cursor-pointer cart-cards card-shadow`}>
+            <label className={`basic-chip flex-row align-center flex-wrap flex-gap-1 h6 filter-chip cursor-pointer cart-cards card-shadow ${presentInArray(checkoutState.itemsInCheckout, _id) ? "filter-chip-selected": ""}`}>
               <input
                 className="filters"
                 type="checkbox"
                 checked={ presentInArray(checkoutState.itemsInCheckout, _id) ? true : false }
-                onChange={(e) => handleCheckout(e, {_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type, qty, reviews, discount}) }
+                onChange={(e) => handleCheckout(e, _id) }
               />
               <i className="fa-solid fa-circle-check cart-check"></i>
               <article className="basic-chip-content b-radius-2">

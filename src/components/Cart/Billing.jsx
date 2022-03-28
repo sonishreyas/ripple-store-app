@@ -24,11 +24,11 @@ const Billing = () => {
                                 </tr>
                                 <tr className="table-row">
                                     <td className="table-head">Discount on MRP</td>
-                                    <td className="table-data discount-text">-{billingState.discount}</td>
+                                    <td className="table-data discount-text">{billingState.discount > 0 ? "-" : "" }{billingState.discount}</td>
                                 </tr>
                                 <tr className="table-row">
                                     <td className="table-head">Convenience Fee</td>
-                                    <td className="table-data"><strike>₹100</strike> 0.00</td>
+                                    <td className="table-data">{billingState.totalAmount > 0 && <strike>₹100</strike>} 0.00</td>
                                 </tr>
                                 <tr className="table-row">
                                     <th className="table-head">Total Amount</th>

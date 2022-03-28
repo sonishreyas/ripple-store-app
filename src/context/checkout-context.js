@@ -4,7 +4,6 @@ const defaultCheckoutContext = {
 	type: "",
 	checkoutItemsCount: 0,
 	itemsInCheckout: [],
-	checkoutData: [],
 };
 
 const CheckoutContext = createContext({ defaultCheckoutContext });

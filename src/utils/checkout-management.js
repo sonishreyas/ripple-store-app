@@ -5,12 +5,11 @@
  * @param {string} token encodedToken of user
  * @param {function} checkoutDispatch Reducer function
  */
-const addToCheckoutHandler = (checkoutDispatch, productData) => {
+const addToCheckoutHandler = (checkoutDispatch, productId) => {
 	checkoutDispatch({
 		type: "ADD_ITEM",
 		checkoutItemsCount: 1,
-		itemsInCheckout: [productData._id],
-		checkoutData: { ...productData },
+		itemsInCheckout: [productId],
 	});
 };
 
@@ -26,7 +25,6 @@ const removeFromCheckoutHandler = (checkoutDispatch, productId) => {
 		type: "REMOVE_ITEM",
 		checkoutItemsCount: 1,
 		itemsInCheckout: [productId],
-		checkoutData: productId,
 	});
 };
 

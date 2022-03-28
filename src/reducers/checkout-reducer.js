@@ -6,7 +6,6 @@ import { removeFromArray, removeObjFromArray } from "../utils";
  * @returns Updated state into checkoutState
  */
 const checkoutReducer = (checkoutState, checkoutAction) => {
-	console.log("state = ", checkoutState, "action = ", checkoutAction);
 	switch (checkoutAction.type) {
 		case "ADD_ITEM":
 			return {
@@ -16,10 +15,6 @@ const checkoutReducer = (checkoutState, checkoutAction) => {
 				itemsInCheckout: [
 					...checkoutState.itemsInCheckout,
 					...checkoutAction.itemsInCheckout,
-				],
-				checkoutData: [
-					...checkoutState.checkoutData,
-					checkoutAction.checkoutData,
 				],
 			};
 
@@ -32,16 +27,6 @@ const checkoutReducer = (checkoutState, checkoutAction) => {
 					checkoutState.itemsInCheckout,
 					checkoutAction.itemsInCheckout[0]
 				),
-				checkoutData: removeObjFromArray(
-					checkoutState.checkoutData,
-					checkoutAction.checkoutData
-				),
-			};
-
-		case "GET_ITEM":
-			return {
-				...checkoutState,
-				checkoutData: [...checkoutAction.checkoutData],
 			};
 		default:
 			return checkoutState;
