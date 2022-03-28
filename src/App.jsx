@@ -6,6 +6,7 @@ import {
 	ProductDetails,
 	Profile,
 	Authentication,
+	Checkout
 } from "./pages";
 import { Routes, Route } from "react-router-dom";
 import Mockman from "mockman-js"
@@ -17,6 +18,7 @@ export default function App() {
 			<Route path="/products" element={<Products />} />
 			<Route path="/profile" element={<Profile />} />
 			<Route path="/wishlist" element={<Wishlist />} />
+			<Route path="/checkout" element={<Checkout />} />
 			<Route path="/auth" element={<Authentication />} />
 			<Route path="/mock" element={<Mockman />} />
 		</Routes>

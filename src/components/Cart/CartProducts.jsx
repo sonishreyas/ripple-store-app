@@ -30,7 +30,7 @@ const CartProducts = () => {
     {cartState.cartData.length !== 0 ?
       cartState.cartData.map(({_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type, qty, reviews, discount }) => {
         return (
-          <li key={`cart-${_id}`} className="no-list">
+          <li key={_id} className="no-list">
             <label className={`basic-chip flex-row align-center flex-wrap flex-gap-1 h6 filter-chip cursor-pointer cart-cards card-shadow ${presentInArray(checkoutState.itemsInCheckout, _id) ? "filter-chip-selected": ""}`}>
               <input
                 className="filters"
