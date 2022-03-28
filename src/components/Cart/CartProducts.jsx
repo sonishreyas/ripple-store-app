@@ -7,13 +7,13 @@ const CartProducts = () => {
   const {authState} = useAuth();
   const {cartState} = useCart();
   const {checkoutState, checkoutDispatch} = useCheckout();
-  console.log("Checkout", checkoutState);
-  const handleCheckout = (e, productsData) => e.target.checked ? removeFromCheckoutHandler(checkoutDispatch, productsData._id) : addToCheckoutHandler(checkoutDispatch,productsData)
+  // console.log("Checkout", checkoutState);
+  const handleCheckout = (e, productsData) => e.target.checked ? addToCheckoutHandler(checkoutDispatch,productsData) : removeFromCheckoutHandler(checkoutDispatch, productsData._id) 
   return (<>
     <li className="no-list p-5 pl-7 cart-items-count-container border-radius-5">
       <section className="flex-row flex-gap-1 align-center justify-content-start">
         <i className={`fa-solid fa-circle-check cart-check ${cartState.cartData.length > 0 ? "text-cta-color": ""}`}></i>
-        <h5 className="text-bold">{} / {cartState.cartData.length} </h5>
+        <h5 className="text-bold">{checkoutState.checkoutItemsCount} / {cartState.cartData.length} </h5>
         <h5 className="text-bold">ITEMS SELECTED</h5>
       </section>
       

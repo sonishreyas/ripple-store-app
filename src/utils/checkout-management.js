@@ -24,7 +24,7 @@ const addToCheckoutHandler = (checkoutDispatch, productData) => {
 const removeFromCheckoutHandler = (checkoutDispatch, productId) => {
 	checkoutDispatch({
 		type: "REMOVE_ITEM",
-		checkoutCheckoutItemsCount: -1,
+		checkoutItemsCount: 1,
 		itemsInCheckout: [productId],
 		checkoutData: productId,
 	});

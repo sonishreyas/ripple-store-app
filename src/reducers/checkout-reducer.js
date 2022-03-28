@@ -6,6 +6,7 @@ import { removeFromArray, removeObjFromArray } from "../utils";
  * @returns Updated state into checkoutState
  */
 const checkoutReducer = (checkoutState, checkoutAction) => {
+	console.log("state = ", checkoutState, "action = ", checkoutAction);
 	switch (checkoutAction.type) {
 		case "ADD_ITEM":
 			return {
@@ -26,7 +27,7 @@ const checkoutReducer = (checkoutState, checkoutAction) => {
 			return {
 				...checkoutState,
 				checkoutItemsCount:
-					checkoutState.checkoutItemsCount + checkoutAction.checkoutItemsCount,
+					checkoutState.checkoutItemsCount - checkoutAction.checkoutItemsCount,
 				itemsInCheckout: removeFromArray(
 					checkoutState.itemsInCheckout,
 					checkoutAction.itemsInCheckout[0]
