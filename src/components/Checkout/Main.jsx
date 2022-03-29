@@ -9,7 +9,8 @@ const Main = () => {
             {checkoutState.itemsInCheckout.length !== 0 ?
             <section className="rui-main--heading-container no-border">
                 <article className="cart-container grid-2-column">
-                    <div className="cart-content flex-column justify-content-center flex-wrap">
+                    <div className="cart-content flex-column justify-content-start flex-wrap">
+                        <h2 className="text-bold text-center">Order Summary</h2>
                         <ul className="cart-list">
                             <CheckoutProducts />
                         </ul>

@@ -9,17 +9,17 @@ const CheckoutProducts = () => {
       cartState.cartData.map(({_id, name, brand, category, discountPercent, imgURL, mrp, price, rating, type, qty, reviews, discount }) => {
         return (
           <li key={_id} className="no-list">
-            <article className="card horizontal card-shadow p-5 b-radius-2 w-100 h-auto">
-                <div className="flex-row p-2 b-radius-2 m-2">
+            <article className="card horizontal card-shadow p-5 b-radius-2 w-100 h-auto list-card">
+                <div className="flex-row p-1 b-radius-2 ">
                     <div className="horizontal-card-img--container flex-row justify-content-center align-center flex-wrap b-radius-2">
-                    <img
-                        src={imgURL}
-                        alt={name}
-                        className="horizontal-card-img b-radius-2 m-5"
-                    />
+                        <img
+                            src={imgURL}
+                            alt={name}
+                            className="horizontal-card-img b-radius-2 m-5"
+                        />
                     </div>
-                    <div className="horizontal-card-text--container flex-column flex-gap-1 p-5 b-radius-2 my-0 mx-5">
-                    <h2>{name}</h2>
+                    <div className="horizontal-card-text--container flex-column flex-gap-1 p-2 b-radius-2 my-0 mx-5">
+                    <h3 className="text-bold">{name}</h3>
                     <p>{brand}</p>
                     <span className="rating flex-row align-center flex-gap-half pb-5">
                         {[...Array(rating)].map((item, index) => {
@@ -32,8 +32,8 @@ const CheckoutProducts = () => {
                         | ({reviews} reviews)
                         </p>
                     </span>
-                    <div className="pricing flex-row align-center flex-gap-half text-bold py-5 px-0">
-                        <h3>{price}</h3>
+                    <div className="pricing flex-row align-center flex-gap-half text-bold py-2 px-0">
+                        <p>Rs. {price}</p>
                         <p className="secondary-font">
                         <strike>{mrp}</strike>
                         </p>
@@ -41,10 +41,8 @@ const CheckoutProducts = () => {
                         ( Rs. {discount} OFF )
                         </p>
                     </div>
-                    <div className="items-counter-container flex-row align-center flex-gap-half text-bold py-5 px-0">
-                        <p className="icon-btn"> qty: {qty}</p>
-                    </div>
-                    </div>
+                    <p className="text-bold">Quantity: {qty}</p>
+                  </div>
                 </div>
             </article>
           </li>

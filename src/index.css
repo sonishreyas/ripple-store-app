@@ -75,3 +75,30 @@
 	color: var(--cta-color);
 	background-color: var(--tertiary-color);
 }
+
+.list-card {
+	height: 20rem;
+}
+.cart-content .horizontal {
+	height: 20rem;
+}
+.list-card .horizontal-card-img {
+	height: 15.5rem;
+	width: 12rem;
+}
+
+.list-card .horizontal-card-img--container {
+	height: max-content;
+}
+
+.list-card .horizontal-card-text--container {
+	height: 20rem;
+}
+
+.list-card > * {
+	font-size: 1.5rem;
+}
+
+.cart-billing .cart-list li {
+	border-bottom: 0rem;
+}
