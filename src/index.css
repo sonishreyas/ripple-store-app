@@ -25,8 +25,8 @@
 }
 
 .address-modal-container {
-	width: min(80%, max-content);
-	height: auto;
+	width: 80%;
+	height: 50rem;
 }
 
 .address-form-modal-container {

@@ -10,60 +10,61 @@ const setAddressStatus = (addressDataId) => {
 		addressDataId: true;
 	}
 };
+
 /**
  * Reducer function to handle address state
- * @param {Object} addressState State values of address
- * @param {*} addressAction The changed state
- * @returns Updated state into addressState
+ * @param {*} addressState State values of address
+ * @param {*} param1 type: actionType, payload: new state value
+ * @returns  Updated state into addressState
  */
-const addressReducer = (addressState, addressAction) => {
-	switch (addressAction.type) {
-		case "ADD_ITEM":
+const addressReducer = (addressState, { type, payload }) => {
+	switch (type) {
+		case "ADD_NEW_ADDRESS":
 			return {
 				...addressState,
-				addressData: [...addressState.addressData, addressAction.addressData],
+				addressData: [...addressState.addressData, payload.addressData],
 			};
 
-		case "REMOVE_ITEM":
+		case "REMOVE_ADDRESS":
 			return {
 				...addressState,
 				addressData: removeObjFromArray(
 					addressState.addressData,
-					addressAction.addressData
+					payload.addressData
 				),
 			};
 
-		case "UPDATE_ITEM":
+		case "UPDATE_ADDRESS":
 			return {
 				...addressState,
 				addressData: updateAddressObjInArray(
 					addressState.addressData,
-					addressAction.addressData
+					payload.addressData
 				),
 			};
 
-		case "GET_ITEM":
+		case "GET_ADDRESS":
 			return {
 				...addressState,
-				addressData: [...addressAction.addressData],
+				addressData: [...payload.addressData],
 			};
 
 		case "SET_ACTIVE_ADDRESS":
 			return {
 				...addressState,
-				selectedAddress: { ...addressAction.selectedAddress },
+				selectedAddress: { ...payload.selectedAddress },
 			};
 
 		case "REMOVE_SELECTED_ADDRESS":
 			return {
 				...addressState,
-				selectedAddress: addressAction.selectedAddress,
+				selectedAddress: payload.selectedAddress,
 			};
 
 		case "UPDATE_SELECTED_ADDRESS":
 			return {
 				...addressState,
-				selectedAddress: addressAction.selectedAddress,
+				selectedAddress: payload.selectedAddress,
 			};
 
 		default:

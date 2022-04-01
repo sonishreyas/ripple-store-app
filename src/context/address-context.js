@@ -4,7 +4,6 @@ import { addressReducer } from "../reducers";
 import { getAddressDataHandler } from "../utils";
 
 const defaultAddressContext = {
-	type: "",
 	selectedAddress: {},
 	addressData: [],
 };
@@ -19,14 +18,8 @@ const AddressProvider = ({ children }) => {
 	const [showAddressModal, setShowAddressModal] = useState(false);
 	const [showAddressFormModal, setShowAddressFormModal] = useState(false);
 
-	const token = localStorage.getItem("token");
+	useEffect(() => getAddressDataHandler(addressState, addressDispatch), []);
 
-	useEffect(
-		() => getAddressDataHandler(token, addressState, addressDispatch),
-		[]
-	);
-
-	// console.log("Address = ", addressState);
 	return (
 		<AddressContext.Provider
 			value={{

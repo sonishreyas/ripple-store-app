@@ -1,28 +1,23 @@
 import axios from "axios";
 import { presentObjInArray } from "./";
 import { removeFromCartHandler } from "./";
+import { HEADERS } from "./headers";
+
 /**
  * Add product data to wishlist
  * @param {*} element
  * @param {Object} productData Product to be added in wishlist
- * @param {string} token encodedToken of user
  * @param {function} wishlistDispatch Reducer function
  */
-const addToWishlistHandler = (
-	element,
-	productData,
-	token,
-	wishlistDispatch
-) => {
+const addToWishlistHandler = (element, productData, wishlistDispatch) => {
 	element.preventDefault();
 	(async () => {
 		try {
-			const response = await axios.post(`/api/user/wishlist`, productData, {
-				headers: {
-					Accept: "*/*",
-					authorization: token,
-				},
-			});
+			const response = await axios.post(
+				`/api/user/wishlist`,
+				productData,
+				HEADERS
+			);
 			wishlistDispatch({
 				type: "ADD_ITEM",
 				wishlistItemsCount: response.data.wishlist.length,
@@ -39,24 +34,16 @@ const addToWishlistHandler = (
  * Remove data from wishlist
  * @param element
  * @param {string} productId productId to remove from wishlist
- * @param {string} token encodedToken of user
  * @param {function} wishlistDispatch Reducer function
  */
-const removeFromWishlistHandler = (
-	element,
-	productId,
-	token,
-	wishlistDispatch
-) => {
+const removeFromWishlistHandler = (element, productId, wishlistDispatch) => {
 	element.preventDefault();
 	(async () => {
 		try {
-			const response = await axios.delete(`/api/user/wishlist/${productId}`, {
-				headers: {
-					Accept: "*/*",
-					authorization: token,
-				},
-			});
+			const response = await axios.delete(
+				`/api/user/wishlist/${productId}`,
+				HEADERS
+			);
 			wishlistDispatch({
 				type: "REMOVE_ITEM",
 				wishlistItemsCount: response.data.wishlist.length,
@@ -71,19 +58,12 @@ const removeFromWishlistHandler = (
 
 /**
  * Retrieve wishlist data
- * @param element
- * @param {string} token encodedToken of user
  * @param {function} wishlistDispatch Reducer function
  */
-const getWishlistDataHandler = (token, wishlistDispatch) => {
+const getWishlistDataHandler = (wishlistDispatch) => {
 	(async () => {
 		try {
-			const response = await axios.get(`/api/user/wishlist`, {
-				headers: {
-					Accept: "*/*",
-					authorization: token,
-				},
-			});
+			const response = await axios.get(`/api/user/wishlist`, HEADERS);
 			wishlistDispatch({
 				type: "GET_ITEM",
 				wishlistData: response.data.wishlist,

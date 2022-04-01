@@ -1,29 +1,32 @@
 import axios from "axios";
+import { HEADERS } from "./headers";
 
 /**
  * Add address data to address list
  * @param {*} element
  * @param {Object} addressData Address to be added in address list
- * @param {string} token encodedToken of user
  * @param {function} addressDispatch Reducer function
  */
-const addToAddressHandler = (e, addressData, token, addressDispatch) => {
+const addToAddressHandler = (e, addressData, addressDispatch) => {
 	e.preventDefault();
 	(async () => {
 		try {
-			const response = await axios.post(`/api/user/address`, addressData, {
-				headers: {
-					Accept: "*/*",
-					authorization: token,
+			const response = await axios.post(
+				`/api/user/address`,
+				addressData,
+				HEADERS
+			);
+			addressDispatch({
+				type: "ADD_NEW_ADDRESS",
+				payload: {
+					addressData: { ...addressData.address },
 				},
 			});
 			addressDispatch({
-				type: "ADD_ITEM",
-				addressData: { ...addressData.address },
-			});
-			addressDispatch({
 				type: "SET_ACTIVE_ADDRESS",
-				selectedAddress: { ...addressData.address },
+				payload: {
+					selectedAddress: { ...addressData.address },
+				},
 			});
 		} catch (error) {
 			console.log(error);
@@ -35,33 +38,33 @@ const addToAddressHandler = (e, addressData, token, addressDispatch) => {
  * Remove data from address
  * @param element
  * @param {string} addressId addressId to remove from address
- * @param {string} token encodedToken of user
  * @param {function} addressDispatch Reducer function
  */
 const removeFromAddressHandler = (
 	element,
 	addressId,
-	token,
 	addressDispatch,
 	addressState
 ) => {
 	element.preventDefault();
 	(async () => {
 		try {
-			const response = await axios.delete(`/api/user/address/${addressId}`, {
-				headers: {
-					Accept: "*/*",
-					authorization: token,
-				},
-			});
+			const response = await axios.delete(
+				`/api/user/address/${addressId}`,
+				HEADERS
+			);
 			addressDispatch({
-				type: "REMOVE_ITEM",
-				addressData: addressId,
+				type: "REMOVE_ADDRESS",
+				payload: {
+					addressData: addressId,
+				},
 			});
 			addressId === addressState.selectedAddress.addressId &&
 				addressDispatch({
 					type: "REMOVE_SELECTED_ADDRESS",
-					selectedAddress: {},
+					payload: {
+						selectedAddress: {},
+					},
 				});
 		} catch (error) {
 			console.log(error);
@@ -72,30 +75,28 @@ const removeFromAddressHandler = (
 /**
  * Retrieve address data
  * @param element
- * @param {string} token encodedToken of user
  * @param {function} addressDispatch Reducer function
  */
-const getAddressDataHandler = (token, addressState, addressDispatch) => {
+const getAddressDataHandler = (addressState, addressDispatch) => {
 	(async () => {
 		try {
-			const response = await axios.get(`/api/user/address`, {
-				headers: {
-					Accept: "*/*",
-					authorization: token,
-				},
-			});
+			const response = await axios.get(`/api/user/address`, HEADERS);
 
 			addressDispatch({
-				type: "GET_ITEM",
-				addressData: response.data.address,
+				type: "GET_ADDRESS",
+				payload: {
+					addressData: response.data.address,
+				},
 			});
 
 			if (Object.keys(addressState.selectedAddress).length === 0) {
 				addressDispatch({
 					type: "SET_ACTIVE_ADDRESS",
-					selectedAddress: response.data.address.filter(
-						(item) => item.default
-					)[0],
+					payload: {
+						selectedAddress: response.data.address.filter(
+							(item) => item.default
+						)[0],
+					},
 				});
 			}
 		} catch (error) {
@@ -108,13 +109,11 @@ const getAddressDataHandler = (token, addressState, addressDispatch) => {
  * Update data of address
  * @param element
  * @param {string} addressId addressId to remove from cart
- * @param {string} token encodedToken of user
  * @param {function} cartDispatch Reducer function
  */
 const updateAddressHandler = (
 	element,
 	addressId,
-	token,
 	addressDispatch,
 	newAddress,
 	addressState
@@ -125,27 +124,27 @@ const updateAddressHandler = (
 			const response = await axios.post(
 				`/api/user/address/${addressId}`,
 				newAddress,
-				{
-					headers: {
-						Accept: "*/*",
-						authorization: token,
-					},
-				}
+				HEADERS
 			);
 			addressDispatch({
-				type: "UPDATE_ITEM",
-				addressData: { addressId: addressId, ...newAddress },
+				type: "UPDATE_ADDRESS",
+				payload: {
+					addressData: { addressId: addressId, ...newAddress },
+				},
 			});
 			addressId === addressState.selectedAddress.addressId &&
 				addressDispatch({
 					type: "UPDATE_SELECTED_ADDRESS",
-					selectedAddress: { ...newAddress },
+					payload: {
+						selectedAddress: { ...newAddress },
+					},
 				});
 		} catch (error) {
 			console.log(error);
 		}
 	})();
 };
+
 export {
 	addToAddressHandler,
 	removeFromAddressHandler,
