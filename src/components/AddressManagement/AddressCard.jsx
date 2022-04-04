@@ -1,4 +1,4 @@
-import { useAddress, useAddressForm, useAuth } from "../../context";
+import { useAddress, useAddressForm } from "../../context";
 import { removeFromAddressHandler } from "../../utils";
 
 const AddressCard = ({ props }) => {
@@ -16,33 +16,32 @@ const AddressCard = ({ props }) => {
 	const { setShowAddressFormModal, addressDispatch, addressState } =
 		useAddress();
 	const { addressFormDispatch } = useAddressForm();
-	const { authState } = useAuth();
-
-	const setValueHandler = (value, type) => {
-		const fieldValue = { value: value, type: type };
-		addressFormDispatch(fieldValue);
-	};
 
 	const handleEditAddress = () => {
 		setShowAddressFormModal(true);
-		addressFormDispatch({ addressId: addressId });
-		setValueHandler(name, "UPDATE_NAME");
-		setValueHandler(houseNo, "UPDATE_HOUSE_NO");
-		setValueHandler(society, "UPDATE_SOCIETY");
-		setValueHandler(area, "UPDATE_AREA");
-		setValueHandler(city, "UPDATE_CITY");
-		setValueHandler(state, "UPDATE_STATE");
-		setValueHandler(country, "UPDATE_COUNTRY");
-		setValueHandler(pincode, "UPDATE_PINCODE");
+		addressFormDispatch({
+			type: "UPDATE_ADDRESS_ID",
+			payload: { addressId: addressId },
+		});
+		const formField = {
+			type: "UPDATE_ADDRESS",
+			payload: {
+				address: {
+					name: name,
+					houseNo: houseNo,
+					society: society,
+					area: area,
+					country: country,
+					state: state,
+					city: city,
+					pincode: pincode,
+				},
+			},
+		};
+		addressFormDispatch(formField);
 	};
 	const handleDeleteAddress = (e) => {
-		removeFromAddressHandler(
-			e,
-			addressId,
-			authState.token,
-			addressDispatch,
-			addressState
-		);
+		removeFromAddressHandler(e, addressId, addressDispatch, addressState);
 	};
 	return (
 		<div className="flex-column justify-content-center flex-wrap p-10 b-radius-2 w-100 h-auto">

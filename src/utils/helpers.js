@@ -8,13 +8,22 @@ const removeFromArray = (arr, element) =>
 	arr.filter((item) => item !== element);
 
 /**
+ * Removed element from address array
+ * @param {Array} arr Array from which we need to remove an element
+ * @param {any} element Element that needs to be removed from arr
+ * @returns Array with element removed
+ */
+const removeAddressObjFromArray = (arr, element) =>
+	arr.filter((item) => item.addressId !== element);
+
+/**
  * Removed element from array
  * @param {Array} arr Array from which we need to remove an element
  * @param {any} element Element that needs to be removed from arr
  * @returns Array with element removed
  */
 const removeObjFromArray = (arr, element) =>
-	arr.filter((item) => item.addressId !== element);
+	arr.filter((item) => item !== element);
 
 /**
  * Check if its present in the array
@@ -71,4 +80,5 @@ export {
 	removeObjFromArray,
 	updateObjInArray,
 	updateAddressObjInArray,
+	removeAddressObjFromArray,
 };

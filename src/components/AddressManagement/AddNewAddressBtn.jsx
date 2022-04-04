@@ -5,7 +5,10 @@ const AddNewAddressBtn = () => {
 	const { addressFormDispatch } = useAddressForm();
 	const handleAddressForm = () => {
 		setShowAddressFormModal(true);
-		addressFormDispatch({ addressId: "" });
+		addressFormDispatch({
+			type: "UPDATE_ADDRESS_ID",
+			payload: { addressId: "" },
+		});
 	};
 	return (
 		<button

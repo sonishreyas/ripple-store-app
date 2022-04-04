@@ -25,6 +25,7 @@ export {
 	removeObjFromArray,
 	updateObjInArray,
 	updateAddressObjInArray,
+	removeAddressObjFromArray,
 } from "./helpers";
 export { getBillingDataHandler } from "./billing";
 export {
