@@ -7,19 +7,18 @@ const Brands = () => {
 	const categoriesData = useCategoriesDataHook();
 
 	const handleFilterClick = (name) => {
-		console.log("here");
-		// productsDispatch({
-		// 	type: "FILTER_BRAND",
-		// 	payload: {
-		// 		filterName: name,
-		// 		brandFilters: ((brandFilters) => {
-		// 			const newBrandFilters = { ...brandFilters };
-		// 			newBrandFilters[name] = true;
-		// 			return newBrandFilters;
-		// 		})(productsState.brandFilters),
-		// 	},
-		// });
-		// navigate("/products");
+		productsDispatch({
+			type: "FILTER_BRAND",
+			payload: {
+				filterName: name,
+				brandFilters: ((brandFilters) => {
+					const newBrandFilters = { ...brandFilters };
+					newBrandFilters[name] = true;
+					return newBrandFilters;
+				})(productsState.brandFilters),
+			},
+		});
+		navigate("/products");
 	};
 	return (
 		<>

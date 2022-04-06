@@ -38,7 +38,7 @@ export const categories = [
 			},
 			{
 				_id: uuid(),
-				name: "Flip Flops",
+				name: "Sandles & Floaters",
 				discountOffer: "Up to 30-50% Off",
 				imgURL:
 					"https://raw.githubusercontent.com/sonishreyas/rippleUI/dev/components/media/images/sneaker.png",
