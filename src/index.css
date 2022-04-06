@@ -79,3 +79,15 @@
 	border-color: var(--cta-color);
 	color: var(--cta-color);
 }
+
+.featured-brand-container {
+	width: 25rem;
+	height: 28rem;
+}
+.featured-brand-section {
+	width: 25rem;
+	height: 20rem;
+}
+.featured-brand-image {
+	width: 20rem;
+}

@@ -11,7 +11,7 @@ import {
 import { presentObjInArray, presentInArray } from "../../utils";
 
 const ProductListing = () => {
-	const { productsData } = useProducts();
+	const { productsData, productsState } = useProducts();
 	const { wishlistState } = useWishlist();
 	const { cartState } = useCart();
 	const { authState } = useAuth();

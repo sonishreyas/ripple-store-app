@@ -18,7 +18,6 @@ import { useProductsDataHook, useFiltersDataHook } from "../custom-hooks";
 const getDefaultProductsState = (filtersData) => {
 	return {
 		filterName: "Reset",
-		filterType: "default",
 		sortByType: "",
 		filterSelectClassName: "",
 		categoryFilters: filtersData.categoryFilters.reduce((prev, curr) => {
@@ -59,7 +58,10 @@ const ProductsProvider = ({ children }) => {
 	);
 	useEffect(() => {
 		if (Object.keys(defaultProductsState).length !== 0) {
-			productsDispatch({ ...defaultProductsState });
+			productsDispatch({
+				payload: { ...defaultProductsState },
+				type: "GET_DATA",
+			});
 		}
 	}, [defaultProductsState]);
 
@@ -79,7 +81,6 @@ const ProductsProvider = ({ children }) => {
 			);
 		}
 	}, [productsData, productsState]);
-
 	return (
 		<ProductsContext.Provider
 			value={{

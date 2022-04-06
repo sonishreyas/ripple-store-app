@@ -6,22 +6,87 @@ import { v4 as uuid } from "uuid";
  * */
 
 export const categories = [
-  {
-    _id: uuid(),
-    categoryName: "fiction",
-    description:
-      "literature in the form of prose, especially novels, that describes imaginary events and people",
-  },
-  {
-    _id: uuid(),
-    categoryName: "non-fiction",
-    description:
-      "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
-  },
-  {
-    _id: uuid(),
-    categoryName: "horror",
-    description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
-  },
+	{
+		featuredCategories: [
+			{
+				_id: uuid(),
+				name: "Sneakers",
+				discountOffer: "Up to 30-50% Off",
+				imgURL:
+					"https://raw.githubusercontent.com/sonishreyas/rippleUI/dev/components/media/images/sneaker.png",
+			},
+			{
+				_id: uuid(),
+				name: "Casual Shoes",
+				discountOffer: "Up to 20-50% Off",
+				imgURL:
+					"https://raw.githubusercontent.com/sonishreyas/rippleUI/dev/components/media/images/sneaker.png",
+			},
+			{
+				_id: uuid(),
+				name: "Sports Shoes",
+				discountOffer: "Up to 50-70% Off",
+				imgURL:
+					"https://raw.githubusercontent.com/sonishreyas/rippleUI/dev/components/media/images/sneaker.png",
+			},
+			{
+				_id: uuid(),
+				name: "Socks",
+				discountOffer: "Up to 10-20% Off",
+				imgURL:
+					"https://raw.githubusercontent.com/sonishreyas/rippleUI/dev/components/media/images/sneaker.png",
+			},
+			{
+				_id: uuid(),
+				name: "Flip Flops",
+				discountOffer: "Up to 30-50% Off",
+				imgURL:
+					"https://raw.githubusercontent.com/sonishreyas/rippleUI/dev/components/media/images/sneaker.png",
+			},
+		],
+		featuredBrands: [
+			{
+				_id: uuid(),
+				name: "Adidas",
+				discountOffer: "Up to 30-50% Off",
+				imgURL:
+					"https://raw.githubusercontent.com/sonishreyas/rippleUI/dev/components/media/images/brand-logo.png",
+			},
+			{
+				_id: uuid(),
+				name: "PUMA",
+				discountOffer: "Up to 20-50% Off",
+				imgURL:
+					"https://raw.githubusercontent.com/sonishreyas/rippleUI/dev/components/media/images/brand-logo.png",
+			},
+			{
+				_id: uuid(),
+				name: "U.S. Polo Assn.",
+				discountOffer: "Up to 50-70% Off",
+				imgURL:
+					"https://raw.githubusercontent.com/sonishreyas/rippleUI/dev/components/media/images/brand-logo.png",
+			},
+			{
+				_id: uuid(),
+				name: "Woodland",
+				discountOffer: "Up to 10-20% Off",
+				imgURL:
+					"https://raw.githubusercontent.com/sonishreyas/rippleUI/dev/components/media/images/brand-logo.png",
+			},
+			{
+				_id: uuid(),
+				name: "BATA",
+				discountOffer: "Up to 30-50% Off",
+				imgURL:
+					"https://raw.githubusercontent.com/sonishreyas/rippleUI/dev/components/media/images/brand-logo.png",
+			},
+			{
+				_id: uuid(),
+				name: "Roadster",
+				discountOffer: "Up to 30-50% Off",
+				imgURL:
+					"https://raw.githubusercontent.com/sonishreyas/rippleUI/dev/components/media/images/brand-logo.png",
+			},
+		],
+	},
 ];
