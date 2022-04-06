@@ -73,6 +73,20 @@ const updateAddressObjInArray = (arr, element) =>
 		[]
 	);
 
+const checkIfAddressPresent = (addressData, addressState) =>
+	addressState.addressData.find(
+		(address) =>
+			address.name === addressData.name &&
+			address.houseNo === addressData.houseNo &&
+			address.society === addressData.society &&
+			address.area === addressData.area &&
+			address.country === addressData.country &&
+			address.state === addressData.state &&
+			address.city === addressData.city &&
+			address.pincode === addressData.pincode
+	) !== undefined
+		? true
+		: false;
 export {
 	removeFromArray,
 	presentInArray,
@@ -81,4 +95,5 @@ export {
 	updateObjInArray,
 	updateAddressObjInArray,
 	removeAddressObjFromArray,
+	checkIfAddressPresent,
 };

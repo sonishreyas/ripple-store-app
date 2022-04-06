@@ -1,5 +1,9 @@
 import { useAddressForm, useAddress, useAuth } from "../../context";
-import { addToAddressHandler, updateAddressHandler } from "../../utils";
+import {
+	addToAddressHandler,
+	updateAddressHandler,
+	checkIfAddressPresent,
+} from "../../utils";
 const AddressFormModal = () => {
 	const { addressFormState, addressFormDispatch } = useAddressForm();
 	const { setShowAddressFormModal, addressDispatch, addressState } =
@@ -28,8 +32,10 @@ const AddressFormModal = () => {
 		addressFormDispatch(fieldValue);
 	};
 
-	const handleAddressFormDismiss = () => setShowAddressFormModal(false);
-
+	const handleAddressFormDismiss = () => {
+		setShowAddressFormModal(false);
+		addressFormDispatch({ type: "RESET" });
+	};
 	const addressFormFields = [
 		{ fieldName: "name", label: "Name" },
 		{ fieldName: "houseNo", label: "House No" },
@@ -44,16 +50,24 @@ const AddressFormModal = () => {
 	const addressFormSubmitHandler = (e) => {
 		const addressData = {};
 		addressData["address"] = addressFormState.address;
+
+		console.log(
+			addressData,
+			addressState,
+			checkIfAddressPresent(addressData.address, addressState)
+		);
 		addressFormState.addressId.length
-			? addToAddressHandler(e, addressData, addressDispatch)
-			: updateAddressHandler(
+			? updateAddressHandler(
 					e,
 					addressFormState.addressId,
 					addressDispatch,
 					addressData.address,
 					addressState
-			  );
-		setShowAddressFormModal(false);
+			  )
+			: !checkIfAddressPresent(addressData.address, addressState)
+			? addToAddressHandler(e, addressData, addressDispatch)
+			: handleAddressFormDismiss();
+		handleAddressFormDismiss();
 	};
 
 	const handleFillTestAddressValues = () => {

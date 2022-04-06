@@ -1,4 +1,4 @@
-import { removeObjFromArray, updateAddressObjInArray } from "../utils";
+import { removeAddressObjFromArray, updateAddressObjInArray } from "../utils";
 
 const resetAddressStatus = (addressData) =>
 	Object.keys(addressData).reduce((prev, curr) => {
@@ -89,7 +89,30 @@ const addressFormReducer = (addressFormState, { type, payload }) => {
 				...addressFormState,
 				addressId: payload.addressId,
 			};
-
+		case "RESET":
+			return {
+				...addressFormState,
+				focus: {
+					name: false,
+					houseNo: false,
+					society: false,
+					area: false,
+					country: false,
+					state: false,
+					city: false,
+					pincode: false,
+				},
+				address: {
+					name: "",
+					houseNo: "",
+					society: "",
+					area: "",
+					country: "",
+					state: "",
+					city: "",
+					pincode: "",
+				},
+			};
 		default:
 			return addressFormState;
 	}

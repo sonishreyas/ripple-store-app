@@ -22,7 +22,7 @@ const WishlistProvider = ({ children }) => {
 		() =>
 			authState.token?.length &&
 			getWishlistDataHandler(authState.token, wishlistDispatch),
-		[]
+		[authState]
 	);
 	return (
 		<WishlistContext.Provider

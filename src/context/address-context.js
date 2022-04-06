@@ -23,7 +23,7 @@ const AddressProvider = ({ children }) => {
 		() =>
 			authState.token?.length &&
 			getAddressDataHandler(addressState, addressDispatch),
-		[]
+		[authState]
 	);
 
 	return (

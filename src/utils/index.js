@@ -32,6 +32,7 @@ export {
 	updateObjInArray,
 	updateAddressObjInArray,
 	removeAddressObjFromArray,
+	checkIfAddressPresent,
 } from "./helpers";
 export { getBillingDataHandler } from "./billing";
 export {

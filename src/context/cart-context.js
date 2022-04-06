@@ -27,7 +27,7 @@ const CartProvider = ({ children }) => {
 		() =>
 			authState.token?.length &&
 			getCartDataHandler(authState.token, cartDispatch),
-		[cartState]
+		[authState]
 	);
 
 	return (
