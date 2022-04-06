@@ -21,7 +21,6 @@ const addToCartHandler = (e, productData, token, cartDispatch) => {
 					},
 				}
 			);
-			console.log(response);
 			cartDispatch({
 				type: "ADD_ITEM",
 				payload: {
