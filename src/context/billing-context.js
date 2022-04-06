@@ -1,10 +1,8 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
 import { billingReducer } from "../reducers";
-import { useCart } from "./";
-import { getBillingDataHandler } from "../utils";
-
+import { useCart, useProducts } from "./";
+import { getBillingDataHandler, getCartsDataFromId } from "../utils";
 const defaultBillingContext = {
-	type: "",
 	totalMRP: 0,
 	dicount: 0,
 	totalAmount: 0,
@@ -17,14 +15,18 @@ const BillingProvider = ({ children }) => {
 		billingReducer,
 		defaultBillingContext
 	);
-	const token = localStorage.getItem("token");
 	const { cartState } = useCart();
-	useEffect(
-		() => getBillingDataHandler(cartState, billingDispatch),
-		[cartState]
-	);
+	const { allProductsData } = useProducts();
+	useEffect(() => {
+		if (allProductsData?.length && cartState.itemsInCart?.length) {
+			const cartData = getCartsDataFromId(
+				cartState.itemsInCart,
+				allProductsData
+			);
+			getBillingDataHandler(cartData, billingDispatch);
+		}
+	}, [cartState, allProductsData]);
 
-	console.log("bill = ", billingState);
 	return (
 		<BillingContext.Provider value={{ billingState, billingDispatch }}>
 			{children}

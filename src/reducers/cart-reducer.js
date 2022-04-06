@@ -6,40 +6,42 @@ import {
 /**
  * Reducer function to handle cart state
  * @param {Object} cartState State values of cart
- * @param {*} cartAction The changed state
+ * @param {*} type action to perform, payload The changed state
  * @returns Updated state into cartState
  */
-const cartReducer = (cartState, cartAction) => {
-	switch (cartAction.type) {
+const cartReducer = (cartState, { type, payload }) => {
+	switch (type) {
 		case "ADD_ITEM":
 			return {
 				...cartState,
-				cartItemsCount: cartAction.cartItemsCount,
-				itemsInCart: [...cartState.itemsInCart, ...cartAction.itemsInCart],
-				cartData: [...cartState.cartData, cartAction.cartData],
+				cartItemsCount: payload.cartItemsCount,
+				itemsInCart: [...cartState.itemsInCart, { ...payload.itemsInCart }],
 			};
 
 		case "REMOVE_ITEM":
 			return {
 				...cartState,
-				cartItemsCount: cartAction.cartItemsCount,
+				cartItemsCount: payload.cartItemsCount,
 				itemsInCart: removeFromArray(
 					cartState.itemsInCart,
-					cartAction.itemsInCart[0]
+					payload.itemsInCart
 				),
-				cartData: removeObjFromArray(cartState.cartData, cartAction.cartData),
 			};
 
 		case "UPDATE_ITEM":
-			console.log(
-				"check = ",
-				updateObjInArray(cartState.cartData, cartAction.cartData)
-			);
 			return {
 				...cartState,
-				cartData: updateObjInArray(cartState.cartData, cartAction.cartData),
+				itemsInCart: updateObjInArray(
+					cartState.itemsInCart,
+					payload.itemsInCart
+				),
 			};
 
+		case "GET_ITEM":
+			return {
+				...cartState,
+				itemsInCart: [...payload.itemsInCart],
+			};
 		default:
 			return cartState;
 	}

@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { HEADERS } from "./headers";
 /**
  * Add product data to cart
  * @param {*} element
@@ -11,17 +11,25 @@ const addToCartHandler = (e, productData, token, cartDispatch) => {
 	e.preventDefault();
 	(async () => {
 		try {
-			const response = await axios.post(`/api/user/cart`, productData, {
-				headers: {
-					Accept: "*/*",
-					authorization: token,
-				},
-			});
+			const response = await axios.post(
+				`/api/user/cart`,
+				{ product: { _id: productData._id } },
+				{
+					headers: {
+						Accept: "*/*",
+						authorization: token,
+					},
+				}
+			);
 			cartDispatch({
 				type: "ADD_ITEM",
-				cartItemsCount: response.data.cart.length,
-				itemsInCart: [productData.product._id],
-				cartData: { ...productData.product, qty: 1 },
+				payload: {
+					cartItemsCount: response.data.cart.length,
+					itemsInCart: {
+						_id: productData._id,
+						qty: 1,
+					},
+				},
 			});
 		} catch (error) {
 			console.log(error);
@@ -48,9 +56,10 @@ const removeFromCartHandler = (element, productId, token, cartDispatch) => {
 			});
 			cartDispatch({
 				type: "REMOVE_ITEM",
-				cartcartItemsCount: response.data.cart.length,
-				itemsInCart: [productId],
-				cartData: productId,
+				payload: {
+					cartItemsCount: response.data.cart.length,
+					itemsInCart: productId,
+				},
 			});
 		} catch (error) {
 			console.log(error);
@@ -75,7 +84,9 @@ const getCartDataHandler = (token, cartDispatch) => {
 			});
 			cartDispatch({
 				type: "GET_ITEM",
-				cartData: response.data.cart,
+				payload: {
+					itemsInCart: response.data.cart,
+				},
 			});
 		} catch (error) {
 			console.log(error);
@@ -110,14 +121,19 @@ const updateCartHandler = (
 					},
 				}
 			);
+
 			actionType.action.type === "increment"
 				? cartDispatch({
 						type: "UPDATE_ITEM",
-						cartData: { _id: productId, qtyUpdate: 1 },
+						payload: {
+							itemsInCart: { _id: productId, qtyUpdate: 1 },
+						},
 				  })
 				: cartDispatch({
 						type: "UPDATE_ITEM",
-						cartData: { _id: productId, qtyUpdate: -1 },
+						payload: {
+							itemsInCart: { _id: productId, qtyUpdate: -1 },
+						},
 				  });
 		} catch (error) {
 			console.log(error);

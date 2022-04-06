@@ -2,11 +2,10 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useReducer } from "react";
 import { wishlistReducer } from "../reducers";
 import { getWishlistDataHandler } from "../utils";
+import { useAuth } from ".";
 const defaultWishlistContext = {
-	type: "",
 	wishlistItemsCount: 0,
 	itemsInWishlist: [],
-	wishlistData: [],
 };
 
 const WishlistContext = createContext(defaultWishlistContext);
@@ -16,10 +15,12 @@ const WishlistProvider = ({ children }) => {
 		wishlistReducer,
 		defaultWishlistContext
 	);
-	const token = localStorage.getItem("token");
+	const { authState } = useAuth();
 	useEffect(
-		() => getWishlistDataHandler(token, wishlistDispatch),
-		[wishlistState]
+		() =>
+			authState.token?.length &&
+			getWishlistDataHandler(authState.token, wishlistDispatch),
+		[authState]
 	);
 	return (
 		<WishlistContext.Provider

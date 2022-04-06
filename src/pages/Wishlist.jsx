@@ -1,6 +1,3 @@
-import {Wishlist} from "../components"
-const WishlistPage = () => {
-    return (<><Wishlist/></>);
-}
-
-export {WishlistPage};
+import { WishlistContent } from "../components";
+const WishlistPage = () => <WishlistContent />;
+export { WishlistPage };

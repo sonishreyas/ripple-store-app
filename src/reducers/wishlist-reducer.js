@@ -1,37 +1,29 @@
-import { removeFromArray, removeObjFromArray } from "../utils";
+import { removeFromArray } from "../utils";
 /**
  * Reducer function to handle wishlist state
  * @param {Object} wishlistState State values of wishlist
- * @param {*} wishlistAction The changed state
+ * @param {*} payload The changed state
  * @returns Updated state into wishlistState
  */
-const wishlistReducer = (wishlistState, wishlistAction) => {
-	switch (wishlistAction.type) {
+const wishlistReducer = (wishlistState, { type, payload }) => {
+	switch (type) {
 		case "ADD_ITEM":
 			return {
 				...wishlistState,
-				wishlistItemsCount: wishlistAction.wishlistItemsCount,
+				wishlistItemsCount: payload.wishlistItemsCount,
 				itemsInWishlist: [
 					...wishlistState.itemsInWishlist,
-					...wishlistAction.itemsInWishlist,
-				],
-				wishlistData: [
-					...wishlistState.wishlistData,
-					wishlistAction.wishlistData,
+					{ ...payload.itemsInWishlist },
 				],
 			};
 
 		case "REMOVE_ITEM":
 			return {
 				...wishlistState,
-				wishlistItemsCount: wishlistAction.wishlistItemsCount,
+				wishlistItemsCount: payload.wishlistItemsCount,
 				itemsInWishlist: removeFromArray(
 					wishlistState.itemsInWishlist,
-					wishlistAction.itemsInWishlist[0]
-				),
-				wishlistData: removeObjFromArray(
-					wishlistState.wishlistData,
-					wishlistAction.wishlistData
+					payload.itemsInWishlist
 				),
 			};
 		default:

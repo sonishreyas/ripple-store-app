@@ -3,6 +3,7 @@
 	opacity: 0;
 	pointer-events: none;
 }
+
 .focused > .textbox-content {
 	border: var(--b-2) solid var(--secondary-color);
 	border-radius: var(--br-1);
@@ -12,10 +13,69 @@
 .filter-max-width {
 	max-width: 30rem;
 }
+
 .focused > .textbox-label {
+	background: var(--secondary-background-color);
+}
+
+.address-form-modal-container {
+	width: min(100%, max-content);
+	height: auto;
 	background: var(--secondary-background-color);
 }
 
 .horizontal-tabs-content {
 	display: block;
+}
+
+.badge-text {
+	position: absolute;
+	background: var(--cta-color);
+	color: var(--tertiary-color);
+	font-weight: bold;
+	font-size: 0.9rem;
+	width: 2rem;
+	height: 2rem;
+}
+
+.cart-badge-text {
+	top: 1rem;
+	right: 6.5rem;
+}
+
+.wishlist-badge-text {
+	top: 1rem;
+	right: 14.5rem;
+}
+.header {
+	z-index: 2;
+}
+.modal {
+	position: absolute;
+	top: 0;
+	right:0;
+	height: 100%;	
+	width:100%;
+	z-index: 9;
+}
+.modal-background {
+	position: absolute;
+	top: 0;
+	right:0;
+	height: 100%;	
+	width:100%;
+	background-color: var(--tertiary-color);
+	opacity: 0.5;
+}
+.modal-content {
+	position: absolute;
+}
+.address-container {
+	
+}
+
+.selected-outline-btn {
+	background: var(--primary-color);
+	border-color: var(--cta-color);
+	color: var(--cta-color);
 }

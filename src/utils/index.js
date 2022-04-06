@@ -5,7 +5,13 @@ export {
 	PriceProducts,
 	RatingProducts,
 } from "./filters";
-export { loginHandler, registerHandler } from "./authentication";
+export {
+	loginHandler,
+	registerHandler,
+	setValueHandler,
+	setTestHandler,
+	setFocusHandler,
+} from "./authentication";
 export {
 	addToCartHandler,
 	removeFromCartHandler,
@@ -24,5 +30,16 @@ export {
 	presentObjInArray,
 	removeObjFromArray,
 	updateObjInArray,
+	updateAddressObjInArray,
+	removeAddressObjFromArray,
+	checkIfAddressPresent,
+	getDataFromId,
+	getCartsDataFromId,
 } from "./helpers";
 export { getBillingDataHandler } from "./billing";
+export {
+	addToAddressHandler,
+	removeFromAddressHandler,
+	getAddressDataHandler,
+	updateAddressHandler,
+} from "./address-management";
