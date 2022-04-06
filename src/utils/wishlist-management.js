@@ -1,5 +1,4 @@
 import axios from "axios";
-import { presentObjInArray } from "./";
 import { removeFromCartHandler } from "./";
 
 /**
@@ -23,11 +22,12 @@ const addToWishlistHandler = (element, productId, token, wishlistDispatch) => {
 					},
 				}
 			);
+			console.log(response);
 			wishlistDispatch({
 				type: "ADD_ITEM",
 				payload: {
 					wishlistItemsCount: response.data.wishlist.length,
-					itemsInWishlist: productId,
+					itemsInWishlist: { _id: productId },
 				},
 			});
 		} catch (error) {
@@ -57,6 +57,7 @@ const removeFromWishlistHandler = (
 					authorization: token,
 				},
 			});
+			console.log(productId, response);
 			wishlistDispatch({
 				type: "REMOVE_ITEM",
 				payload: {
@@ -104,7 +105,7 @@ const getWishlistDataHandler = (token, wishlistDispatch) => {
  */
 const MoveToWishlistHandler = (
 	element,
-	productData,
+	productId,
 	token,
 	wishlistDispatch,
 	cartDispatch

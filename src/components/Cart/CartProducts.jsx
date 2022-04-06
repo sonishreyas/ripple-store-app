@@ -1,10 +1,11 @@
-import { useCart, useAuth, useProducts } from "../../context";
+import { useCart, useAuth, useProducts, useWishlist } from "../../context";
 import { MoveToWishlistBtn } from "../ProductListing/product-card";
 import { UpdateCartItem } from "./";
 import { getCartsDataFromId, presentObjInArray } from "../../utils";
 const CartProducts = () => {
 	const { authState } = useAuth();
 	const { cartState } = useCart();
+	const { wishlistState } = useWishlist();
 	const { productsData } = useProducts();
 	const products = getCartsDataFromId(cartState.itemsInCart, productsData);
 	const itemCount = products.length;
@@ -16,13 +17,10 @@ const CartProducts = () => {
 						_id,
 						name,
 						brand,
-						category,
-						discountPercent,
 						imgURL,
 						mrp,
 						price,
 						rating,
-						type,
 						qty,
 						reviews,
 						discount,

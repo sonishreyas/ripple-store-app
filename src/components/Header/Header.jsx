@@ -187,22 +187,6 @@ const Header = (props) => {
 								></i>
 							</span>
 						</li>
-						{props.showLogout && (
-							<li className="header-nav-icons h-auto pr-5">
-								<Link
-									Link
-									to={"/"}
-									className="no-link badge p-5 m-5 flex-column justify-content-center align-center"
-								>
-									<span className="badge-icon" onClick={handleLogout}>
-										<i
-											className="fa-solid fa-arrow-right-from-bracket social"
-											aria-label="Logout"
-										></i>
-									</span>
-								</Link>
-							</li>
-						)}
 					</ul>
 				</div>
 			</div>

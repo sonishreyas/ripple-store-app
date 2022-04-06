@@ -53,7 +53,7 @@ const ProductListing = () => {
 										/>
 									) : (
 										<AddToWishlistBtn
-											productData={{ _id }}
+											productData={_id}
 											token={authState.token}
 										/>
 									)

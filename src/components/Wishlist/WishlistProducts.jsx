@@ -1,6 +1,5 @@
 import {
-	getWishlistDataHandler,
-	presentInArray,
+	presentObjInArray,
 	removeFromWishlistHandler,
 	getDataFromId,
 } from "../../utils";
@@ -52,17 +51,10 @@ const WishlistProducts = () => {
 										<p className="discount p-0 m-0">({discountPercent} %)</p>
 									</span>
 								</section>
-								{presentInArray(cartState.itemsInCart, _id) ? (
+								{presentObjInArray(cartState.itemsInCart, _id) ? (
 									<GoToCartBtn />
 								) : (
-									<AddToCartBtn
-										productData={{
-											product: {
-												_id,
-											},
-										}}
-										token={authState.token}
-									/>
+									<AddToCartBtn productData={{ _id }} token={authState.token} />
 								)}
 								<i
 									className="far fa-times-circle rui-cross b-radius-circle card-dismiss-btn m-3 p-1"
