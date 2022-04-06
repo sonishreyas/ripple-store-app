@@ -3,7 +3,6 @@ import { AddNewAddressBtn } from "./AddNewAddressBtn";
 import { AddressCard } from "./AddressCard";
 const AddressModal = () => {
 	const { addressState, addressDispatch, setShowAddressModal } = useAddress();
-	// console.log(addressState);
 	const handleAddressModal = () => setShowAddressModal(false);
 	return (
 		<div className="modal flex-row justify-content-center align-center">

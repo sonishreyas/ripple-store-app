@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { addToCartHandler } from "../../../utils";
+import { addToCartHandler, removeFromCartHandler } from "../../../utils";
 import { useCart } from "../../../context";
 
 const AddToCartBtn = (props) => {
@@ -45,4 +45,21 @@ const GoToCartBtn = () => {
 		</Link>
 	);
 };
-export { AddToCartBtn, AddToCartBtnRedirect, GoToCartBtn };
+
+const RemoveFromCart = ({ productId, token }) => {
+	const { cartDispatch } = useCart();
+	const handleRemoveFromCart = (e) =>
+		removeFromCartHandler(e, productId, token, cartDispatch);
+	return (
+		<button
+			className="primary-btn p-5 b-radius-2 my-0 text-bold icon-text-btn flex-row justify-content-center align-center flex-gap-1 flex-grow-1 cursor-pointer "
+			onClick={handleRemoveFromCart}
+		>
+			<span>
+				<i className="fa-solid fa-trash"></i>
+			</span>
+			<p className="btn-text">Remove from Cart</p>
+		</button>
+	);
+};
+export { AddToCartBtn, AddToCartBtnRedirect, GoToCartBtn, RemoveFromCart };

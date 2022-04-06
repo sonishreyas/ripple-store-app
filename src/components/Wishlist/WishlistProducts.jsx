@@ -9,7 +9,6 @@ const WishlistProducts = () => {
 	const { authState } = useAuth();
 	const { wishlistState, wishlistDispatch } = useWishlist();
 	const { productsData } = useProducts();
-	console.log(wishlistState);
 	const products = getDataFromId(wishlistState.itemsInWishlist, productsData);
 	const itemCount = products.length;
 	const { cartState } = useCart();

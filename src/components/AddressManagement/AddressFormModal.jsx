@@ -51,11 +51,6 @@ const AddressFormModal = () => {
 		const addressData = {};
 		addressData["address"] = addressFormState.address;
 
-		console.log(
-			addressData,
-			addressState,
-			checkIfAddressPresent(addressData.address, addressState)
-		);
 		addressFormState.addressId.length
 			? updateAddressHandler(
 					e,

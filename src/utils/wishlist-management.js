@@ -9,7 +9,6 @@ import { removeFromCartHandler } from "./";
  */
 const addToWishlistHandler = (element, productId, token, wishlistDispatch) => {
 	element.preventDefault();
-	console.log(productId);
 	(async () => {
 		try {
 			const response = await axios.post(
@@ -22,7 +21,6 @@ const addToWishlistHandler = (element, productId, token, wishlistDispatch) => {
 					},
 				}
 			);
-			console.log(response);
 			wishlistDispatch({
 				type: "ADD_ITEM",
 				payload: {
@@ -57,7 +55,6 @@ const removeFromWishlistHandler = (
 					authorization: token,
 				},
 			});
-			console.log(productId, response);
 			wishlistDispatch({
 				type: "REMOVE_ITEM",
 				payload: {

@@ -1,5 +1,9 @@
 import { useCart, useAuth, useProducts, useWishlist } from "../../context";
-import { MoveToWishlistBtn } from "../ProductListing/product-card";
+import {
+	MoveToWishlistBtn,
+	AddedToWishlist,
+	RemoveFromCart,
+} from "../ProductListing/product-card";
 import { UpdateCartItem } from "./";
 import { getCartsDataFromId, presentObjInArray } from "../../utils";
 const CartProducts = () => {
@@ -66,17 +70,11 @@ const CartProducts = () => {
 										</div>
 										<div className="items-counter-container flex-row align-center flex-gap-half text-bold py-5 px-0">
 											<span className="icon-btn cursor-pointer">
-												{qty > 1 ? (
+												{qty > 1 && (
 													<UpdateCartItem
 														token={authState.token}
 														productId={_id}
 														btnType="decrement"
-													/>
-												) : (
-													<UpdateCartItem
-														token={authState.token}
-														productId={_id}
-														btnType="delete"
 													/>
 												)}
 											</span>
@@ -89,15 +87,18 @@ const CartProducts = () => {
 												/>
 											</span>
 										</div>
-										<div className="horizontal-card-btn-container flex-row align-center flex-gap-half text-bold py-5 px-0">
-											{presentObjInArray(
+										<div className="horizontal-card-btn-container flex-column justify-content-center flex-grow-1 w-100 flex-gap-1 text-bold py-5 px-0">
+											<RemoveFromCart productId={_id} token={authState.token} />
+											{!presentObjInArray(
 												wishlistState.itemsInWishlist,
 												_id
-											) && (
+											) ? (
 												<MoveToWishlistBtn
 													productId={_id}
 													token={authState.token}
 												/>
+											) : (
+												<AddedToWishlist />
 											)}
 										</div>
 									</div>

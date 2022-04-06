@@ -73,3 +73,9 @@
 .address-container {
 	
 }
+
+.selected-outline-btn {
+	background: var(--primary-color);
+	border-color: var(--cta-color);
+	color: var(--cta-color);
+}
