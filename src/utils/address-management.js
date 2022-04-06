@@ -136,7 +136,7 @@ const updateAddressHandler = (
 				addressDispatch({
 					type: "UPDATE_SELECTED_ADDRESS",
 					payload: {
-						selectedAddress: { ...newAddress },
+						selectedAddress: { addressId: addressId, ...newAddress },
 					},
 				});
 		} catch (error) {

@@ -8,8 +8,11 @@ import { GoToCartBtn, AddToCartBtn } from "../ProductListing/product-card";
 const WishlistProducts = () => {
 	const { authState } = useAuth();
 	const { wishlistState, wishlistDispatch } = useWishlist();
-	const { productsData } = useProducts();
-	const products = getDataFromId(wishlistState.itemsInWishlist, productsData);
+	const { allProductsData } = useProducts();
+	const products = getDataFromId(
+		wishlistState.itemsInWishlist,
+		allProductsData
+	);
 	const itemCount = products.length;
 	const { cartState } = useCart();
 	return (

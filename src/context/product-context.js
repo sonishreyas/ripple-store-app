@@ -85,6 +85,7 @@ const ProductsProvider = ({ children }) => {
 			value={{
 				productsState,
 				productsData: filteredProductsData,
+				allProductsData: productsData,
 				filtersData: filtersData,
 				productsDispatch,
 				clearFilters: defaultProductsState,

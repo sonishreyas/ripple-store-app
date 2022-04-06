@@ -6,11 +6,19 @@
 const getBillingDataHandler = (cartData, billingDispatch) => {
 	billingDispatch({ type: "RESET" });
 	cartData.map((item) => {
-		billingDispatch({ type: "TOTAL_MRP", totalMRP: item.mrp * item.qty });
-		billingDispatch({ type: "DISCOUNT", discount: item.discount * item.qty });
+		billingDispatch({
+			type: "TOTAL_MRP",
+			payload: { totalMRP: item.mrp * item.qty },
+		});
+		billingDispatch({
+			type: "DISCOUNT",
+			payload: { discount: item.discount * item.qty },
+		});
 		billingDispatch({
 			type: "TOTAL_AMOUNT",
-			totalAmount: item.price * item.qty,
+			payload: {
+				totalAmount: item.price * item.qty,
+			},
 		});
 	});
 };

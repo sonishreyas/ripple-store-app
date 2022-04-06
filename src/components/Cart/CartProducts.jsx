@@ -10,8 +10,8 @@ const CartProducts = () => {
 	const { authState } = useAuth();
 	const { cartState } = useCart();
 	const { wishlistState } = useWishlist();
-	const { productsData } = useProducts();
-	const products = getCartsDataFromId(cartState.itemsInCart, productsData);
+	const { allProductsData } = useProducts();
+	const products = getCartsDataFromId(cartState.itemsInCart, allProductsData);
 	const itemCount = products.length;
 	return (
 		<>

@@ -28,13 +28,13 @@ ReactDOM.render(
 						<CartProvider>
 							<AddressFormProvider>
 								<AddressProvider>
-									<BillingProvider>
-										<WishlistProvider>
-											<ProductsProvider>
+									<WishlistProvider>
+										<ProductsProvider>
+											<BillingProvider>
 												<App />
-											</ProductsProvider>
-										</WishlistProvider>
-									</BillingProvider>
+											</BillingProvider>
+										</ProductsProvider>
+									</WishlistProvider>
 								</AddressProvider>
 							</AddressFormProvider>
 						</CartProvider>
