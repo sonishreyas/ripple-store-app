@@ -33,6 +33,8 @@ export {
 	updateAddressObjInArray,
 	removeAddressObjFromArray,
 	checkIfAddressPresent,
+	getDataFromId,
+	getCartsDataFromId,
 } from "./helpers";
 export { getBillingDataHandler } from "./billing";
 export {

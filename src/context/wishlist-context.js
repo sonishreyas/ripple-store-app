@@ -4,10 +4,8 @@ import { wishlistReducer } from "../reducers";
 import { getWishlistDataHandler } from "../utils";
 import { useAuth } from ".";
 const defaultWishlistContext = {
-	type: "",
 	wishlistItemsCount: 0,
 	itemsInWishlist: [],
-	wishlistData: [],
 };
 
 const WishlistContext = createContext(defaultWishlistContext);

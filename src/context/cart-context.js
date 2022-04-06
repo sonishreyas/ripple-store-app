@@ -9,10 +9,8 @@ import { cartReducer } from "../reducers";
 import { getCartDataHandler } from "../utils";
 import { useAuth } from ".";
 const defaultCartContext = {
-	type: "",
 	cartItemsCount: 0,
 	itemsInCart: [],
-	cartData: [],
 };
 
 const CartContext = createContext({ defaultCartContext });
@@ -21,7 +19,6 @@ const CartProvider = ({ children }) => {
 	const [cartState, cartDispatch] = useReducer(cartReducer, defaultCartContext);
 	const [showCouponModal, setShowCouponModal] = useState(false);
 
-	const token = localStorage.getItem("token");
 	const { authState } = useAuth();
 	useEffect(
 		() =>

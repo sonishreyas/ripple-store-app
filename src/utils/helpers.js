@@ -5,7 +5,7 @@
  * @returns Array with element removed
  */
 const removeFromArray = (arr, element) =>
-	arr.filter((item) => item !== element);
+	arr.filter((item) => item._id !== element);
 
 /**
  * Removed element from address array
@@ -87,6 +87,18 @@ const checkIfAddressPresent = (addressData, addressState) =>
 	) !== undefined
 		? true
 		: false;
+
+const getDataFromId = (items, data) =>
+	items.map(({ _id, updatedAt }) => ({
+		...data.find((item) => item._id === _id),
+		updatedAt,
+	}));
+
+const getCartsDataFromId = (items, data) =>
+	items.map((item) => ({
+		...data.find((product) => product._id === item._id),
+		...item,
+	}));
 export {
 	removeFromArray,
 	presentInArray,
@@ -96,4 +108,6 @@ export {
 	updateAddressObjInArray,
 	removeAddressObjFromArray,
 	checkIfAddressPresent,
+	getDataFromId,
+	getCartsDataFromId,
 };

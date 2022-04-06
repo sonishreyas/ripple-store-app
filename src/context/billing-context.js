@@ -1,7 +1,7 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
 import { billingReducer } from "../reducers";
-import { useCart } from "./";
-import { getBillingDataHandler } from "../utils";
+import { useCart, useProducts } from "./";
+import { getBillingDataHandler, getCartsDataFromId } from "../utils";
 const defaultBillingContext = {
 	type: "",
 	totalMRP: 0,
@@ -17,10 +17,14 @@ const BillingProvider = ({ children }) => {
 		defaultBillingContext
 	);
 	const { cartState } = useCart();
-	useEffect(
-		() => getBillingDataHandler(cartState, billingDispatch),
-		[cartState]
-	);
+	const { productsData } = useProducts();
+	useEffect(() => {
+		console.log("here, ", cartState, productsData);
+		const cartData = productsData
+			? getCartsDataFromId(cartState.itemsInCart, productsData)
+			: [];
+		getBillingDataHandler(cartData, billingDispatch);
+	}, [cartState, productsData]);
 
 	return (
 		<BillingContext.Provider value={{ billingState, billingDispatch }}>

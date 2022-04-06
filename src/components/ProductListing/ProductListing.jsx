@@ -8,7 +8,7 @@ import {
 	AddToWishlistBtnRedirect,
 	RemoveFromWishlistBtn,
 } from "./product-card";
-import { presentInArray } from "../../utils";
+import { presentObjInArray, presentInArray } from "../../utils";
 
 const ProductListing = () => {
 	const { productsData } = useProducts();
@@ -46,28 +46,14 @@ const ProductListing = () => {
 									/>
 								</section>
 								{authState.token?.length ? (
-									presentInArray(wishlistState.itemsInWishlist, _id) ? (
+									presentObjInArray(wishlistState.itemsInWishlist, _id) ? (
 										<RemoveFromWishlistBtn
 											productId={_id}
 											token={authState.token}
 										/>
 									) : (
 										<AddToWishlistBtn
-											productData={{
-												product: {
-													_id,
-													name,
-													brand,
-													category,
-													discount,
-													discountPercent,
-													imgURL,
-													mrp,
-													price,
-													rating,
-													type,
-												},
-											}}
+											productData={{ _id }}
 											token={authState.token}
 										/>
 									)
@@ -92,26 +78,11 @@ const ProductListing = () => {
 									</span>
 								</section>
 								{authState.token?.length ? (
-									presentInArray(cartState.itemsInCart, _id) ? (
+									presentObjInArray(cartState.itemsInCart, _id) ? (
 										<GoToCartBtn />
 									) : (
 										<AddToCartBtn
-											productData={{
-												product: {
-													_id,
-													name,
-													brand,
-													category,
-													discount,
-													discountPercent,
-													imgURL,
-													mrp,
-													price,
-													rating,
-													type,
-													reviews,
-												},
-											}}
+											productData={{ _id }}
 											token={authState.token}
 										/>
 									)
