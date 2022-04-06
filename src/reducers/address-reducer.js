@@ -79,6 +79,11 @@ const addressFormReducer = (addressFormState, { type, payload }) => {
 				...addressFormState,
 				address: { ...addressFormState.address, ...payload.address },
 			};
+		case "UPDATE_FOCUS_ADDRESS":
+			return {
+				...addressFormState,
+				focus: { ...addressFormState.focus, ...payload.focus },
+			};
 		case "UPDATE_ADDRESS_ID":
 			return {
 				...addressFormState,

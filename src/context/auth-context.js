@@ -15,11 +15,10 @@ const AuthProvider = ({ children }) => {
 	useEffect(
 		() =>
 			authDispatch({
-				token: localStorage.getItem("token"),
-				firstName: localStorage.getItem("firstName"),
-				lastName: localStorage.getItem("lastName"),
-				email: localStorage.getItem("email"),
 				type: "UPDATE_USER",
+				payload: !JSON.parse(localStorage.getItem("user"))
+					? {}
+					: JSON.parse(localStorage.getItem("user")),
 			}),
 		[]
 	);

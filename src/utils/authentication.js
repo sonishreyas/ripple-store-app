@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { HEADERS } from "./headers";
 /**
  *
  * @param e Element
@@ -12,18 +12,18 @@ const loginHandler = (e, location, navigate, loginState, authDispatch) => {
 	(async () => {
 		try {
 			const response = await axios.post(`/api/auth/login`, loginInfo);
-			// saving the encodedToken in the localStorage
-			authDispatch({
+			// saving the user data in the localStorage
+			const user = {
 				token: response.data.encodedToken,
 				firstName: response.data.foundUser.firstName,
 				lastName: response.data.foundUser.lastName,
 				email: response.data.foundUser.email,
+			};
+			authDispatch({
 				type: "UPDATE_USER",
+				payload: user,
 			});
-			localStorage.setItem("token", response.data.encodedToken);
-			localStorage.setItem("email", response.data.foundUser.email);
-			localStorage.setItem("firstName", response.data.foundUser.firstName);
-			localStorage.setItem("lastName", response.data.foundUser.lastName);
+			localStorage.setItem("user", JSON.stringify(user));
 			navigate(location.state.state);
 		} catch (error) {
 			console.log(error);
@@ -55,17 +55,17 @@ const registerHandler = (
 		try {
 			const response = await axios.post(`/api/auth/signup`, registerInfo);
 			// saving the encodedToken in the localStorage
-			authDispatch({
+			const user = {
 				token: response.data.encodedToken,
-				firstName: response.data.createdUser.firstName,
-				lastName: response.data.createdUser.lastName,
-				email: response.data.createdUser.email,
+				firstName: response.data.foundUser.firstName,
+				lastName: response.data.foundUser.lastName,
+				email: response.data.foundUser.email,
+			};
+			authDispatch({
 				type: "UPDATE_USER",
+				payload: JSON.stringify(user),
 			});
-			localStorage.setItem("token", response.data.encodedToken);
-			localStorage.setItem("email", response.data.createdUser.email);
-			localStorage.setItem("firstName", response.data.createdUser.firstName);
-			localStorage.setItem("lastName", response.data.createdUser.lastName);
+			localStorage.setItem("user", user);
 			navigate(location.state.state);
 		} catch (error) {
 			console.log(error);
@@ -73,4 +73,26 @@ const registerHandler = (
 	})();
 };
 
-export { loginHandler, registerHandler };
+const setValueHandler = (e, field, type, loginDispatch) => {
+	const fieldValue = { type: type, payload: {} };
+	fieldValue.payload[field] = e.target.value;
+	loginDispatch(fieldValue);
+};
+
+const setTestHandler = (loginDispatch) =>
+	loginDispatch({
+		type: "TEST_CREDENTIAL",
+		payload: { email: "test@gmail.com", password: "test123" },
+	});
+
+const setFocusHandler = (field, value, type, loginDispatch, focusReset) => {
+	focusReset[field] = value;
+	loginDispatch({ payload: { focus: focusReset }, type: type });
+};
+export {
+	loginHandler,
+	registerHandler,
+	setValueHandler,
+	setTestHandler,
+	setFocusHandler,
+};

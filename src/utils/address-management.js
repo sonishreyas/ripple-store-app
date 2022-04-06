@@ -16,6 +16,7 @@ const addToAddressHandler = (e, addressData, addressDispatch) => {
 				addressData,
 				HEADERS
 			);
+			console.log(response);
 			addressDispatch({
 				type: "ADD_NEW_ADDRESS",
 				payload: {

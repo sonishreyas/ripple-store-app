@@ -1,6 +1,4 @@
-import {Cart} from "../components"
-const CartPage = () => {
-    return (<><Cart/></>);
-}
+import { CartContent } from "../components";
+const CartPage = () => <CartContent />;
 
-export {CartPage};
+export { CartPage };

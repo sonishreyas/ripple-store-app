@@ -3,6 +3,7 @@
 	opacity: 0;
 	pointer-events: none;
 }
+
 .focused > .textbox-content {
 	border: var(--b-2) solid var(--secondary-color);
 	border-radius: var(--br-1);
@@ -12,25 +13,13 @@
 .filter-max-width {
 	max-width: 30rem;
 }
+
 .focused > .textbox-label {
 	background: var(--secondary-background-color);
 }
 
-.address-modal-center {
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	z-index: var(--max-z-index);
-}
-
-.address-modal-container {
-	width: 80%;
-	height: 50rem;
-}
-
 .address-form-modal-container {
-	width: min(80%, max-content);
+	width: min(100%, max-content);
 	height: auto;
 	background: var(--secondary-background-color);
 }
@@ -57,4 +46,27 @@
 .wishlist-badge-text {
 	top: 1rem;
 	right: 20rem;
+}
+.header {
+	z-index: 2;
+}
+.modal {
+	position: absolute;
+	top: 0;
+	right:0;
+	height: 100%;	
+	width:100%;
+	z-index: 9;
+}
+.modal-background {
+	position: absolute;
+	top: 0;
+	right:0;
+	height: 100%;	
+	width:100%;
+	background-color: var(--tertiary-color);
+	opacity: 0.5;
+}
+.modal-content {
+	position: absolute;
 }

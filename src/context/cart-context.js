@@ -7,6 +7,7 @@ import {
 } from "react";
 import { cartReducer } from "../reducers";
 import { getCartDataHandler } from "../utils";
+import { useAuth } from ".";
 const defaultCartContext = {
 	type: "",
 	cartItemsCount: 0,
@@ -21,7 +22,13 @@ const CartProvider = ({ children }) => {
 	const [showCouponModal, setShowCouponModal] = useState(false);
 
 	const token = localStorage.getItem("token");
-	useEffect(() => getCartDataHandler(token, cartDispatch), [cartState]);
+	const { authState } = useAuth();
+	useEffect(
+		() =>
+			authState.token?.length &&
+			getCartDataHandler(authState.token, cartDispatch),
+		[cartState]
+	);
 
 	return (
 		<CartContext.Provider

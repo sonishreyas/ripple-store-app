@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 import { useReducer } from "react";
 import { addressReducer } from "../reducers";
 import { getAddressDataHandler } from "../utils";
+import { useAuth } from ".";
 
 const defaultAddressContext = {
 	selectedAddress: {},
@@ -17,8 +18,13 @@ const AddressProvider = ({ children }) => {
 	);
 	const [showAddressModal, setShowAddressModal] = useState(false);
 	const [showAddressFormModal, setShowAddressFormModal] = useState(false);
-
-	useEffect(() => getAddressDataHandler(addressState, addressDispatch), []);
+	const { authState } = useAuth();
+	useEffect(
+		() =>
+			authState.token?.length &&
+			getAddressDataHandler(addressState, addressDispatch),
+		[]
+	);
 
 	return (
 		<AddressContext.Provider
