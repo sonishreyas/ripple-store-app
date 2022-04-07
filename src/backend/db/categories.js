@@ -57,7 +57,7 @@ export const categories = [
 				name: "PUMA",
 				discountOffer: "Up to 20-50% Off",
 				imgURL:
-					"https://raw.githubusercontent.com/sonishreyas/rippleUI/dev/components/media/images/brand-logo.png",
+					"https://raw.githubusercontent.com/sonishreyas/ripple-store-app/dev/src/backend/media/images/puma.png",
 			},
 			{
 				_id: uuid(),
