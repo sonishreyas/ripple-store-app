@@ -3,7 +3,6 @@ import { Profile, Address, Orders, Settings } from ".";
 const ProfileTabs = () => {
 	const { profileActiveTab, setProfileActiveTab } = useProfile();
 	const tabClickHandler = (activeTabName) => setProfileActiveTab(activeTabName);
-	console.log(profileActiveTab === "Profile");
 	return (
 		<section className="rui-main--heading-container no-border profile-tabs">
 			<article className="vertical-tabs-container flex-row flex-wrap flex-gap-1 b-radius-2 p-5 w-100 h-auto">

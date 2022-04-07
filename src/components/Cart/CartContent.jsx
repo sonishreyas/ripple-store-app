@@ -9,8 +9,16 @@ import {
 import { useAddress, useCart } from "../../context";
 const CartContent = () => {
 	const { cartState } = useCart();
-	const { showAddressModal, showAddressFormModal } = useAddress();
-
+	const {
+		showAddressModal,
+		setShowAddressModal,
+		showAddressFormModal,
+		setShowAddressFormModal,
+	} = useAddress();
+	useEffect(() => {
+		setShowAddressModal(false);
+		setShowAddressFormModal(false);
+	}, []);
 	return (
 		<>
 			<main className="main flex-column justify-content-center align-center">
