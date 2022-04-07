@@ -7,6 +7,8 @@ import {
 	useOrders,
 } from "../../context";
 import { removeFromCartHandler, addToOrdersHandler } from "../../utils";
+import { v4 as uuid } from "uuid";
+
 const Billing = ({ products }) => {
 	const { billingState } = useBilling();
 	const { checkoutState, checkoutDispatch } = useCheckout();
@@ -15,11 +17,17 @@ const Billing = ({ products }) => {
 	const { authState } = useAuth();
 	const { ordersDispatch } = useOrders();
 	const handlePlaceOrder = (e) => {
+		const orderId = uuid();
 		checkoutState.itemsInCheckout.map((id) =>
 			removeFromCartHandler(e, id, authState.token, cartDispatch)
 		);
 		products.map((productData) =>
-			addToOrdersHandler(e, productData, authState.token, ordersDispatch)
+			addToOrdersHandler(
+				e,
+				{ orderId: orderId, ...productData },
+				authState.token,
+				ordersDispatch
+			)
 		);
 		checkoutDispatch({ type: "RESET" });
 		navigate("/order");

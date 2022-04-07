@@ -20,8 +20,6 @@ const addToOrdersHandler = (element, productData, token, ordersDispatch) => {
 					},
 				}
 			);
-			console.log(response);
-
 			ordersDispatch({
 				type: "ADD_ITEM",
 				payload: {
@@ -47,7 +45,6 @@ const getOrdersDataHandler = (token, ordersDispatch) => {
 					authorization: token,
 				},
 			});
-			console.log(response);
 			ordersDispatch({
 				type: "GET_ITEM",
 				payload: {

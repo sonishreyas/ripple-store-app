@@ -17,18 +17,20 @@ const PlaceOrderContent = () => {
 			<h1 className="homepage-heading text-center m-5 p-5">
 				Thank you for shopping with us
 			</h1>
-			<button
-				onClick={handleExplore}
-				className="cursor-pointer primary-btn p-0 b-radius-2 text-bold flex-row justify-content-center align-center flex-gap-1"
-			>
-				<p className="cart-text">Explore More</p>
-			</button>
-			<button
-				onClick={handleViewOrder}
-				className="cursor-pointer outline-btn p-0 b-radius-2 text-bold flex-row justify-content-center align-center flex-gap-1"
-			>
-				<p className="cart-text">View Orders</p>
-			</button>
+			<div className="flex-row flex-gap-2 justify-content-center align-center">
+				<button
+					onClick={handleExplore}
+					className="cursor-pointer primary-btn b-radius-2 text-bold"
+				>
+					<p className="cart-text p-5">Explore More</p>
+				</button>
+				<button
+					onClick={handleViewOrder}
+					className="cursor-pointer outline-btn  b-radius-2 text-bold"
+				>
+					<p className="cart-text p-5">View Orders</p>
+				</button>
+			</div>
 		</main>
 	);
 };

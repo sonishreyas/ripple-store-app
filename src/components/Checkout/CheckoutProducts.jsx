@@ -1,6 +1,3 @@
-import { useCart, useCheckout, useProducts } from "../../context";
-import { getCartsDataFromId } from "../../utils";
-
 const CheckoutProducts = ({ products, itemCount }) => {
 	return (
 		<>
