@@ -66,7 +66,12 @@ const addressReducer = (addressState, { type, payload }) => {
 				...addressState,
 				selectedAddress: payload.selectedAddress,
 			};
-
+		case "RESET":
+			return {
+				...addressState,
+				addressData: [],
+				selectedAddress: {},
+			};
 		default:
 			return addressState;
 	}

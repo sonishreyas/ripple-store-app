@@ -21,16 +21,6 @@ const Header = (props) => {
 
 	const getActiveClass = ({ isActive }) =>
 		isActive ? "no-link header-link-active" : "no-link";
-	const handleLogout = () => {
-		localStorage.clear();
-		authDispatch({ type: "LOGOUT" });
-		cartDispatch({ type: "RESET" });
-		wishlistDispatch({ type: "RESET" });
-		addressDispatch({ type: "RESET" });
-		billingDispatch({ type: "RESET" });
-		loginDispatch({ type: "RESET" });
-		registerDispatch({ type: "RESET" });
-	};
 
 	return (
 		<header className="header header-shadow flex-column">
@@ -78,7 +68,7 @@ const Header = (props) => {
 							</form>
 						</li>
 						<li className="header-nav-icons h-auto pt-10">
-							{authState.token !== null ? (
+							{authState?.token?.length ? (
 								<Link
 									to={"/profile"}
 									className="no-link badge p-5 m-5 flex-column justify-content-center align-center"
@@ -107,7 +97,7 @@ const Header = (props) => {
 							)}
 						</li>
 						<li className="header-nav-icons h-auto pt-10">
-							{authState.token !== null ? (
+							{authState?.token?.length ? (
 								<Link
 									to={"/wishlist"}
 									className="no-link badge p-5 m-5 flex-column justify-content-center align-center"
@@ -145,7 +135,7 @@ const Header = (props) => {
 							)}
 						</li>
 						<li className="header-nav-icons h-auto pt-10">
-							{authState.token !== null ? (
+							{authState?.token?.length ? (
 								<Link
 									to={"/cart"}
 									className="no-link badge p-5 m-5 flex-column justify-content-center align-center"

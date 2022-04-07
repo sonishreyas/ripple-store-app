@@ -8,3 +8,4 @@ export { AddressProvider, useAddress } from "./address-context";
 export { AddressFormProvider, useAddressForm } from "./address-form-context";
 export { AuthProvider, useAuth } from "./auth-context";
 export { ThemeProvider, useTheme } from "./theme-context";
+export { ProfileProvider, useProfile } from "./profile-context";

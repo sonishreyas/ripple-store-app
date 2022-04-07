@@ -91,3 +91,7 @@
 .featured-brand-image {
 	width: 20rem;
 }
+
+.vertical-tabs-content {
+	display: block;
+}

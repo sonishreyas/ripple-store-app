@@ -42,6 +42,12 @@ const cartReducer = (cartState, { type, payload }) => {
 				...cartState,
 				itemsInCart: [...payload.itemsInCart],
 			};
+		case "RESET":
+			return {
+				...cartState,
+				itemsInCart: [],
+				cartItemsCount: 0,
+			};
 		default:
 			return cartState;
 	}

@@ -2,7 +2,6 @@ import { useReducer, createContext, useContext } from "react";
 import { loginReducer } from "../reducers";
 
 const defaultLoginState = {
-	type: "",
 	email: "",
 	password: "",
 	focus: { email: false, password: false },
