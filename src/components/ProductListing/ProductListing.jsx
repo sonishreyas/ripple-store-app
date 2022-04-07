@@ -61,7 +61,7 @@ const ProductListing = () => {
 									<AddToWishlistBtnRedirect />
 								)}
 								<section className="card-content p-5 pb-0">
-									<h3 className="card-title">{name}</h3>
+									<h4 className="card-title">{name}</h4>
 									<p className="card-category my-3">{type}</p>
 									<span className="card-price-tag mt-3 flex-row align-center flex-gap-half text-bold">
 										<p className="p-0 m-0">Rs. {price}</p>
