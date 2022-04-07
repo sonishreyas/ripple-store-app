@@ -8,3 +8,5 @@ export { HomeContent } from "./Home";
 export { ProfileContent } from "./Profile";
 export { AddressFormModal } from "./AddressManagement";
 export { AddressModal } from "./AddressManagement";
+export { CheckoutContent } from "./Checkout";
+export { PlaceOrderContent } from "./PlaceOrder";

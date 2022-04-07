@@ -9,3 +9,5 @@ export { AddressFormProvider, useAddressForm } from "./address-form-context";
 export { AuthProvider, useAuth } from "./auth-context";
 export { ThemeProvider, useTheme } from "./theme-context";
 export { ProfileProvider, useProfile } from "./profile-context";
+export { CheckoutProvider, useCheckout } from "./checkout-context";
+export { OrdersProvider, useOrders } from "./orders-context";

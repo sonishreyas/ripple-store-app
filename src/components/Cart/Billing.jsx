@@ -1,5 +1,5 @@
 import { useBilling } from "../../context";
-
+import { Link } from "react-router-dom";
 const Billing = () => {
 	const { billingState } = useBilling();
 	return (
@@ -43,14 +43,11 @@ const Billing = () => {
 						</table>
 					</li>
 					<li className="no-list">
-						<a
-							href="https://ripple-store.netlify.app/pages/checkout/checkout.html"
-							className="no-link-decoration"
-						>
+						<Link to="/checkout" className="no-link-decoration">
 							<button className="primary-btn place-order-btn p-5 b-radius-2 mb-5 mx-0 text-bold">
 								Proceed to checkout
 							</button>
-						</a>
+						</Link>
 					</li>
 				</ul>
 			</div>
