@@ -43,7 +43,7 @@ export const products = [
 		type: "Men Sneakers",
 		category: "Casual Shoes",
 		imgURL:
-			"https://raw.githubusercontent.com/sonishreyas/ripple-store-app/dev/src/backend/media/images/pume-grey-flourasant.png",
+			"https://raw.githubusercontent.com/sonishreyas/ripple-store-app/dev/src/backend/media/images/puma-blue-striped.png",
 		rating: 2,
 		reviews: 31,
 		price: 2599,
@@ -58,7 +58,7 @@ export const products = [
 		type: "Men Loafers",
 		category: "Casual Shoes",
 		imgURL:
-			"https://raw.githubusercontent.com/sonishreyas/ripple-store-app/dev/src/backend/media/images/pume-grey-flourasant.png",
+			"https://raw.githubusercontent.com/sonishreyas/ripple-store-app/dev/src/backend/media/images/us-polo-grey-casual.png",
 		rating: 4,
 		reviews: 612,
 		price: 2159,
@@ -88,7 +88,7 @@ export const products = [
 		type: "Men Sneakers",
 		category: "Casual Shoes",
 		imgURL:
-			"https://raw.githubusercontent.com/sonishreyas/ripple-store-app/dev/src/backend/media/images/pume-grey-flourasant.png",
+			"https://raw.githubusercontent.com/sonishreyas/ripple-store-app/dev/src/backend/media/images/us-polo-casual-sneaker-blue.png",
 		rating: 3,
 		reviews: 12,
 		price: 1799,
