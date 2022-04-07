@@ -5,3 +5,6 @@ export { CartContent } from "./Cart";
 export { Header } from "./Header";
 export { Footer } from "./Footer";
 export { HomeContent } from "./Home";
+export { ProfileContent } from "./Profile";
+export { AddressFormModal } from "./AddressManagement";
+export { AddressModal } from "./AddressManagement";

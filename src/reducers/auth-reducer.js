@@ -21,6 +21,13 @@ const loginReducer = (loginState, { type, payload }) => {
 				email: payload.email,
 				password: payload.password,
 			};
+		case "RESET":
+			return {
+				...loginState,
+				email: "",
+				password: "",
+				focus: { email: false, password: false },
+			};
 		default:
 			return loginState;
 	}
@@ -52,7 +59,22 @@ const registerReducer = (registerState, { type, payload }) => {
 			};
 		case "UPDATE_FOCUS":
 			return { ...registerState, focus: payload.focus };
-
+		case "RESET":
+			return {
+				...registerState,
+				email: "",
+				password: "",
+				firstName: "",
+				lastName: "",
+				confirmPassword: "",
+				focus: {
+					firstName: false,
+					lastName: false,
+					email: false,
+					password: false,
+					confirmPassword: false,
+				},
+			};
 		default:
 			return registerState;
 	}
@@ -76,6 +98,15 @@ const authReducer = (authState, { type, payload }) => {
 			return { ...authState, lastName: payload.lastName };
 		case "UPDATE_USER":
 			return { ...authState, ...payload };
+		case "LOGOUT":
+			return {
+				...authState,
+				token: "",
+				firstName: "",
+				lastName: "",
+				email: "",
+			};
+
 		default:
 			return authState;
 	}
