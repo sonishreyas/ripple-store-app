@@ -15,6 +15,8 @@ import {
 	AuthProvider,
 	ThemeProvider,
 	ProfileProvider,
+	CheckoutProvider,
+	OrdersProvider,
 } from "./context";
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -35,7 +37,11 @@ ReactDOM.render(
 											<BillingProvider>
 												<ThemeProvider>
 													<ProfileProvider>
-														<App />
+														<CheckoutProvider>
+															<OrdersProvider>
+																<App />
+															</OrdersProvider>
+														</CheckoutProvider>
 													</ProfileProvider>
 												</ThemeProvider>
 											</BillingProvider>

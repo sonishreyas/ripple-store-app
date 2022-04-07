@@ -43,3 +43,8 @@ export {
 	getAddressDataHandler,
 	updateAddressHandler,
 } from "./address-management";
+export {
+	addToCheckoutHandler,
+	removeFromCheckoutHandler,
+} from "./checkout-management";
+export { addToOrdersHandler, getOrdersDataHandler } from "./orders-management";

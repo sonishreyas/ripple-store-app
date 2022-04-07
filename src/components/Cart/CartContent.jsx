@@ -7,6 +7,7 @@ import {
 	AddressFormModal,
 } from ".";
 import { useAddress, useCart } from "../../context";
+import { useEffect } from "react";
 const CartContent = () => {
 	const { cartState } = useCart();
 	const {

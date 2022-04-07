@@ -126,3 +126,7 @@
 }
 }
 	
+.filter-chip-selected {
+	color: var(--cta-color);
+	background-color: var(--tertiary-color);
+}
