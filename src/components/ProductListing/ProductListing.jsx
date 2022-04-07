@@ -1,5 +1,4 @@
 import { useCart, useProducts, useWishlist, useAuth } from "../../context";
-import { Link } from "react-router-dom";
 import {
 	AddToCartBtn,
 	AddToCartBtnRedirect,
@@ -8,13 +7,14 @@ import {
 	AddToWishlistBtnRedirect,
 	RemoveFromWishlistBtn,
 } from "./product-card";
-import { presentObjInArray, presentInArray } from "../../utils";
-
+import { presentObjInArray } from "../../utils";
+import { useEffect } from "react";
 const ProductListing = () => {
 	const { productsData } = useProducts();
 	const { wishlistState } = useWishlist();
 	const { cartState } = useCart();
 	const { authState } = useAuth();
+	useEffect(() => window.scrollTo(0, 0), []);
 	return (
 		<article className="grid-col-70 ">
 			<div className="products-container flex-row align-center flex-gap-2 flex-wrap">
