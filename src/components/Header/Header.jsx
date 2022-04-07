@@ -6,6 +6,7 @@ import {
 	useBilling,
 	useLogin,
 	useRegister,
+	useTheme,
 } from "../../context";
 import { Link, NavLink } from "react-router-dom";
 const Header = (props) => {
@@ -16,6 +17,8 @@ const Header = (props) => {
 	const { billingDispatch } = useBilling();
 	const { loginDispatch } = useLogin();
 	const { registerDispatch } = useRegister();
+	const { themeIcon, handleSetTheme } = useTheme();
+
 	const getActiveClass = ({ isActive }) =>
 		isActive ? "no-link header-link-active" : "no-link";
 	const handleLogout = () => {
@@ -182,8 +185,9 @@ const Header = (props) => {
 						<li className="header-nav-icons h-auto pr-5">
 							<span className="badge-icon">
 								<i
-									className="fas fa-sun theme-icon badge-icon"
+									className={`fas fa-${themeIcon} theme-icon badge-icon`}
 									aria-label="dark/light theme icon"
+									onClick={handleSetTheme}
 								></i>
 							</span>
 						</li>

@@ -1,5 +1,4 @@
 import axios from "axios";
-import { HEADERS } from "./headers";
 
 /**
  * Add address data to address list
@@ -11,11 +10,12 @@ const addToAddressHandler = (e, addressData, addressDispatch) => {
 	e.preventDefault();
 	(async () => {
 		try {
-			const response = await axios.post(
-				`/api/user/address`,
-				addressData,
-				HEADERS
-			);
+			const response = await axios.post(`/api/user/address`, addressData, {
+				headers: {
+					Accept: "*/*",
+					authorization: JSON.parse(localStorage.getItem("user"))?.token,
+				},
+			});
 			addressDispatch({
 				type: "ADD_NEW_ADDRESS",
 				payload: {
@@ -49,10 +49,12 @@ const removeFromAddressHandler = (
 	element.preventDefault();
 	(async () => {
 		try {
-			const response = await axios.delete(
-				`/api/user/address/${addressId}`,
-				HEADERS
-			);
+			const response = await axios.delete(`/api/user/address/${addressId}`, {
+				headers: {
+					Accept: "*/*",
+					authorization: JSON.parse(localStorage.getItem("user"))?.token,
+				},
+			});
 			addressDispatch({
 				type: "REMOVE_ADDRESS",
 				payload: {
@@ -80,7 +82,12 @@ const removeFromAddressHandler = (
 const getAddressDataHandler = (addressState, addressDispatch) => {
 	(async () => {
 		try {
-			const response = await axios.get(`/api/user/address`, HEADERS);
+			const response = await axios.get(`/api/user/address`, {
+				headers: {
+					Accept: "*/*",
+					authorization: JSON.parse(localStorage.getItem("user"))?.token,
+				},
+			});
 
 			addressDispatch({
 				type: "GET_ADDRESS",
@@ -124,7 +131,12 @@ const updateAddressHandler = (
 			const response = await axios.post(
 				`/api/user/address/${addressId}`,
 				newAddress,
-				HEADERS
+				{
+					headers: {
+						Accept: "*/*",
+						authorization: JSON.parse(localStorage.getItem("user"))?.token,
+					},
+				}
 			);
 			addressDispatch({
 				type: "UPDATE_ADDRESS",
