@@ -23,6 +23,22 @@ export const products = [
 	},
 	{
 		_id: uuid(),
+		name: "Puma Grey & Fluorescent Green Sneakers",
+		brand: "PUMA",
+		type: "Men Sneakers",
+		category: "Casual Shoes",
+		imgURL:
+			"https://raw.githubusercontent.com/sonishreyas/ripple-store-app/dev/src/backend/media/images/pume-grey-flourasant.png",
+		rating: 4,
+		reviews: 31,
+		price: 1599,
+		mrp: 3999,
+		discountPercent: 60,
+		discount: 2400,
+	},
+	//
+	{
+		_id: uuid(),
 		name: "Adidas Sports",
 		brand: "Adidas",
 		type: "Sports Shoes",
