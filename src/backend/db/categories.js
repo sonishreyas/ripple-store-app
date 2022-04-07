@@ -20,28 +20,28 @@ export const categories = [
 				name: "Casual Shoes",
 				discountOffer: "Up to 20-50% Off",
 				imgURL:
-					"https://raw.githubusercontent.com/sonishreyas/rippleUI/dev/components/media/images/sneaker.png",
+					"https://raw.githubusercontent.com/sonishreyas/ripple-store-app/dev/src/backend/media/images/roadster-casual.png",
 			},
 			{
 				_id: uuid(),
 				name: "Sports Shoes",
 				discountOffer: "Up to 50-70% Off",
 				imgURL:
-					"https://raw.githubusercontent.com/sonishreyas/rippleUI/dev/components/media/images/sneaker.png",
+					"https://raw.githubusercontent.com/sonishreyas/ripple-store-app/dev/src/backend/media/images/adidas-sports.png",
 			},
 			{
 				_id: uuid(),
 				name: "Socks",
 				discountOffer: "Up to 10-20% Off",
 				imgURL:
-					"https://raw.githubusercontent.com/sonishreyas/rippleUI/dev/components/media/images/sneaker.png",
+					"https://raw.githubusercontent.com/sonishreyas/ripple-store-app/dev/src/backend/media/images/socks.png",
 			},
 			{
 				_id: uuid(),
 				name: "Sandles & Floaters",
 				discountOffer: "Up to 30-50% Off",
 				imgURL:
-					"https://raw.githubusercontent.com/sonishreyas/rippleUI/dev/components/media/images/sneaker.png",
+					"https://raw.githubusercontent.com/sonishreyas/ripple-store-app/dev/src/backend/media/images/bata-sandles.png",
 			},
 		],
 		featuredBrands: [
