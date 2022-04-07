@@ -17,3 +17,18 @@
     <a href="https://github.com/sonishreyas/ripple-store-app/issues/new?assignees=&labels=enhancement&template=02_FEATURE_REQUEST.md&title=feat%3A+">Request a Feature</a>
 </div>
 </p>
+
+# Key Features
+
+▶️ All the pages and components are responsive <br/>
+▶️ All the components support both dark and light theme <br/>
+▶️ Home Page <br/>
+▶️ Product Listing Page <br/>
+▶️ Filters by Price range slider, category, sort by, category, and rating range slider <br/>
+▶️ Cart Management <br/>
+▶️ Wishlist Management <br/>
+▶️ Authentication (Signup, Login, and Logout) <br/>
+▶️ Address Management <br/>
+▶️ User Profile Page <br/>
+▶️ Order Summary <br/>
+▶️ Checkout <br/>
