@@ -62,7 +62,7 @@ const ProductListing = () => {
 								)}
 								<section className="card-content p-5 pb-0">
 									<h3 className="card-title">{name}</h3>
-									<p className="card-category">{type}</p>
+									<p className="card-category my-3">{type}</p>
 									<span className="card-price-tag mt-3 flex-row align-center flex-gap-half text-bold">
 										<p className="p-0 m-0">Rs. {price}</p>
 										<strike className="p-0 m-0">{mrp}</strike>
