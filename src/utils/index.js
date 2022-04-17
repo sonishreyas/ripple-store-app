@@ -6,6 +6,7 @@ export {
 	RatingProducts,
 } from "./filters";
 export {
+	RequireAuth,
 	loginHandler,
 	registerHandler,
 	setValueHandler,

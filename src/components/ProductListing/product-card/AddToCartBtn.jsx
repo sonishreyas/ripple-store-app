@@ -22,7 +22,7 @@ const AddToCartBtn = (props) => {
 const AddToCartBtnRedirect = () => (
 	<Link
 		to="/auth"
-		state={{ state: "/products" }}
+		state={{ from: { pathname: "/products" } }}
 		className="no-link cursor-pointer primary-btn p-0 b-radius-2 text-bold flex-row justify-content-center align-center flex-gap-1"
 	>
 		<span className="cart-icon">
