@@ -9,7 +9,7 @@ import {
 	MoveToWishlistBtn,
 	AddedToWishlist,
 	RemoveFromCart,
-} from "ProductListing/product-card";
+} from "components/ProductListing/product-card";
 import { UpdateCartItem } from "./";
 import {
 	getCartsDataFromId,
