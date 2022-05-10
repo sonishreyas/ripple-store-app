@@ -1,4 +1,4 @@
-import { removeFromArray, removeObjFromArray } from "../utils";
+import { removeFromArray, removeObjFromArray } from "utils";
 /**
  * Reducer function to handle orders state
  * @param {Object} ordersState State values of orders

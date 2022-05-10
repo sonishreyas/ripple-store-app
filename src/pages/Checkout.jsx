@@ -1,4 +1,4 @@
-import { CheckoutContent } from "../components";
+import { CheckoutContent } from "components";
 const CheckoutPage = () => <CheckoutContent />;
 
 export { CheckoutPage };

@@ -1,6 +1,6 @@
-import { useCategoriesDataHook } from "../../custom-hooks";
+import { useCategoriesDataHook } from "custom-hooks";
 import { useNavigate } from "react-router-dom";
-import { useProducts } from "../../context";
+import { useProducts } from "context";
 const Categories = () => {
 	const navigate = useNavigate();
 	const { productsState, productsDispatch } = useProducts();

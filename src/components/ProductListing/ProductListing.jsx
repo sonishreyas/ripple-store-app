@@ -1,4 +1,4 @@
-import { useCart, useProducts, useWishlist, useAuth } from "../../context";
+import { useCart, useProducts, useWishlist, useAuth } from "context";
 import {
 	AddToCartBtn,
 	AddToCartBtnRedirect,
@@ -7,7 +7,7 @@ import {
 	AddToWishlistBtnRedirect,
 	RemoveFromWishlistBtn,
 } from "./product-card";
-import { presentObjInArray } from "../../utils";
+import { presentObjInArray } from "utils";
 import { useEffect } from "react";
 const ProductListing = () => {
 	const { productsData } = useProducts();

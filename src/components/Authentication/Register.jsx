@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router";
 import { useState } from "react";
-import { useRegister, useAuth } from "../../context";
-import { registerHandler, setValueHandler, setFocusHandler } from "../../utils";
+import { useRegister, useAuth } from "context";
+import { registerHandler, setValueHandler, setFocusHandler } from "utils";
 
 const Register = () => {
 	const { registerState, registerDispatch } = useRegister();

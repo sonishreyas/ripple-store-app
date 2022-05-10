@@ -1,9 +1,9 @@
-import { useAddressForm, useAddress, useAuth } from "../../context";
+import { useAddressForm, useAddress, useAuth } from "context";
 import {
 	addToAddressHandler,
 	updateAddressHandler,
 	checkIfAddressPresent,
-} from "../../utils";
+} from "utils";
 const AddressFormModal = () => {
 	const { addressFormState, addressFormDispatch } = useAddressForm();
 	const { setShowAddressFormModal, addressDispatch, addressState } =

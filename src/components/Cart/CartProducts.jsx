@@ -4,12 +4,12 @@ import {
 	useProducts,
 	useWishlist,
 	useCheckout,
-} from "../../context";
+} from "context";
 import {
 	MoveToWishlistBtn,
 	AddedToWishlist,
 	RemoveFromCart,
-} from "../ProductListing/product-card";
+} from "ProductListing/product-card";
 import { UpdateCartItem } from "./";
 import {
 	getCartsDataFromId,
@@ -17,7 +17,7 @@ import {
 	presentInArray,
 	addToCheckoutHandler,
 	removeFromCheckoutHandler,
-} from "../../utils";
+} from "utils";
 const CartProducts = () => {
 	const { authState } = useAuth();
 	const { cartState } = useCart();

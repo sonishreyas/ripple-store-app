@@ -1,4 +1,4 @@
-import { removeFromArray, removeObjFromArray } from "../utils";
+import { removeFromArray, removeObjFromArray } from "utils";
 /**
  * Reducer function to handle checkout state
  * @param {Object} checkoutState State values of checkout

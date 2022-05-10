@@ -1,4 +1,4 @@
-import { HomeContent } from "../components";
+import { HomeContent } from "components";
 const Home = () => <HomeContent />;
 
 export { Home };

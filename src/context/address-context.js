@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { useReducer } from "react";
-import { addressReducer } from "../reducers";
-import { getAddressDataHandler } from "../utils";
+import { addressReducer } from "reducers";
+import { getAddressDataHandler } from "utils";
 import { useAuth } from ".";
 
 const defaultAddressContext = {

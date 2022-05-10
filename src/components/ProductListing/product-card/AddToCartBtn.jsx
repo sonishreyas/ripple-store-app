@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { addToCartHandler, removeFromCartHandler } from "../../../utils";
-import { useCart } from "../../../context";
+import { addToCartHandler, removeFromCartHandler } from "utils";
+import { useCart } from "context";
 
 const AddToCartBtn = (props) => {
 	const { cartDispatch } = useCart();

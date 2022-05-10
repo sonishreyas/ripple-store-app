@@ -1,4 +1,4 @@
-import { useOrders } from "../../context";
+import { useOrders } from "context";
 import { Link } from "react-router-dom";
 const Orders = () => {
 	const { ordersState } = useOrders();

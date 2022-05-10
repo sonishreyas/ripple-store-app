@@ -1,4 +1,4 @@
-import { AuthenticationContent } from "../components";
+import { AuthenticationContent } from "components";
 const AuthenticationPage = () => <AuthenticationContent />;
 
 export { AuthenticationPage };

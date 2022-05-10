@@ -1,4 +1,4 @@
-import { useCart, useWishlist, useAuth, useTheme } from "../../context";
+import { useCart, useWishlist, useAuth, useTheme } from "context";
 import { Link, NavLink } from "react-router-dom";
 const Header = () => {
 	const { cartState } = useCart();

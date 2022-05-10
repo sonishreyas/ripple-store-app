@@ -1,4 +1,4 @@
-import { useProducts } from "../../../context";
+import { useProducts } from "context";
 
 const FilterHeader = () => {
 	const { productsDispatch, clearFilters } = useProducts();

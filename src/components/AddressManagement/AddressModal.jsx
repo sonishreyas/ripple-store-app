@@ -1,4 +1,4 @@
-import { useAddress } from "../../context";
+import { useAddress } from "context";
 import { AddNewAddressBtn } from "./AddNewAddressBtn";
 import { AddressCard } from "./AddressCard";
 const AddressModal = () => {

@@ -1,4 +1,4 @@
-import { removeFromArray } from "../utils";
+import { removeFromArray } from "utils";
 /**
  * Reducer function to handle wishlist state
  * @param {Object} wishlistState State values of wishlist

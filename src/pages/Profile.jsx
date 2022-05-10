@@ -1,4 +1,4 @@
-import { ProfileContent } from "../components";
+import { ProfileContent } from "components";
 
 const Profile = () => <ProfileContent />;
 

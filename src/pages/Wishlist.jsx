@@ -1,3 +1,3 @@
-import { WishlistContent } from "../components";
+import { WishlistContent } from "components";
 const WishlistPage = () => <WishlistContent />;
 export { WishlistPage };

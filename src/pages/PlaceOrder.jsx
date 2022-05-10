@@ -1,4 +1,4 @@
-import { PlaceOrderContent } from "../components";
+import { PlaceOrderContent } from "components";
 
 const PlaceOrderPage = () => <PlaceOrderContent />;
 

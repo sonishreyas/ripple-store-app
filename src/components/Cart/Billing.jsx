@@ -1,4 +1,4 @@
-import { useBilling } from "../../context";
+import { useBilling } from "context";
 import { Link } from "react-router-dom";
 const Billing = () => {
 	const { billingState } = useBilling();

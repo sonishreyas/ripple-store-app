@@ -3,8 +3,8 @@ import {
 	addToWishlistHandler,
 	removeFromWishlistHandler,
 	MoveToWishlistHandler,
-} from "../../../utils";
-import { useWishlist, useCart } from "../../../context";
+} from "utils";
+import { useWishlist, useCart } from "context";
 
 const AddToWishlistBtn = (props) => {
 	const { wishlistDispatch } = useWishlist();

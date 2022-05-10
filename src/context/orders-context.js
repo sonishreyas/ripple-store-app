@@ -1,7 +1,7 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
-import { ordersReducer } from "../reducers";
+import { ordersReducer } from "reducers";
 import { useAuth } from ".";
-import { getOrdersDataHandler } from "../utils";
+import { getOrdersDataHandler } from "utils";
 const defaultOrdersContext = {
 	ordersData: [],
 };

@@ -1,5 +1,5 @@
-import { useAddress, useAddressForm } from "../../context";
-import { removeFromAddressHandler } from "../../utils";
+import { useAddress, useAddressForm } from "context";
+import { removeFromAddressHandler } from "utils";
 
 const AddressCard = ({ props }) => {
 	const {

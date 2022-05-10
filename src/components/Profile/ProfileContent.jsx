@@ -1,6 +1,6 @@
 import { ProfileTabs } from ".";
-import { useAddress } from "../../context";
-import { AddressFormModal } from "../AddressManagement";
+import { useAddress } from "context";
+import { AddressFormModal } from "components/AddressManagement";
 import { useEffect } from "react";
 const ProfileContent = () => {
 	const { showAddressFormModal, setShowAddressFormModal } = useAddress();

@@ -5,8 +5,8 @@ import {
 	setValueHandler,
 	setTestHandler,
 	setFocusHandler,
-} from "../../utils";
-import { useLogin, useAuth } from "../../context";
+} from "utils";
+import { useLogin, useAuth } from "context";
 const Login = () => {
 	const { loginState, loginDispatch } = useLogin();
 	const { authDispatch } = useAuth();

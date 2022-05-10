@@ -1,6 +1,6 @@
 import { CheckoutProducts, Billing } from ".";
-import { useCart, useCheckout, useProducts } from "../../context";
-import { getCartsDataFromId } from "../../utils";
+import { useCart, useCheckout, useProducts } from "context";
+import { getCartsDataFromId } from "utils";
 const CheckoutContent = () => {
 	const { checkoutState } = useCheckout();
 	const { allProductsData } = useProducts();

@@ -5,15 +5,15 @@ import {
 	useState,
 	useEffect,
 } from "react";
-import { productsReducer, sortByReducer } from "../reducers";
+import { productsReducer, sortByReducer } from "reducers";
 import {
 	BrandProducts,
 	ProductsCompose,
 	CategoryProducts,
 	PriceProducts,
 	RatingProducts,
-} from "../utils";
-import { useProductsDataHook, useFiltersDataHook } from "../custom-hooks";
+} from "utils";
+import { useProductsDataHook, useFiltersDataHook } from "custom-hooks";
 
 const getDefaultProductsState = (filtersData) => {
 	return {

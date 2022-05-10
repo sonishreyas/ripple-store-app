@@ -7,7 +7,7 @@ import {
 	useAddress,
 	useLogin,
 	useRegister,
-} from "../../context";
+} from "context";
 
 const Settings = () => {
 	const { authDispatch, authState } = useAuth();

@@ -1,4 +1,4 @@
-import { useProducts } from "../../../context";
+import { useProducts } from "context";
 
 const BrandFilter = () => {
 	const { productsState, productsDispatch, filtersData } = useProducts();

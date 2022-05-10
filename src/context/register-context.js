@@ -1,5 +1,5 @@
 import { useReducer, createContext, useContext } from "react";
-import { registerReducer } from "../reducers";
+import { registerReducer } from "reducers";
 
 const defaultRegisterState = {
 	email: "",

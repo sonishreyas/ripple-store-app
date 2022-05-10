@@ -5,8 +5,8 @@ import {
 	useEffect,
 	useReducer,
 } from "react";
-import { cartReducer } from "../reducers";
-import { getCartDataHandler } from "../utils";
+import { cartReducer } from "reducers";
+import { getCartDataHandler } from "utils";
 import { useAuth } from ".";
 const defaultCartContext = {
 	cartItemsCount: 0,
