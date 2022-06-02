@@ -19,6 +19,7 @@ import {
 	OrdersProvider,
 } from "./context";
 import { BrowserRouter as Router } from "react-router-dom";
+import { ToastPortal } from "components";
 
 // Call make Server
 makeServer();
@@ -40,6 +41,7 @@ ReactDOM.render(
 														<CheckoutProvider>
 															<OrdersProvider>
 																<App />
+																<ToastPortal />
 															</OrdersProvider>
 														</CheckoutProvider>
 													</ProfileProvider>

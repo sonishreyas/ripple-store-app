@@ -10,3 +10,4 @@ export { AddressFormModal } from "./AddressManagement";
 export { AddressModal } from "./AddressManagement";
 export { CheckoutContent } from "./Checkout";
 export { PlaceOrderContent } from "./PlaceOrder";
+export { ToastPortal } from "./Toast";

@@ -19,48 +19,15 @@ export default function App() {
 			<Header />
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route
-					path="/cart"
-					element={
-						<RequireAuth>
-							<Cart />
-						</RequireAuth>
-					}
-				/>
-				<Route path="/products" element={<Products />} />
-				<Route
-					path="/profile"
-					element={
-						<RequireAuth>
-							<Profile />
-						</RequireAuth>
-					}
-				/>
-				<Route
-					path="/wishlist"
-					element={
-						<RequireAuth>
-							<Wishlist />
-						</RequireAuth>
-					}
-				/>
 				<Route path="/auth" element={<Authentication />} />
-				<Route
-					path="/checkout"
-					element={
-						<RequireAuth>
-							<Checkout />
-						</RequireAuth>
-					}
-				/>
-				<Route
-					path="/order"
-					element={
-						<RequireAuth>
-							<PlaceOrder />
-						</RequireAuth>
-					}
-				/>
+				<Route element={<RequireAuth />}>
+					<Route path="/cart" element={<Cart />} />
+					<Route path="/products" element={<Products />} />
+					<Route path="/profile" element={<Profile />} />
+					<Route path="/wishlist" element={<Wishlist />} />
+					<Route path="/checkout" element={<Checkout />} />
+					<Route path="/order" element={<PlaceOrder />} />
+				</Route>
 				<Route path="/mock" element={<Mockman />} />
 			</Routes>
 			<Outlet />
