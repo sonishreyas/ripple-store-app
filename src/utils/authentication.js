@@ -64,19 +64,18 @@ const registerHandler = (
 	(async () => {
 		try {
 			const response = await axios.post(`/api/auth/signup`, registerInfo);
-			console.log(response);
 			// saving the encodedToken in the localStorage
 			const user = {
 				token: response.data.encodedToken,
-				firstName: response.data.foundUser.firstName,
-				lastName: response.data.foundUser.lastName,
-				email: response.data.foundUser.email,
+				firstName: response.data.createdUser.firstName,
+				lastName: response.data.createdUser.lastName,
+				email: response.data.createdUser.email,
 			};
 			authDispatch({
 				type: "UPDATE_USER",
 				payload: JSON.stringify(user),
 			});
-			localStorage.setItem("user", user);
+			localStorage.setItem("user", JSON.stringify(user));
 			navigate(location?.state?.from?.pathname);
 		} catch (error) {
 			console.log(error);
