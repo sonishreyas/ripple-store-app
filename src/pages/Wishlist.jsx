@@ -1,3 +1,9 @@
 import { WishlistContent } from "components";
-const WishlistPage = () => <WishlistContent />;
+import { useDocumentTitle } from "custom-hooks";
+
+const WishlistPage = () => {
+	useDocumentTitle("Wishlist | Ripple Store");
+	<WishlistContent />;
+};
+
 export { WishlistPage };

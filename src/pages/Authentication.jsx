@@ -1,4 +1,7 @@
 import { AuthenticationContent } from "components";
-const AuthenticationPage = () => <AuthenticationContent />;
-
+import { useDocumentTitle } from "custom-hooks";
+const AuthenticationPage = () => {
+	useDocumentTitle("Auth | Ripple Store");
+	return <AuthenticationContent />;
+};
 export { AuthenticationPage };

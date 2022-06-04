@@ -1,14 +1,19 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useReducer } from "react";
 import {
 	loginHandler,
 	setValueHandler,
 	setTestHandler,
 	setFocusHandler,
 } from "utils";
-import { useLogin, useAuth } from "context";
+import { useAuth } from "context";
+import { loginReducer } from "reducers";
 const Login = () => {
-	const { loginState, loginDispatch } = useLogin();
+	const [loginState, loginDispatch] = useReducer(loginReducer, {
+		email: "",
+		password: "",
+		focus: { email: false, password: false },
+	});
 	const { authDispatch } = useAuth();
 	const [showPassword, setShowPassword] = useState();
 	const location = useLocation();
@@ -110,12 +115,12 @@ const Login = () => {
 				<sub className="password-check p-2 my-2"></sub>
 			</section>
 			<button
-				className="outline-btn p-5 b-radius-2 my-5 mx-0 text-bold"
+				className="outline-btn p-5 b-radius-2 my-5 mx-0 text-bold cursor-pointer"
 				onClick={() => setTestHandler(loginDispatch)}
 			>
 				Test Credentials
 			</button>
-			<button className="primary-btn p-5 b-radius-2 my-5 mx-0 text-bold">
+			<button className="primary-btn p-5 b-radius-2 my-5 mx-0 text-bold cursor-pointer">
 				Login
 			</button>
 		</form>

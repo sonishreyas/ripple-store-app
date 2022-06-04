@@ -1,4 +1,9 @@
 import { CheckoutContent } from "components";
-const CheckoutPage = () => <CheckoutContent />;
+import { useDocumentTitle } from "custom-hooks";
+
+const CheckoutPage = () => {
+	useDocumentTitle("Checkout | Ripple Store");
+	<CheckoutContent />;
+};
 
 export { CheckoutPage };

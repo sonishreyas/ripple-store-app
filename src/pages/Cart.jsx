@@ -1,4 +1,9 @@
 import { CartContent } from "components";
-const CartPage = () => <CartContent />;
+import { useDocumentTitle } from "custom-hooks";
+
+const CartPage = () => {
+	useDocumentTitle("Cart | Ripple Store");
+	<CartContent />;
+};
 
 export { CartPage };

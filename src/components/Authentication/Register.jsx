@@ -1,10 +1,24 @@
 import { useLocation, useNavigate } from "react-router";
-import { useState } from "react";
-import { useRegister, useAuth } from "context";
+import { useState, useReducer } from "react";
+import { useAuth } from "context";
 import { registerHandler, setValueHandler, setFocusHandler } from "utils";
+import { registerReducer } from "reducers";
 
 const Register = () => {
-	const { registerState, registerDispatch } = useRegister();
+	const [registerState, registerDispatch] = useReducer(registerReducer, {
+		email: "",
+		password: "",
+		firstName: "",
+		lastName: "",
+		confirmPassword: "",
+		focus: {
+			firstName: false,
+			lastName: false,
+			email: false,
+			password: false,
+			confirmPassword: false,
+		},
+	});
 	const { authDispatch } = useAuth();
 	const location = useLocation();
 	const navigate = useNavigate();
@@ -268,7 +282,7 @@ const Register = () => {
 				<sub className="p-2 my-2 inactive-check"></sub>
 			</section>
 
-			<button className="primary-btn p-5 b-radius-2 my-5 mx-0 text-bold">
+			<button className="primary-btn p-5 b-radius-2 my-5 mx-0 text-bold cursor-pointer">
 				Register
 			</button>
 		</form>

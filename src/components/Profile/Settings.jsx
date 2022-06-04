@@ -1,22 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import {
-	useAuth,
-	useCart,
-	useBilling,
-	useWishlist,
-	useAddress,
-	useLogin,
-	useRegister,
-} from "context";
+import { useAuth, useCart, useBilling, useWishlist, useAddress } from "context";
 
 const Settings = () => {
-	const { authDispatch, authState } = useAuth();
+	const { authDispatch } = useAuth();
 	const { cartDispatch } = useCart();
 	const { wishlistDispatch } = useWishlist();
 	const { addressDispatch } = useAddress();
 	const { billingDispatch } = useBilling();
-	const { loginDispatch } = useLogin();
-	const { registerDispatch } = useRegister();
 	const navigate = useNavigate();
 	const handleLogout = () => {
 		localStorage.clear();
@@ -25,8 +15,6 @@ const Settings = () => {
 		wishlistDispatch({ type: "RESET" });
 		addressDispatch({ type: "RESET" });
 		billingDispatch({ type: "RESET" });
-		loginDispatch({ type: "RESET" });
-		registerDispatch({ type: "RESET" });
 		navigate("/");
 	};
 	return (
