@@ -51,7 +51,7 @@ const AddressFormModal = () => {
 		const addressData = {};
 		addressData["address"] = addressFormState.address;
 
-		addressFormState.addressId.length
+		addressFormState?.addressId?.length
 			? updateAddressHandler(
 					e,
 					addressFormState.addressId,
@@ -64,7 +64,6 @@ const AddressFormModal = () => {
 			: handleAddressFormDismiss();
 		handleAddressFormDismiss();
 	};
-
 	const handleFillTestAddressValues = () => {
 		const formField = {
 			type: "UPDATE_ADDRESS",
