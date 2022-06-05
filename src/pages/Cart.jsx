@@ -3,7 +3,7 @@ import { useDocumentTitle } from "custom-hooks";
 
 const CartPage = () => {
 	useDocumentTitle("Cart | Ripple Store");
-	<CartContent />;
+	return <CartContent />;
 };
 
 export { CartPage };

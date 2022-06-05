@@ -3,7 +3,7 @@ import { useDocumentTitle } from "custom-hooks";
 
 const WishlistPage = () => {
 	useDocumentTitle("Wishlist | Ripple Store");
-	<WishlistContent />;
+	return <WishlistContent />;
 };
 
 export { WishlistPage };

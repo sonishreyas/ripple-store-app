@@ -1,7 +1,6 @@
 import { useNav } from "context";
 import { Link, NavLink } from "react-router-dom";
 import { navData } from "./nav-data";
-
 const NavBar = () => {
 	const { setShowNavbar } = useNav();
 
@@ -10,6 +9,7 @@ const NavBar = () => {
 			? "no-link cursor-pointer text-cta-color text-bold"
 			: "no-link cursor-pointer";
 	const handleHideNavbar = () => setShowNavbar(false);
+
 	return (
 		<div className="nav-container p-0 m-0 w-100 h-auto flex-row">
 			<div className="nav-content p-0 m-0">

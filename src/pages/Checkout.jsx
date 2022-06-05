@@ -3,7 +3,7 @@ import { useDocumentTitle } from "custom-hooks";
 
 const CheckoutPage = () => {
 	useDocumentTitle("Checkout | Ripple Store");
-	<CheckoutContent />;
+	return <CheckoutContent />;
 };
 
 export { CheckoutPage };

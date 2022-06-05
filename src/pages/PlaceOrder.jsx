@@ -3,7 +3,7 @@ import { useDocumentTitle } from "custom-hooks";
 
 const PlaceOrderPage = () => {
 	useDocumentTitle("Order | Ripple Store");
-	<PlaceOrderContent />;
+	return <PlaceOrderContent />;
 };
 
 export { PlaceOrderPage };

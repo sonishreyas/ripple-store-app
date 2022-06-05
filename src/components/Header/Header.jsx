@@ -37,6 +37,7 @@ const Header = () => {
 	useEffect(() => {
 		setSearchQuery("");
 		setSearchResult([]);
+		setShowNavbar(false);
 	}, []);
 
 	const handleNavigate = (id) => {

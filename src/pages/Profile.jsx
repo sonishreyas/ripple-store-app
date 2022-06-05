@@ -3,7 +3,7 @@ import { useDocumentTitle } from "custom-hooks";
 
 const Profile = () => {
 	useDocumentTitle("Profile | Ripple Store");
-	<ProfileContent />;
+	return <ProfileContent />;
 };
 
 export { Profile };
