@@ -1,4 +1,4 @@
-import { useBilling } from "../../context";
+import { useBilling } from "context";
 import { Link } from "react-router-dom";
 const Billing = () => {
 	const { billingState } = useBilling();
@@ -6,15 +6,6 @@ const Billing = () => {
 		<div className="cart-billing flex-column align-start">
 			<div className="card basic-card card-shadow flex-row justify-content-center align-center flex-wrap card-shadow p-5 b-radius-2">
 				<ul className="cart-list">
-					<li className="no-list">
-						<h3 className="billing-heading">Coupons</h3>
-						<button className="outline-btn coupon-btn p-5 b-radius-2 my-5 mx-0 text-bold">
-							<span className="coupon-icon">
-								<i className="fas fa-tags"></i>
-							</span>
-							<p className="wishlist-text">Apply Coupons</p>
-						</button>
-					</li>
 					<li className="no-list">
 						<h3 className="billing-heading">Price Details</h3>
 						<table className="table">

@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { useDefineRootColorScheme } from "../custom-hooks";
+import { useDefineRootColorScheme } from "custom-hooks";
 
 const defaultThemeContextValues = {
 	theme: "dark",

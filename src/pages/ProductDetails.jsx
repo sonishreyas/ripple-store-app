@@ -1,5 +1,9 @@
-const ProductDetails = () => {
-    return (<><h1>This is ProductDetails</h1></>);
-}
+import { ProductDetailsContent } from "components";
+import { useDocumentTitle } from "custom-hooks";
 
-export {ProductDetails};
+const ProductDetails = () => {
+	useDocumentTitle("Product | Ripple Store");
+	return <ProductDetailsContent />;
+};
+
+export { ProductDetails };

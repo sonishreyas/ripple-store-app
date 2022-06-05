@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useReducer } from "react";
-import { wishlistReducer } from "../reducers";
-import { getWishlistDataHandler } from "../utils";
+import { wishlistReducer } from "reducers";
+import { getWishlistDataHandler } from "utils";
 import { useAuth } from ".";
 const defaultWishlistContext = {
 	wishlistItemsCount: 0,

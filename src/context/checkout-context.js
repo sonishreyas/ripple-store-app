@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
-import { checkoutReducer } from "../reducers";
+import { checkoutReducer } from "reducers";
 const defaultCheckoutContext = {
 	checkoutItemsCount: 0,
 	itemsInCheckout: [],

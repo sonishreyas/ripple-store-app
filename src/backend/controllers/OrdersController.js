@@ -1,5 +1,5 @@
 import { Response } from "miragejs";
-import { formatDate, requiresAuth } from "../utils/authUtils";
+import { formatDate, requiresAuth } from "backend/utils/authUtils";
 
 /**
  * All the routes related to Order are present here.

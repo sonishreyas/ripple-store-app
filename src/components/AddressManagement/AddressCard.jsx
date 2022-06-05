@@ -1,5 +1,5 @@
-import { useAddress, useAddressForm } from "../../context";
-import { removeFromAddressHandler } from "../../utils";
+import { useAddress, useAddressForm } from "context";
+import { removeFromAddressHandler } from "utils";
 
 const AddressCard = ({ props }) => {
 	const {
@@ -18,7 +18,6 @@ const AddressCard = ({ props }) => {
 	const { addressFormDispatch } = useAddressForm();
 
 	const handleEditAddress = () => {
-		setShowAddressFormModal(true);
 		addressFormDispatch({
 			type: "UPDATE_ADDRESS_ID",
 			payload: { addressId: addressId },
@@ -39,10 +38,12 @@ const AddressCard = ({ props }) => {
 			},
 		};
 		addressFormDispatch(formField);
+		setShowAddressFormModal(true);
 	};
 	const handleDeleteAddress = (e) => {
 		removeFromAddressHandler(e, addressId, addressDispatch, addressState);
 	};
+
 	return (
 		<div className="flex-column justify-content-center flex-wrap b-radius-2 w-100 h-auto">
 			<h3 className="p-2">{name}</h3>

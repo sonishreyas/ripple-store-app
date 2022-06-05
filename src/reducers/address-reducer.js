@@ -1,4 +1,4 @@
-import { removeAddressObjFromArray, updateAddressObjInArray } from "../utils";
+import { removeAddressObjFromArray, updateAddressObjInArray } from "utils";
 
 const resetAddressStatus = (addressData) =>
 	Object.keys(addressData).reduce((prev, curr) => {
@@ -22,7 +22,7 @@ const addressReducer = (addressState, { type, payload }) => {
 		case "ADD_NEW_ADDRESS":
 			return {
 				...addressState,
-				addressData: [...addressState.addressData, payload.addressData],
+				addressData: [...payload.addressData],
 			};
 
 		case "REMOVE_ADDRESS":

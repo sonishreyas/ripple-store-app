@@ -1,6 +1,6 @@
-import { useAddress } from "../../context";
-import { AddNewAddressBtn } from "../AddressManagement";
-import { AddressCard } from "../AddressManagement";
+import { useAddress } from "context";
+import { AddNewAddressBtn } from "components/AddressManagement";
+import { AddressCard } from "components/AddressManagement";
 const Address = () => {
 	const { addressState, addressDispatch, setShowAddressModal } = useAddress();
 	const handleAddressModal = () => setShowAddressModal(false);

@@ -19,7 +19,7 @@ const addToAddressHandler = (e, addressData, addressDispatch) => {
 			addressDispatch({
 				type: "ADD_NEW_ADDRESS",
 				payload: {
-					addressData: { ...addressData.address },
+					addressData: [...response.data.address],
 				},
 			});
 			addressDispatch({

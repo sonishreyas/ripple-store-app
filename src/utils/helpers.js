@@ -99,6 +99,7 @@ const getCartsDataFromId = (items, data) =>
 		...data.find((product) => product._id === item._id),
 		...item,
 	}));
+
 export {
 	removeFromArray,
 	presentInArray,

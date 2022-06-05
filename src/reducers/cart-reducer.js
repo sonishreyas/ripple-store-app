@@ -1,8 +1,4 @@
-import {
-	removeFromArray,
-	removeObjFromArray,
-	updateObjInArray,
-} from "../utils";
+import { removeFromArray, removeObjFromArray, updateObjInArray } from "utils";
 /**
  * Reducer function to handle cart state
  * @param {Object} cartState State values of cart

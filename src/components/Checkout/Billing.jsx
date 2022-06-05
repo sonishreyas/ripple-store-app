@@ -1,12 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
-import {
-	useAuth,
-	useBilling,
-	useCart,
-	useCheckout,
-	useOrders,
-} from "../../context";
-import { removeFromCartHandler, addToOrdersHandler } from "../../utils";
+import { useAuth, useBilling, useCart, useCheckout, useOrders } from "context";
+import { removeFromCartHandler, addToOrdersHandler } from "utils";
 import { v4 as uuid } from "uuid";
 
 const Billing = ({ products }) => {

@@ -23,7 +23,11 @@
 	height: auto;
 	background: var(--secondary-background-color);
 }
-
+.page-selected {
+	background-color: var(--cta-color);
+	color: var(--tertiary-color);
+	border-color: var(--cta-color);
+}
 .horizontal-tabs-content {
 	display: block;
 }
@@ -40,12 +44,12 @@
 
 .cart-badge-text {
 	top: 1rem;
-	right: 6.5rem;
+	right: 5.5rem;
 }
 
 .wishlist-badge-text {
 	top: 1rem;
-	right: 14.5rem;
+	right: 13.5rem;
 }
 .header {
 	z-index: 2;
@@ -53,17 +57,17 @@
 .modal {
 	position: absolute;
 	top: 0;
-	right:0;
-	height: 100%;	
-	width:100%;
+	right: 0;
+	height: 100%;
+	width: 100%;
 	z-index: 9;
 }
 .modal-background {
 	position: absolute;
 	top: 0;
-	right:0;
-	height: 100%;	
-	width:100%;
+	right: 0;
+	height: 100%;
+	width: 100%;
 	background-color: var(--tertiary-color);
 	opacity: 0.5;
 }
@@ -71,7 +75,6 @@
 	position: absolute;
 }
 .address-container {
-	
 }
 
 .selected-outline-btn {
@@ -102,7 +105,7 @@
 		top: 13rem;
 		right: 0;
 		width: 100%;
-		padding: 0 1rem 0 1rem ;
+		padding: 0 1rem 0 1rem;
 	}
 
 	.main {
@@ -116,21 +119,21 @@
 		height: 5rem;
 	}
 	.brand-name {
-		left: -2rem
+		left: -2rem;
 	}
 }
 
 @media screen and (max-width: 1180px) {
 	.grid-3-rows .header .header-nav-icons {
 		display: block;
+	}
 }
-}
-	
+
 .filter-chip-selected {
 	color: var(--cta-color);
 	background-color: var(--tertiary-color);
 }
 
 .primary-btn {
-	color: var(--tertiary-color)
+	color: var(--tertiary-color);
 }

@@ -2,9 +2,12 @@ import {
 	presentObjInArray,
 	removeFromWishlistHandler,
 	getDataFromId,
-} from "../../utils";
-import { useWishlist, useCart, useAuth, useProducts } from "../../context";
-import { GoToCartBtn, AddToCartBtn } from "../ProductListing/product-card";
+} from "utils";
+import { useWishlist, useCart, useAuth, useProducts } from "context";
+import {
+	GoToCartBtn,
+	AddToCartBtn,
+} from "components/ProductListing/product-card";
 const WishlistProducts = () => {
 	const { authState } = useAuth();
 	const { wishlistState, wishlistDispatch } = useWishlist();
@@ -39,7 +42,7 @@ const WishlistProducts = () => {
 							>
 								<section className="card-image-container flex-row justify-content-center align-center flex-wrap b-radius-2">
 									<img
-										src="https://raw.githubusercontent.com/sonishreyas/rippleUI/dev/components/media/images/sneaker.png"
+										src={imgURL}
 										alt="Puma Sneakers"
 										className="card-image b-radius-2 mt-2"
 									/>

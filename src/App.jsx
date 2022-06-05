@@ -1,32 +1,20 @@
-import {
-	Home,
-	Cart,
-	Wishlist,
-	Products,
-	ProductDetails,
-	Profile,
-	Authentication,
-	Checkout,
-	PlaceOrder,
-} from "./pages";
-import { Routes, Route, Outlet } from "react-router-dom";
-import Mockman from "mockman-js";
-import { Header, Footer } from "./components";
+import { Outlet, useLocation } from "react-router-dom";
+import { Header, Footer, NavBar } from "./components";
+import { AppRoutes } from "routes";
+import { useNav } from "context";
+import { useEffect } from "react";
+
 export default function App() {
+	const { showNavbar, setShowNavbar } = useNav();
+	const location = useLocation();
+	useEffect(() => {
+		setShowNavbar(false);
+	}, [location]);
 	return (
 		<div className="grid-3-rows w-100">
 			<Header />
-			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/cart" element={<Cart />} />
-				<Route path="/products" element={<Products />} />
-				<Route path="/profile" element={<Profile />} />
-				<Route path="/wishlist" element={<Wishlist />} />
-				<Route path="/auth" element={<Authentication />} />
-				<Route path="/checkout" element={<Checkout />} />
-				<Route path="/order" element={<PlaceOrder />} />
-				<Route path="/mock" element={<Mockman />} />
-			</Routes>
+			<AppRoutes />
+			{showNavbar && <NavBar />}
 			<Outlet />
 			<Footer />
 		</div>

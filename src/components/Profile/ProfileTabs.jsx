@@ -1,4 +1,4 @@
-import { useProfile } from "../../context";
+import { useProfile } from "context";
 import { Profile, Address, Orders, Settings } from ".";
 const ProfileTabs = () => {
 	const { profileActiveTab, setProfileActiveTab } = useProfile();

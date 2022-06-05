@@ -3,8 +3,8 @@ import {
 	addToWishlistHandler,
 	removeFromWishlistHandler,
 	MoveToWishlistHandler,
-} from "../../../utils";
-import { useWishlist, useCart } from "../../../context";
+} from "utils";
+import { useWishlist, useCart } from "context";
 
 const AddToWishlistBtn = (props) => {
 	const { wishlistDispatch } = useWishlist();
@@ -31,7 +31,7 @@ const AddToWishlistBtn = (props) => {
 const AddToWishlistBtnRedirect = () => (
 	<Link
 		to="/auth"
-		state={{ state: "/products" }}
+		state={{ from: { pathname: "/products" } }}
 		className="no-link-decoration outline-btn p-0 b-radius-2 text-bold card-wishlist m-5 flex-row justify-content-center align-center flex-gap-1"
 	>
 		<span className="wishlist-icon">

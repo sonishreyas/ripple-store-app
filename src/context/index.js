@@ -1,6 +1,4 @@
 export { ProductsProvider, useProducts } from "./product-context";
-export { LoginProvider, useLogin } from "./login-context";
-export { RegisterProvider, useRegister } from "./register-context";
 export { CartProvider, useCart } from "./cart-context";
 export { WishlistProvider, useWishlist } from "./wishlist-context";
 export { BillingProvider, useBilling } from "./billing-context";
@@ -11,3 +9,4 @@ export { ThemeProvider, useTheme } from "./theme-context";
 export { ProfileProvider, useProfile } from "./profile-context";
 export { CheckoutProvider, useCheckout } from "./checkout-context";
 export { OrdersProvider, useOrders } from "./orders-context";
+export { useNav, NavProvider } from "./nav-context";

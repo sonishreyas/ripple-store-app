@@ -1,4 +1,4 @@
-import { useCart, useProducts, useWishlist, useAuth } from "../../context";
+import { useCart, useProducts, useWishlist, useAuth } from "context";
 import {
 	AddToCartBtn,
 	AddToCartBtnRedirect,
@@ -7,19 +7,36 @@ import {
 	AddToWishlistBtnRedirect,
 	RemoveFromWishlistBtn,
 } from "./product-card";
-import { presentObjInArray } from "../../utils";
-import { useEffect } from "react";
+import { presentObjInArray } from "utils";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 const ProductListing = () => {
 	const { productsData } = useProducts();
 	const { wishlistState } = useWishlist();
 	const { cartState } = useCart();
 	const { authState } = useAuth();
 	useEffect(() => window.scrollTo(0, 0), []);
+	const [pageNum, setPageNum] = useState(1);
+	const [products, setProducts] = useState(
+		productsData.slice(pageNum - 1, pageNum * 6)
+	);
+	const noOfPages = Math.ceil(productsData.length / 6);
+	const handleUpdatePage = (index) => {
+		setPageNum(index);
+	};
+	useEffect(() => {
+		pageNum > 1
+			? setProducts(
+					productsData.slice(pageNum - 1 + 6 * (pageNum - 1), pageNum * 6 + 1)
+			  )
+			: setProducts(productsData.slice(pageNum - 1, pageNum * 6));
+	}, [pageNum, productsData]);
+
 	return (
-		<article className="grid-col-70 ">
+		<article className="flex-column justify-content-start align-center w-100 m-10">
 			<div className="products-container flex-row align-center flex-gap-2 flex-wrap">
-				{productsData.length !== 0 ? (
-					productsData.map(
+				{products.length !== 0 ? (
+					products.map(
 						({
 							_id,
 							name,
@@ -38,13 +55,16 @@ const ProductListing = () => {
 								key={_id}
 								className="no-link-decoration card vertical card-shadow p-5 b-radius-2"
 							>
-								<section className="card-image-container flex-row justify-content-center align-center flex-wrap b-radius-2">
+								<Link
+									to={`/product/${_id}`}
+									className="no-link card-image-container flex-row justify-content-center align-center flex-wrap b-radius-2"
+								>
 									<img
 										src={imgURL}
 										alt={`${brand} ${category}`}
 										className="card-image b-radius-2 mt-2"
 									/>
-								</section>
+								</Link>
 								{authState.token?.length ? (
 									presentObjInArray(wishlistState.itemsInWishlist, _id) ? (
 										<RemoveFromWishlistBtn
@@ -94,6 +114,35 @@ const ProductListing = () => {
 					)
 				) : (
 					<h4>No Products Found</h4>
+				)}
+			</div>
+			<div className="pagination flex-row justify-content-center align-center p-10 my-10 b-radius-4 flex-gap-1 w-100 ">
+				{pageNum !== 1 && (
+					<button
+						className="page-number p-5 b-radius-circle text-bold cursor-pointer"
+						onClick={() => handleUpdatePage(pageNum - 1)}
+					>
+						{"<"}
+					</button>
+				)}
+				{[...Array(noOfPages)].map((item, index) => (
+					<button
+						className={`page-number p-5 b-radius-circle text-bold page-active cursor-pointer ${
+							index + 1 === pageNum ? "page-selected" : ""
+						}`}
+						onClick={() => handleUpdatePage(index + 1)}
+						key={index}
+					>
+						{index + 1}
+					</button>
+				))}
+				{pageNum !== noOfPages && (
+					<button
+						className="page-number p-5 b-radius-circle text-bold cursor-pointer"
+						onClick={() => handleUpdatePage(pageNum + 1)}
+					>
+						{">"}
+					</button>
 				)}
 			</div>
 		</article>

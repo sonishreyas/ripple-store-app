@@ -1,4 +1,4 @@
-import { useProducts } from "../../../context";
+import { useProducts } from "context";
 
 const SortByFilter = () => {
 	const { productsState, productsDispatch, filtersData } = useProducts();

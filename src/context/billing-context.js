@@ -1,7 +1,7 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
-import { billingReducer } from "../reducers";
+import { billingReducer } from "reducers";
 import { useCart, useProducts } from "./";
-import { getBillingDataHandler, getCartsDataFromId } from "../utils";
+import { getBillingDataHandler, getCartsDataFromId } from "utils";
 const defaultBillingContext = {
 	totalMRP: 0,
 	dicount: 0,

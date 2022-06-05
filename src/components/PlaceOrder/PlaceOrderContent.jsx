@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useProfile } from "../../context";
+import { useProfile } from "context";
 
 const PlaceOrderContent = () => {
 	const navigate = useNavigate();

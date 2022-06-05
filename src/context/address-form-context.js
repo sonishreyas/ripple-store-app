@@ -1,5 +1,5 @@
 import { useReducer, createContext, useContext } from "react";
-import { addressFormReducer } from "../reducers";
+import { addressFormReducer } from "reducers";
 
 const defaultAddressFormState = {
 	addressId: "",

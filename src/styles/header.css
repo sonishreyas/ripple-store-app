@@ -1,0 +1,26 @@
+.search-bar {
+	position: relative;
+}
+
+.search-user-container {
+	position: absolute;
+	background-color: var(--secondary-background-color);
+}
+
+.search-list:hover {
+	background-color: var(--cta-color);
+	color: var(--tertiary-color);
+}
+
+.search-result-container {
+	background-color: var(--secondary-background-color);
+	position: absolute;
+}
+
+.badge-icon > * {
+	font-size: 1.8rem;
+}
+
+.badge-title {
+	font-size: 1.4rem;
+}
