@@ -1,0 +1,50 @@
+.filters-container {
+	height: 100%;
+	width: 20%;
+}
+
+.products-container {
+	height: 100%;
+	width: 80%;
+}
+
+.products-content-container {
+	padding: 0;
+}
+
+.filters {
+	position: fixed;
+	opacity: 0;
+	pointer-events: none;
+}
+
+@media screen and (max-width: 768px) {
+	.filters-container {
+		grid-column: 1/3;
+		grid-row: 1/3;
+		width: 100%;
+		height: 120%;
+		/* overflow: hidden; */
+		top: 0;
+		left: 0;
+		bottom: 0;
+		position: absolute;
+		background: var(--secondary-background-color);
+		z-index: var(--max-z-index);
+	}
+	.area-btn-container {
+		display: block;
+		position: fixed;
+		width: 100%;
+		bottom: 0;
+		background: var(--secondary-background-color);
+		z-index: var(--max-z-index);
+	}
+
+	.area-dismiss-container {
+		display: block;
+	}
+	.products-container {
+		width: 100%;
+	}
+}

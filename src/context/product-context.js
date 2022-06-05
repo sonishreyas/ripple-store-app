@@ -81,6 +81,8 @@ const ProductsProvider = ({ children }) => {
 			);
 		}
 	}, [productsData, productsState]);
+	const [showFiltersContainer, setShowFiltersContainer] = useState(true);
+
 	return (
 		<ProductsContext.Provider
 			value={{
@@ -90,6 +92,8 @@ const ProductsProvider = ({ children }) => {
 				filtersData: filtersData,
 				productsDispatch,
 				clearFilters: defaultProductsState,
+				showFiltersContainer,
+				setShowFiltersContainer,
 			}}
 		>
 			{children}

@@ -33,7 +33,7 @@ const ProductListing = () => {
 	}, [pageNum, productsData]);
 
 	return (
-		<article className="grid-col-70 ">
+		<article className="flex-column justify-content-start align-center w-100 m-10">
 			<div className="products-container flex-row align-center flex-gap-2 flex-wrap">
 				{products.length !== 0 ? (
 					products.map(
