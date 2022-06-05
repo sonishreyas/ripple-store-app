@@ -33,6 +33,7 @@ import {
 	addItemToOrderHandler,
 	getOrderItemsHandler,
 } from "./backend/controllers/OrdersController";
+import { createOrders } from "./backend/controllers/PaymentController";
 import { categories, products, users, filters } from "./backend/db";
 export function makeServer({ environment = "development" } = {}) {
 	return new Server({
@@ -48,6 +49,7 @@ export function makeServer({ environment = "development" } = {}) {
 			wishlist: Model,
 			filter: Model,
 			orders: Model,
+			payment: Model,
 		},
 
 		// Runs on the start of the server
@@ -118,6 +120,8 @@ export function makeServer({ environment = "development" } = {}) {
 
 			this.get("/user/orders", getOrderItemsHandler.bind(this));
 			this.post("/user/orders", addItemToOrderHandler.bind(this));
+
+			this.post("/payment/orders", createOrders.bind(this));
 		},
 	});
 }

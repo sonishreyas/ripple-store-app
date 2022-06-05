@@ -1,5 +1,5 @@
 import axios from "axios";
-import { HEADERS } from "./headers";
+
 /**
  * Add product data to cart
  * @param {*} element
