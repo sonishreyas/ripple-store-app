@@ -1,4 +1,4 @@
-import { removeAddressObjFromArray, updateAddressObjInArray } from "../utils";
+import { removeAddressObjFromArray, updateAddressObjInArray } from "utils";
 
 const resetAddressStatus = (addressData) =>
 	Object.keys(addressData).reduce((prev, curr) => {

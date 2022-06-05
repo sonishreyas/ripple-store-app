@@ -16,3 +16,11 @@
 	background-color: var(--secondary-background-color);
 	position: absolute;
 }
+
+.badge-icon > * {
+	font-size: 1.8rem;
+}
+
+.badge-title {
+	font-size: 1.4rem;
+}

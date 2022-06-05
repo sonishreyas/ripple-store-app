@@ -126,7 +126,7 @@ const Header = () => {
 									<span className="badge-icon">
 										<i className="fas fa-user social"></i>
 									</span>
-									<p className="p-2 m-2">
+									<p className="p-2 m-2 badge-title">
 										{authState?.token?.length
 											? `Hi,
 										${
@@ -153,7 +153,7 @@ const Header = () => {
 								>
 									{wishlistState.wishlistItemsCount}
 								</p>
-								<p className="p-2 m-2">Wishlist</p>
+								<p className="p-2 m-2 badge-title">Wishlist</p>
 							</Link>
 						</li>
 						<li className="header-nav-icons h-auto pt-10">
@@ -171,7 +171,7 @@ const Header = () => {
 								>
 									{cartState.cartItemsCount}
 								</p>
-								<p className="p-2 m-2">Cart</p>
+								<p className="p-2 m-2 badge-title">Cart</p>
 							</Link>
 						</li>
 						<li className="header-nav-icons h-auto pr-5">
