@@ -64,28 +64,21 @@ export const categories = [
 				name: "U.S. Polo Assn.",
 				discountOffer: "Up to 50-70% Off",
 				imgURL:
-					"https://raw.githubusercontent.com/sonishreyas/rippleUI/dev/components/media/images/brand-logo.png",
+					"https://raw.githubusercontent.com/sonishreyas/ripple-store-app/dev/src/backend/media/images/us-polo.jpg",
 			},
 			{
 				_id: uuid(),
 				name: "Woodland",
 				discountOffer: "Up to 10-20% Off",
 				imgURL:
-					"https://raw.githubusercontent.com/sonishreyas/rippleUI/dev/components/media/images/brand-logo.png",
+					"https://raw.githubusercontent.com/sonishreyas/ripple-store-app/dev/src/backend/media/images/woodland.jpeg",
 			},
 			{
 				_id: uuid(),
 				name: "BATA",
 				discountOffer: "Up to 30-50% Off",
 				imgURL:
-					"https://raw.githubusercontent.com/sonishreyas/rippleUI/dev/components/media/images/brand-logo.png",
-			},
-			{
-				_id: uuid(),
-				name: "Roadster",
-				discountOffer: "Up to 30-50% Off",
-				imgURL:
-					"https://raw.githubusercontent.com/sonishreyas/rippleUI/dev/components/media/images/brand-logo.png",
+					"https://raw.githubusercontent.com/sonishreyas/ripple-store-app/dev/src/backend/media/images/bata.png",
 			},
 		],
 	},

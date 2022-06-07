@@ -17,19 +17,15 @@ const ProductListing = () => {
 	const { authState } = useAuth();
 	useEffect(() => window.scrollTo(0, 0), []);
 	const [pageNum, setPageNum] = useState(1);
-	const [products, setProducts] = useState(
-		productsData.slice(pageNum - 1, pageNum * 6)
-	);
+	const [products, setProducts] = useState(productsData.slice(pageNum - 1, 6));
 	const noOfPages = Math.ceil(productsData.length / 6);
 	const handleUpdatePage = (index) => {
 		setPageNum(index);
 	};
 	useEffect(() => {
 		pageNum > 1
-			? setProducts(
-					productsData.slice(pageNum - 1 + 6 * (pageNum - 1), pageNum * 6 + 1)
-			  )
-			: setProducts(productsData.slice(pageNum - 1, pageNum * 6));
+			? setProducts(productsData.slice(6 * (pageNum - 1), pageNum * 6 + 1))
+			: setProducts(productsData.slice(pageNum - 1, 6));
 	}, [pageNum, productsData]);
 
 	return (
