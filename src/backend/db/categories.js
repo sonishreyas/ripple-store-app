@@ -64,7 +64,7 @@ export const categories = [
 				name: "U.S. Polo Assn.",
 				discountOffer: "Up to 50-70% Off",
 				imgURL:
-					"https://raw.githubusercontent.com/sonishreyas/ripple-store-app/dev/src/backend/media/images/us-polo.jpg",
+					"https://raw.githubusercontent.com/sonishreyas/ripple-store-app/dev/src/backend/media/images/us-polo.png",
 			},
 			{
 				_id: uuid(),

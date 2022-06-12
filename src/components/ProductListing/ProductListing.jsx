@@ -24,7 +24,7 @@ const ProductListing = () => {
 	};
 	useEffect(() => {
 		pageNum > 1
-			? setProducts(productsData.slice(6 * (pageNum - 1), pageNum * 6 + 1))
+			? setProducts(productsData.slice(6 * (pageNum - 1), pageNum * 6))
 			: setProducts(productsData.slice(pageNum - 1, 6));
 	}, [pageNum, productsData]);
 

@@ -18,7 +18,7 @@ const AddToWishlistBtn = (props) => {
 					wishlistDispatch
 				)
 			}
-			className="outline-btn p-0 b-radius-2 text-bold card-wishlist m-5 flex-row justify-content-center align-center flex-gap-1"
+			className="outline-btn p-0 b-radius-2 text-bold card-wishlist m-5 flex-row justify-content-center align-center flex-gap-1 cursor-pointer"
 		>
 			<span className="wishlist-icon">
 				<i className="far fa-heart"></i>
@@ -32,7 +32,7 @@ const AddToWishlistBtnRedirect = () => (
 	<Link
 		to="/auth"
 		state={{ from: { pathname: "/products" } }}
-		className="no-link-decoration outline-btn p-0 b-radius-2 text-bold card-wishlist m-5 flex-row justify-content-center align-center flex-gap-1"
+		className="no-link-decoration outline-btn p-0 b-radius-2 text-bold card-wishlist m-5 flex-row justify-content-center align-center flex-gap-1 cursor-pointer"
 	>
 		<span className="wishlist-icon">
 			<i className="far fa-heart"></i>
@@ -53,7 +53,7 @@ const RemoveFromWishlistBtn = (props) => {
 					wishlistDispatch
 				)
 			}
-			className="outline-btn p-0 b-radius-2 text-bold card-wishlist m-5 flex-row justify-content-center align-center flex-gap-1"
+			className="outline-btn p-0 b-radius-2 text-bold card-wishlist m-5 flex-row justify-content-center align-center flex-gap-1 cursor-pointer"
 		>
 			<span className="wishlist-icon">
 				<i className="fa-solid fa-heart"></i>
@@ -77,7 +77,7 @@ const MoveToWishlistBtn = ({ productId, token }) => {
 					cartDispatch
 				)
 			}
-			className="p-5 my-5 mb-10 outline-btn b-radius-2 text-bold horizontal-card-btn-secondary flex-row justify-content-center align-center flex-gap-1 flex-grow-1 w-100 text-bold"
+			className="p-5 my-5 mb-10 outline-btn b-radius-2 text-bold horizontal-card-btn-secondary flex-row justify-content-center align-center flex-gap-1 flex-grow-1 w-100 text-bold cursor-pointer"
 		>
 			<span className="wishlist-icon">
 				<i className="far fa-heart"></i>
@@ -90,7 +90,7 @@ const MoveToWishlistBtn = ({ productId, token }) => {
 const AddedToWishlist = () => {
 	return (
 		<button
-			className="outline-btn p-5 b-radius-2 my-0 text-bold icon-text-btn flex-row justify-content-center align-center flex-gap-1 flex-grow-1 cursor-pointer selected-outline-btn"
+			className="outline-btn p-5 b-radius-2 my-0 text-bold icon-text-btn flex-row justify-content-center align-center flex-gap-1 flex-grow-1 cursor-pointer selected-outline-btn cursor-pointer"
 			disabled
 		>
 			<span className="wishlist-icon">

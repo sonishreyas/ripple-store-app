@@ -1,7 +1,8 @@
-import { useBilling } from "context";
+import { useAddress, useBilling } from "context";
 import { Link } from "react-router-dom";
 const Billing = () => {
 	const { billingState } = useBilling();
+	const { addressState } = useAddress();
 	return (
 		<div className="cart-billing flex-column align-start">
 			<div className="card basic-card card-shadow flex-row justify-content-center align-center flex-wrap card-shadow p-5 b-radius-2">
@@ -34,11 +35,20 @@ const Billing = () => {
 						</table>
 					</li>
 					<li className="no-list">
-						<Link to="/checkout" className="no-link-decoration">
-							<button className="primary-btn place-order-btn p-5 b-radius-2 mb-5 mx-0 text-bold">
+						{Object.keys(addressState?.selectedAddress).length ? (
+							<Link to="/checkout" className="no-link-decoration">
+								<button className="primary-btn place-order-btn p-5 b-radius-2 mb-5 mx-0 text-bold">
+									Proceed to checkout
+								</button>
+							</Link>
+						) : (
+							<button
+								className="primary-btn place-order-btn p-5 b-radius-2 mb-5 mx-0 text-bold"
+								disabled
+							>
 								Proceed to checkout
 							</button>
-						</Link>
+						)}
 					</li>
 				</ul>
 			</div>
