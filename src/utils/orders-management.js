@@ -7,7 +7,7 @@ import axios from "axios";
  * @param {function} ordersDispatch Reducer function
  */
 const addToOrdersHandler = (element, productData, token, ordersDispatch) => {
-	element.preventDefault();
+	element && element.preventDefault();
 	(async () => {
 		try {
 			const response = await axios.post(

@@ -1,30 +1,16 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useAuth, useBilling, useCart, useCheckout, useOrders } from "context";
-import { removeFromCartHandler, addToOrdersHandler } from "utils";
-import { v4 as uuid } from "uuid";
+import { useBilling } from "context";
+import { useState } from "react";
+import { usePaymentIntegration } from "custom-hooks";
 
 const Billing = ({ products }) => {
 	const { billingState } = useBilling();
-	const { checkoutState, checkoutDispatch } = useCheckout();
-	const { cartDispatch } = useCart();
-	const navigate = useNavigate();
-	const { authState } = useAuth();
-	const { ordersDispatch } = useOrders();
+	const { displayRazorpay } = usePaymentIntegration();
+	const [disable, setDisable] = useState(false);
+
 	const handlePlaceOrder = (e) => {
-		const orderId = uuid();
-		checkoutState.itemsInCheckout.map((id) =>
-			removeFromCartHandler(e, id, authState.token, cartDispatch)
-		);
-		products.map((productData) =>
-			addToOrdersHandler(
-				e,
-				{ orderId: orderId, ...productData },
-				authState.token,
-				ordersDispatch
-			)
-		);
-		checkoutDispatch({ type: "RESET" });
-		navigate("/order");
+		setDisable(true);
+		displayRazorpay(e);
+		setDisable(false);
 	};
 	return (
 		<div className="cart-billing flex-column align-start">
@@ -62,6 +48,7 @@ const Billing = ({ products }) => {
 						<button
 							className="cursor-pointer primary-btn place-order-btn p-5 b-radius-2 mb-5 mx-0 text-bold"
 							onClick={handlePlaceOrder}
+							disabled={disable}
 						>
 							Place Order
 						</button>

@@ -8,7 +8,7 @@ import axios from "axios";
  * @param {function} cartDispatch Reducer function
  */
 const addToCartHandler = (e, productData, token, cartDispatch) => {
-	e.preventDefault();
+	e && e.preventDefault();
 	(async () => {
 		try {
 			const response = await axios.post(
@@ -45,7 +45,7 @@ const addToCartHandler = (e, productData, token, cartDispatch) => {
  * @param {function} cartDispatch Reducer function
  */
 const removeFromCartHandler = (element, productId, token, cartDispatch) => {
-	element.preventDefault();
+	element && element.preventDefault();
 	(async () => {
 		try {
 			const response = await axios.delete(`/api/user/cart/${productId}`, {
@@ -108,7 +108,7 @@ const updateCartHandler = (
 	cartDispatch,
 	actionType
 ) => {
-	element.preventDefault();
+	element && element.preventDefault();
 	(async () => {
 		try {
 			const response = await axios.post(
