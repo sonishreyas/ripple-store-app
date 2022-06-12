@@ -37,13 +37,13 @@ const Billing = () => {
 					<li className="no-list">
 						{Object.keys(addressState?.selectedAddress).length ? (
 							<Link to="/checkout" className="no-link-decoration">
-								<button className="primary-btn place-order-btn p-5 b-radius-2 mb-5 mx-0 text-bold">
+								<button className="primary-btn place-order-btn p-5 b-radius-2 mb-5 mx-0 text-bold cursor-pointer">
 									Proceed to checkout
 								</button>
 							</Link>
 						) : (
 							<button
-								className="primary-btn place-order-btn p-5 b-radius-2 mb-5 mx-0 text-bold"
+								className="primary-btn disabled-btn place-order-btn p-5 b-radius-2 mb-5 mx-0 text-bold cursor-pointer"
 								disabled
 							>
 								Proceed to checkout

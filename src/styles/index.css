@@ -99,6 +99,16 @@
 	display: block;
 }
 
+.disabled-btn {
+	background-color: grey;
+	border: none;
+}
+
+.disabled-btn:hover {
+	background-color: grey;
+	color: var(--tertiary-color);
+	border: none;
+}
 @media screen and (max-width: 600px) {
 	.search-bar {
 		position: absolute;
