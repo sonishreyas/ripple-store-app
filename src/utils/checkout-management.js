@@ -27,7 +27,7 @@ const removeFromCheckoutHandler = (checkoutDispatch, productId) => {
 		type: "REMOVE_ITEM",
 		payload: {
 			checkoutItemsCount: 1,
-			itemsInCheckout: [productId],
+			itemsInCheckout: productId,
 		},
 	});
 };

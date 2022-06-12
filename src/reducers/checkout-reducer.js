@@ -1,4 +1,4 @@
-import { removeFromArray, removeObjFromArray } from "utils";
+import { removeObjFromArray } from "utils";
 /**
  * Reducer function to handle checkout state
  * @param {Object} checkoutState State values of checkout
@@ -23,9 +23,9 @@ const checkoutReducer = (checkoutState, { type, payload }) => {
 				...checkoutState,
 				checkoutItemsCount:
 					checkoutState.checkoutItemsCount - payload.checkoutItemsCount,
-				itemsInCheckout: removeFromArray(
+				itemsInCheckout: removeObjFromArray(
 					checkoutState.itemsInCheckout,
-					payload.itemsInCheckout[0]
+					payload.itemsInCheckout
 				),
 			};
 		case "RESET":
