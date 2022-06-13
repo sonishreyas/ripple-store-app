@@ -15,7 +15,7 @@ const UpdateCartItem = (props) => {
 		<>
 			{props.btnType === "delete" && (
 				<i
-					className="fa-solid fa-trash"
+					className="fa-solid fa-trash cursor-pointer"
 					onClick={(element) =>
 						removeFromCartHandler(
 							element,
@@ -28,7 +28,7 @@ const UpdateCartItem = (props) => {
 			)}
 			{props.btnType === "decrement" && (
 				<i
-					className="far fa-minus-square"
+					className="far fa-minus-square cursor-pointer"
 					onClick={(element) =>
 						updateCartHandler(
 							element,
@@ -42,7 +42,7 @@ const UpdateCartItem = (props) => {
 			)}
 			{props.btnType === "increment" && (
 				<i
-					className="far fa-plus-square"
+					className="far fa-plus-square cursor-pointer"
 					onClick={(element) =>
 						updateCartHandler(
 							element,

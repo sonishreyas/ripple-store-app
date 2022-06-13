@@ -33,7 +33,7 @@ const Address = () => {
 						</div>
 					)}
 					<button
-						className="outline-btn change-address-btn p-5 b-radius-2 mx-5 my-0 text-bold"
+						className="outline-btn change-address-btn p-5 b-radius-2 mx-5 my-0 text-bold cursor-pointer"
 						onClick={() => setShowAddressModal(true)}
 					>
 						Change

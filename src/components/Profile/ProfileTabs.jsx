@@ -8,7 +8,7 @@ const ProfileTabs = () => {
 			<article className="vertical-tabs-container flex-row flex-wrap flex-gap-1 b-radius-2 p-5 w-100 h-auto">
 				<article className="vertical-tabs-btn-container flex-column justify-content-start align-start p-0 my-5 mx-0">
 					<button
-						className={`tabs-btn p-5 flex-row flex-gap-1 align-center justify-content-start ${
+						className={`tabs-btn p-5 flex-row flex-gap-1 align-center justify-content-start cursor-pointer ${
 							profileActiveTab === "Profile" ? "vertical-tabs-btn-active" : ""
 						}`}
 						onClick={() => tabClickHandler("Profile")}
@@ -19,7 +19,7 @@ const ProfileTabs = () => {
 						<p className="tabs-btn-text">Profile</p>
 					</button>
 					<button
-						className={`tabs-btn p-5 flex-row flex-gap-1 align-center justify-content-start ${
+						className={`tabs-btn p-5 flex-row flex-gap-1 align-center justify-content-start cursor-pointer ${
 							profileActiveTab === "Orders" ? "vertical-tabs-btn-active" : ""
 						}`}
 						onClick={() => tabClickHandler("Orders")}
@@ -30,7 +30,7 @@ const ProfileTabs = () => {
 						<p className="tabs-btn-text">Orders</p>
 					</button>
 					<button
-						className={`tabs-btn p-5 flex-row flex-gap-1 align-center justify-content-start ${
+						className={`tabs-btn p-5 flex-row flex-gap-1 align-center justify-content-start cursor-pointer ${
 							profileActiveTab === "Address" ? "vertical-tabs-btn-active" : ""
 						}`}
 						onClick={() => tabClickHandler("Address")}
@@ -41,7 +41,7 @@ const ProfileTabs = () => {
 						<p className="tabs-btn-text">Address</p>
 					</button>
 					<button
-						className={`tabs-btn p-5 flex-row flex-gap-1 align-center justify-content-start ${
+						className={`tabs-btn p-5 flex-row flex-gap-1 align-center justify-content-start cursor-pointer ${
 							profileActiveTab === "Settings" ? "vertical-tabs-btn-active" : ""
 						}`}
 						onClick={() => tabClickHandler("Settings")}

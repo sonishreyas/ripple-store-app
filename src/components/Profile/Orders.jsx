@@ -11,7 +11,7 @@ const Orders = () => {
 				{ordersState.ordersData.length ? (
 					ordersState.ordersData.map(
 						({ _id, orderId, name, createdAt, qty, price, imgURL, brand }) => (
-							<li className="no-list" key={_id}>
+							<li className="no-list my-5" key={_id}>
 								<article className="card basic-card flex-row justify-content-center align-center flex-wrap card-shadow p-10 b-radius-2 w-100 h-auto">
 									<h2 className="order-status">Order Confirmed</h2>
 									<p className="secondary-font">{createdAt}</p>

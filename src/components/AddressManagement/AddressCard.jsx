@@ -56,13 +56,13 @@ const AddressCard = ({ props }) => {
 			<p className="p-2">{pincode}</p>
 			<section className="card-footer flex-row flex-grow-1 justify-content-center flex-gap-1 py-5 px-0 ">
 				<button
-					className="primary-btn edit-btn p-2 b-radius-2 my-0 text-bold flex-grow-1 w-100 h5"
+					className="primary-btn edit-btn p-2 b-radius-2 my-0 text-bold flex-grow-1 w-100 h5 cursor-pointer"
 					onClick={handleEditAddress}
 				>
 					Edit
 				</button>
 				<button
-					className="outline-btn delete-btn p-2 b-radius-2 my-0 text-bold flex-grow-1 w-100 h5"
+					className="outline-btn delete-btn p-2 b-radius-2 my-0 text-bold flex-grow-1 w-100 h5 cursor-pointer"
 					onClick={handleDeleteAddress}
 				>
 					Delete
