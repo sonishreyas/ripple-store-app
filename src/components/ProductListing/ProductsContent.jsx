@@ -27,21 +27,21 @@ const ProductsContent = () => {
 			{showFiltersContainer && <Filters />}
 			<ProductListing />
 			{!showFiltersContainer && (
-				<section className="area-btn-container flex-row align-center justify-content-space-between p-5 w-100 h-auto ">
+				<div className="area-btn-container flex-row align-center justify-content-space-between p-5 h-auto ">
 					<h3
-						className="form-heading text-bold py-5 px-0"
+						className="form-heading text-bold py-5 px-0 cursor-pointer"
 						onClick={handleShowFiltersContainer}
 					>
 						Filters
 					</h3>
 					<button
 						type="button"
-						className="primary-btn no-link-decoration text-tertiary-color text-bold p-2 px-4 b-radius-4"
+						className="primary-btn no-link-decoration text-tertiary-color text-bold p-2 px-4 b-radius-4 cursor-pointer"
 						onClick={clearAllHandler}
 					>
 						Clear All
 					</button>
-				</section>
+				</div>
 			)}
 		</main>
 	);
