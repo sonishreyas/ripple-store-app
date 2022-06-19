@@ -28,15 +28,34 @@
 ▶️ Cart Management <br/>
 ▶️ Wishlist Management <br/>
 ▶️ Authentication (Signup, Login, and Logout) <br/>
-▶️ Address Management <br/>
+▶️ Address Management where user can add, edit and delete address <br/>
 ▶️ User Profile Page <br/>
 ▶️ Order Summary <br/>
 ▶️ Checkout <br/>
+▶️ Pagination to show 6 products per page. <br/>
+▶️ Payment Integration using Razorpay API. <br/>
+▶️ Debounce in search functionality. <br/>
 
-# Technology Stack
+# Preview
 
-- Html
-- CSS
-- React
+### Desktop
+![ripple-store-desktop-preview](https://user-images.githubusercontent.com/46019734/174499967-d1b4394a-0c16-4801-8023-a52f7bf00978.gif)
+
+# How to run the app locally?
+```
+git clone https://github.com/sonishreyas/ripple-store-app.git
+npm install
+npm start
+```
+
+# Technology Stack and Tools
+
+- React JS
+- React Router v6
+- React Context API + useReducer
+- Vanilla CSS integrated with [Ripple UI](https://ripple-ui.netlify.app/) Component Library
+- Razorpay Payment Integration API
+- Git For Version Control
+- Netlify for Deployment
 
 <img src = "https://img.shields.io/badge/-HTML5-E34F26?style=flat&logo=html5&logoColor=white">  <img src = "https://img.shields.io/badge/-CSS3-1572B6?style=flat&logo=css3&logoColor=white">  <img src="https://img.shields.io/badge/-React-1572B6?style=flat&logo=react">
