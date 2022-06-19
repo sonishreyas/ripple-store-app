@@ -40,7 +40,6 @@ const CartProducts = () => {
 						? null
 						: addToCheckoutHandler(checkoutDispatch, item._id)
 			  );
-	console.log(checkoutState);
 	return (
 		<>
 			<li className="no-list p-5 pl-7 cart-items-count-container border-radius-5">
