@@ -35,6 +35,8 @@ const BillingProvider = ({ children }) => {
 				presentInArray(checkoutState?.itemsInCheckout, item._id)
 			);
 			getBillingDataHandler(cartData, billingDispatch);
+		} else if (!checkoutState?.itemsInCheckout?.length) {
+			billingDispatch({ type: "RESET" });
 		}
 	}, [cartState, allProductsData, checkoutState]);
 
