@@ -32,20 +32,20 @@ ReactDOM.render(
 						<AddressProvider>
 							<WishlistProvider>
 								<ProductsProvider>
-									<BillingProvider>
-										<ThemeProvider>
-											<ProfileProvider>
-												<CheckoutProvider>
+									<CheckoutProvider>
+										<BillingProvider>
+											<ThemeProvider>
+												<ProfileProvider>
 													<OrdersProvider>
 														<NavProvider>
 															<App />
 															<ToastPortal />
 														</NavProvider>
 													</OrdersProvider>
-												</CheckoutProvider>
-											</ProfileProvider>
-										</ThemeProvider>
-									</BillingProvider>
+												</ProfileProvider>
+											</ThemeProvider>
+										</BillingProvider>
+									</CheckoutProvider>
 								</ProductsProvider>
 							</WishlistProvider>
 						</AddressProvider>
