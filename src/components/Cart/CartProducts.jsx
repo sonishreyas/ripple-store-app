@@ -33,13 +33,14 @@ const CartProducts = () => {
 	const handleSelectAllToCheckout = () =>
 		checkoutState.checkoutItemsCount === cartState.cartItemsCount
 			? cartState.itemsInCart.map((item) =>
-					removeFromCheckoutHandler(checkoutDispatch, item)
+					removeFromCheckoutHandler(checkoutDispatch, item._id)
 			  )
 			: cartState.itemsInCart.map((item) =>
-					presentInArray(checkoutState.itemsInCheckout, item)
+					presentInArray(checkoutState.itemsInCheckout, item._id)
 						? null
-						: addToCheckoutHandler(checkoutDispatch, item)
+						: addToCheckoutHandler(checkoutDispatch, item._id)
 			  );
+	console.log(checkoutState);
 	return (
 		<>
 			<li className="no-list p-5 pl-7 cart-items-count-container border-radius-5">

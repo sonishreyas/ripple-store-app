@@ -7,8 +7,8 @@ const AddressModal = () => {
 	return (
 		<div className="modal flex-row justify-content-center align-center">
 			<div className="modal-background"></div>
-			<div className="modal-content playlist-modal-container address-container">
-				<ul className="radio-btn-container outline-container b-radius-2  p-5 m-10">
+			<div className="modal-content playlist-modal-container address-container b-radius-2 p-5">
+				<ul className="radio-btn-container outline-container b-radius-2">
 					<li
 						className="profile-header flex-row justify-content-space-between align-center flex-wrap p-5 my-0 mx-5"
 						key="address-header"

@@ -118,7 +118,7 @@ const Header = () => {
 								<></>
 							)}
 						</li>
-						<li className="header-nav-icons h-auto pt-10">
+						<li className="header-nav-icons h-auto pt-10 header-navigation">
 							{
 								<Link
 									to={"/profile"}
@@ -139,7 +139,7 @@ const Header = () => {
 								</Link>
 							}
 						</li>
-						<li className="header-nav-icons h-auto pt-10">
+						<li className="header-nav-icons h-auto pt-10 header-navigation">
 							<Link
 								to={"/wishlist"}
 								className="no-link badge p-5 m-5 flex-column justify-content-center align-center"
@@ -157,7 +157,7 @@ const Header = () => {
 								<p className="p-2 m-2 badge-title">Wishlist</p>
 							</Link>
 						</li>
-						<li className="header-nav-icons h-auto pt-10">
+						<li className="header-nav-icons h-auto pt-10 header-navigation">
 							<Link
 								to={"/cart"}
 								className="no-link badge p-5 m-5 flex-column justify-content-center align-center"

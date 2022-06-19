@@ -91,7 +91,7 @@ const AddressFormModal = () => {
 				<form className="input-form flex-column flex-gap-1 flex-grow-1 flex-wrap">
 					{addressFormFields.map(({ fieldName, label }) => (
 						<section
-							className={`input-container flex-column m-5 ${
+							className={`input-container flex-column m-1 ${
 								addressFormState["address"][fieldName].length > 0 ||
 								addressFormState["focus"][fieldName]
 									? "focused"
@@ -101,7 +101,7 @@ const AddressFormModal = () => {
 						>
 							<input
 								id={fieldName}
-								className="textbox-content p-5"
+								className="textbox-content p-3"
 								type="text"
 								name={fieldName}
 								onChange={(e) => setValueHandler(e, fieldName)}
@@ -115,7 +115,7 @@ const AddressFormModal = () => {
 						</section>
 					))}
 					<button
-						className="cursor-pointer outline-btn cancel-btn p-5 b-radius-2 mx-5 my-0 text-bold flex-grow-1"
+						className="cursor-pointer outline-btn cancel-btn p-5 b-radius-2 mx-5 mb-0 mt-5 text-bold flex-grow-1"
 						type="button"
 						onClick={handleFillTestAddressValues}
 					>

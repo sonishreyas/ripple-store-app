@@ -55,28 +55,41 @@
 	z-index: 2;
 }
 .modal {
-	position: absolute;
-	top: 0;
-	right: 0;
-	height: 100%;
+	padding: var(--p-0);
+	z-index: 13;
 	width: 100%;
-	z-index: 9;
-}
-.modal-background {
-	position: absolute;
-	top: 0;
-	right: 0;
 	height: 100%;
-	width: 100%;
-	background-color: var(--tertiary-color);
-	opacity: 0.5;
-}
-.modal-content {
-	position: absolute;
-}
-.address-container {
+	overflow: hidden;
+	position: fixed;
 }
 
+.modal-background {
+	width: 100%;
+	height: 100vh;
+	grid-column: 1/13;
+	background-color: var(--tertiary-color);
+	opacity: 0.5;
+	z-index: 13;
+}
+
+.modal-content {
+	position: absolute;
+	z-index: 13;
+	background-color: var(--secondary-background-color);
+	width: 60rem;
+}
+
+.grid-3-rows .modal {
+	grid-column: 1/4;
+	grid-row: 1/4;
+}
+
+.address-form-modal-container .input-container {
+	width: 100%;
+}
+.address-form-modal-container .textbox-label {
+	font-size: 1.4rem;
+}
 .selected-outline-btn {
 	background: var(--primary-color);
 	border-color: var(--cta-color);
@@ -109,13 +122,15 @@
 	color: var(--tertiary-color);
 	border: none;
 }
+@media screen and (max-width: 1180px) {
+	.grid-3-rows .header .header-nav-icons {
+		display: block;
+	}
+}
+
 @media screen and (max-width: 600px) {
-	.search-bar {
-		position: absolute;
-		top: 13rem;
-		right: 0;
-		width: 100%;
-		padding: 0 1rem 0 1rem;
+	.grid-3-rows .header .header-navigation {
+		display: none;
 	}
 
 	.main {
@@ -130,12 +145,6 @@
 	}
 	.brand-name {
 		left: -2rem;
-	}
-}
-
-@media screen and (max-width: 1180px) {
-	.grid-3-rows .header .header-nav-icons {
-		display: block;
 	}
 }
 
