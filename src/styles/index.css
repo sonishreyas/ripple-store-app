@@ -76,7 +76,7 @@
 	position: absolute;
 	z-index: 13;
 	background-color: var(--secondary-background-color);
-	width: 60rem;
+	/* width: 60rem; */
 }
 
 .grid-3-rows .modal {
@@ -131,10 +131,6 @@
 @media screen and (max-width: 600px) {
 	.grid-3-rows .header .header-navigation {
 		display: none;
-	}
-
-	.main {
-		margin-top: calc(2 * var(--m-10) + var(--m-5));
 	}
 }
 
