@@ -8,6 +8,7 @@ import {
 	Authentication,
 	Checkout,
 	PlaceOrder,
+	PageNotFound,
 } from "pages";
 import { Routes, Route } from "react-router-dom";
 import { RequireAuth } from "routes";
@@ -27,6 +28,7 @@ const AppRoutes = () => {
 				<Route path="/order" element={<PlaceOrder />} />
 				<Route path="/profile" element={<Profile />} />
 			</Route>
+			<Route path="*" element={<PageNotFound />} />
 		</Routes>
 	);
 };
