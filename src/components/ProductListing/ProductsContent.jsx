@@ -9,13 +9,6 @@ const ProductsContent = () => {
 		setShowFiltersContainer,
 	} = useProducts();
 	const handleShowFiltersContainer = () => setShowFiltersContainer(true);
-	useEffect(
-		() =>
-			window.innerWidth <= 768
-				? setShowFiltersContainer(false)
-				: setShowFiltersContainer(true),
-		[]
-	);
 
 	const clearAllHandler = () =>
 		productsDispatch({
